@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 import axios from 'axios';
@@ -16,11 +16,15 @@ class App extends Component {
 
     componentDidMount() {
 
-        axios.get(`https://cms-dot.herokuapp.com/api/posts`).then(res => {
+        const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
 
-                const posts = res.data.data.children.map(obj => obj.data);
-                this.setState({ posts });
-            });
+        axios.get(API_URL).then(res => {
+
+            console.log(res)
+
+            const posts = res.data;
+            this.setState({posts});
+        });
     }
 
     render() {
@@ -28,7 +32,7 @@ class App extends Component {
             <div>
                 <ul>
                     {this.state.posts.map(post =>
-                        <li key={post.id}>{post.title}</li>
+                        <li key={post.id}>{post._id}</li>
                     )}
                 </ul>
             </div>

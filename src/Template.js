@@ -28,11 +28,11 @@ class Template extends Component {
 
                 <div className="text">
             
-                    <div className="id">{this.state.post._id}</div>
+                    {/*<div className="id">{this.state.post._id}</div>*/}
             
                     {/*<div id="title">{this.state.post.title}</div>*/}
 
-                    <div id="text">{this.state.post.text}</div>
+                    <div id="text">{this.state.post.title}</div>
 
                     {/*<div id="categories">{this.state.post.categories[0].name}</div>*/}
 

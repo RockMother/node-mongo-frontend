@@ -34,6 +34,8 @@ class Form extends Component {
 
         let post = this.state.post;
 
+        console.log(post)
+
         const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
 
         const formData = new FormData();
@@ -49,6 +51,8 @@ class Form extends Component {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', API_URL);
         xhr.send(formData);
+
+        this.state.post.viewForm();
     }
 
     handleChangeTitle(event) {
@@ -67,7 +71,7 @@ class Form extends Component {
 
     mouseLeave() {
         // console.log("leave");
-        this.state.post.viewForm()
+        // this.state.post.viewForm()
 
     }
 
@@ -76,7 +80,7 @@ class Form extends Component {
             <div className="block form" onMouseLeave={this.mouseLeave}>
                 <div className="text">
 
-                    <div className="id">{this.state.post._id}</div>
+                    {/*<div className="id">{this.state.post._id}</div>*/}
 
                     {/*<input type="text"*/}
                            {/*name="title"*/}
@@ -86,8 +90,8 @@ class Form extends Component {
 
                     <textarea name="text"
                               placeholder="Some text here"
-                              value={this.state.post.text}
-                              onChange={this.handleChangeText} />
+                              value={this.state.post.title}
+                              onChange={this.handleChangeTitle} />
 
                     {/*{this.state.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
 
@@ -100,10 +104,10 @@ class Form extends Component {
 
                 </div>
 
-                {/*<div className="text">*/}
-                    {/*<span className="button" onClick={this.viewForm}>Save</span>*/}
-                    {/*<span className="button" onClick={this.deletePost}>Delete</span>*/}
-                {/*</div>*/}
+                <div className="buttons">
+                    <span className="button" onClick={this.sendPost}>Save</span>
+                    <span className="button right" onClick={this.deletePost}>Delete</span>
+                </div>
             </div>
         );
     }

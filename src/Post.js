@@ -1,15 +1,31 @@
 import React, {Component} from 'react';
 import './Post.css';
+import Form from './Form';
+import Template from './Template';
 
 class Post extends Component {
 
-// {_id, __v, images, categories, texts}
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            post: props.post,
+            edit: false
+        };
+
+        this.state.post.editPost = () => {
+            this.setState({edit: !this.state.edit})
+        };
+
+    }
 
     render() {
         return (
-            <div className="block">
-                <div className="text">{this.props.post._id}</div>
-            </div>
+
+            this.state.edit === false ?
+                <Template key={this.state.post._id} post={this.state.post} /> :
+                <Form key={this.state.post._id} post={this.state.post} />
         );
     }
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 
+import Post from './Post';
+
 import axios from 'axios';
 
 class App extends Component {
@@ -30,11 +32,9 @@ class App extends Component {
     render() {
         return (
             <div>
-                <ul>
-                    {this.state.posts.map(post =>
-                        <li key={post.id}>{post._id}</li>
-                    )}
-                </ul>
+
+                {this.state.posts.map(post => <Post key={post._id} post={post} />)}
+
             </div>
         );
     }

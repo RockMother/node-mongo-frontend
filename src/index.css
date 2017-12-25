@@ -6,15 +6,20 @@ body {
 
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+
+    background-color: ghostwhite;
 }
 
 body {
+}
+
+#root {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 100px;
-
-    background-color: ghostwhite;
 }
 
 a {

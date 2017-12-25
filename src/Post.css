@@ -3,8 +3,9 @@
 
     margin-top: 50px;
 
-    width: 100%;
-    max-width: 800px;
+    /*width: auto;*/
+    /*min-width: 400px;*/
+    /*max-width: 200px;*/
     /*height: 250px;*/
 
     background-color: white;
@@ -26,6 +27,7 @@
 .id {
     /*font-size: 8px;*/
     color: lightgray;
+    padding-bottom: 10px;
 }
 
 .text {

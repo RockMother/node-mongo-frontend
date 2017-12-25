@@ -1,0 +1,59 @@
+.form {
+
+    max-width: 800px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.block .text > * {
+    /*padding-bottom: 10px;*/
+}
+
+input {
+
+    border: none;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+
+    padding: 0;
+    margin: 0;
+
+    outline: 0 solid transparent;
+}
+
+::placeholder {
+    color: lightgray;
+}
+
+#text {
+    min-height: 50px;
+    /*background-color: red;*/
+}
+
+textarea {
+    width: 100%;
+    min-width: 200px;
+    max-width: 700px;
+    min-height: 50px;
+
+    display: block;
+
+    border: none;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+
+    padding: 0;
+    margin: 0;
+
+    /*background-color: green;*/
+
+    outline: 0 solid transparent;
+}
+
+textarea:hover {
+    background-color: ghostwhite;
+}

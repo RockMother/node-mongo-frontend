@@ -17,8 +17,8 @@ class Template extends Component {
     }
 
     mouseEnter() {
-        console.log('enter')
-        this.state.post.editPost()
+        // console.log('enter')
+        this.state.post.viewForm()
     }
 
     render() {
@@ -28,11 +28,21 @@ class Template extends Component {
 
                 <div className="text">
             
-                    <div className="id">{this.props.post._id}</div>
+                    <div className="id">{this.state.post._id}</div>
             
-                    <div id="title">{this.props.post.title}</div>
-            
-                    {this.state.post.texts.map(text => <div key={text._id}>{text.name}</div>)}
+                    {/*<div id="title">{this.state.post.title}</div>*/}
+
+                    <div id="text">{this.state.post.text}</div>
+
+                    {/*<div id="categories">{this.state.post.categories[0].name}</div>*/}
+
+                    {/*<div id="images">{this.state.post.images[0].name}</div>*/}
+
+
+
+
+
+                    {/*{this.state.post.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
             
                     {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}
                     {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}

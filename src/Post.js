@@ -11,11 +11,11 @@ class Post extends Component {
 
         this.state = {
             post: props.post,
-            edit: false
+            form: false
         };
 
-        this.state.post.editPost = () => {
-            this.setState({edit: !this.state.edit})
+        this.state.post.viewForm = () => {
+            this.setState({form: !this.state.form})
         };
 
     }
@@ -23,7 +23,7 @@ class Post extends Component {
     render() {
         return (
 
-            this.state.edit === false ?
+            this.state.form === false ?
                 <Template key={this.state.post._id} post={this.state.post} /> :
                 <Form key={this.state.post._id} post={this.state.post} />
         );

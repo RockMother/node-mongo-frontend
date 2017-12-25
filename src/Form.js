@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Post.css';
+import './Form.css';
 
 class Form extends Component {
 
@@ -7,14 +8,17 @@ class Form extends Component {
 
         super(props);
 
-        this.state = props.post;
+        this.state = {
+            post: props.post,
+        };
 
         this.sendPost = this.sendPost.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeTitle = this.handleChangeTitle.bind(this);
+        this.handleChangeText = this.handleChangeText.bind(this);
         this.mouseLeave = this.mouseLeave.bind(this);
     }
 
-    // editPost(event) {
+    // viewForm(event) {
     //
     //     let post = {};
     //
@@ -28,7 +32,7 @@ class Form extends Component {
 
     sendPost() {
 
-        let post = this.state;
+        let post = this.state.post;
 
         const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
 
@@ -47,25 +51,43 @@ class Form extends Component {
         xhr.send(formData);
     }
 
-    handleChange(event) {
-        // this.setState({value: event.target.value});
+    handleChangeTitle(event) {
+
+        let post = this.state.post;
+        post.title =  event.target.value;
+        this.setState({post: post});
+    }
+
+    handleChangeText(event) {
+
+        let post = this.state.post;
+        post.text =  event.target.value;
+        this.setState({post: post});
     }
 
     mouseLeave() {
-        console.log("leave");
-        this.state.editPost()
+        // console.log("leave");
+        this.state.post.viewForm()
 
     }
 
     render() {
         return (
-            <div className="block" onMouseLeave={this.mouseLeave}>
+            <div className="block form" onMouseLeave={this.mouseLeave}>
                 <div className="text">
 
-                    <div className="id">{this.state._id}</div>
+                    <div className="id">{this.state.post._id}</div>
 
-                    {/*<div id="title" con>{this.props.post.title}</div>*/}
-                    <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
+                    {/*<input type="text"*/}
+                           {/*name="title"*/}
+                           {/*placeholder="Some title here please"*/}
+                           {/*value={this.state.post.title}*/}
+                           {/*onChange={this.handleChangeTitle} />*/}
+
+                    <textarea name="text"
+                              placeholder="Some text here"
+                              value={this.state.post.text}
+                              onChange={this.handleChangeText} />
 
                     {/*{this.state.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
 
@@ -78,10 +100,10 @@ class Form extends Component {
 
                 </div>
 
-                <div className="text">
-                    <span className="button" onClick={this.editPost}>Save</span>
-                    <span className="button" onClick={this.deletePost}>Delete</span>
-                </div>
+                {/*<div className="text">*/}
+                    {/*<span className="button" onClick={this.viewForm}>Save</span>*/}
+                    {/*<span className="button" onClick={this.deletePost}>Delete</span>*/}
+                {/*</div>*/}
             </div>
         );
     }

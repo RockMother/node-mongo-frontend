@@ -18,7 +18,7 @@
                         var linkText = document.createTextNode("Your image avaliable here");
                         a.appendChild(linkText);
                         a.title = "Your image avaliable here";
-                        a.href = "http://localhost:8000/api/image/" + document.getElementById("fileUpload").files[0].name;
+                        a.href = "http://localhost:8000/api/image/imageName=" + document.getElementById("fileUpload").files[0].name;
                         document.body.appendChild(a);                        
                     }
                 }                 

@@ -3,6 +3,12 @@
     max-width: 800px;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+    transition: 1s box-shadow;
+}
+
+.form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .block .text > * {
@@ -36,7 +42,7 @@ textarea {
     width: 100%;
     min-width: 200px;
     max-width: 700px;
-    min-height: 50px;
+    min-height: 158px;
 
     display: block;
 
@@ -55,5 +61,29 @@ textarea {
 }
 
 textarea:hover {
+    background-color: rgba(248, 248, 255, 0.29);
+}
+
+.buttons {
+    /*width: 100%;*/
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: ghostwhite;
+}
+
+.button {
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.right {
+    padding-right: 0;
+    color: rgba(104, 0, 0, 0.34);
+    float: right;
+}
+
+.button:hover {
+    color: #18bf45;
 }

@@ -106,6 +106,8 @@ class Form extends Component {
 
                 <div className="buttons">
                     <span className="button" onClick={this.sendPost}>Save</span>
+                    <span className="button" onClick={this.sendPost}><b>B</b></span>
+                    <span className="button" onClick={this.sendPost}>Link</span>
                     <span className="button right" onClick={this.deletePost}>Delete</span>
                 </div>
             </div>

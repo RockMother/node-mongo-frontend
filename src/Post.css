@@ -51,27 +51,3 @@
     max-height: 150px;
     display: block;
 }
-
-.buttons {
-    /*width: 100%;*/
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: ghostwhite;
-}
-
-.button {
-    cursor: pointer;
-    padding-right: 10px;
-}
-
-.right {
-    padding-right: 0;
-    color: red;
-    float: right;
-}
-
-.button:hover {
-    color: #18bf45;
-}

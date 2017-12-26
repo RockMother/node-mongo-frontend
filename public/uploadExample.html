@@ -12,8 +12,19 @@
                 formData.append("title", document.getElementById("title").value)
                 formData.append("categories[]", document.getElementById("categories").value.split(';'))
                 formData.append("texts[]", document.getElementById("texts").value.split(';'))
+                function onSuccess(e){
+                    if (e.target.status === 201) {
+                        var a = document.createElement('a');
+                        var linkText = document.createTextNode("Your image avaliable here");
+                        a.appendChild(linkText);
+                        a.title = "Your image avaliable here";
+                        a.href = "http://localhost:8000/api/image/" + document.getElementById("fileUpload").files[0].name;
+                        document.body.appendChild(a);                        
+                    }
+                }                 
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "http://localhost:8000/api/posts");
+                xhr.onload = onSuccess;
+                xhr.open("POST", "http://localhost:8000/api/posts", true);
                 xhr.send(formData);
             }
             </script>        

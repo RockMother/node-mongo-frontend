@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Post.css';
 import './Form.css';
+import PostActions from '../../actions/postActions';
 
 class Form extends Component {
 
@@ -12,47 +13,10 @@ class Form extends Component {
             post: props.post,
         };
 
-        this.sendPost = this.sendPost.bind(this);
+        this.save = this.save.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.mouseLeave = this.mouseLeave.bind(this);
-    }
-
-    // viewForm(event) {
-    //
-    //     let post = {};
-    //
-    //     post.title = document.getElementById("title").value;
-    //     post.texts = document.getElementById("texts").value.split(';');
-    //     post.categories = document.getElementById("categories").value.split(';');
-    //     post.images = document.getElementById("images").files[0];
-    //
-    //     sendPost(post);
-    // }
-
-    sendPost() {
-
-        let post = this.state.post;
-
-        console.log(post)
-
-        const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
-
-        const formData = new FormData();
-
-        formData.append("title", post.title);
-
-        formData.append("texts[]", post.texts);
-
-        formData.append("categories[]", post.categories);
-
-        formData.append("images", post.images);
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', API_URL);
-        xhr.send(formData);
-
-        this.state.post.viewForm();
     }
 
     handleChangeTitle(event) {
@@ -72,7 +36,11 @@ class Form extends Component {
     mouseLeave() {
         // console.log("leave");
         // this.state.post.viewForm()
+    }
 
+    save() {
+        PostActions.sendPost(this.state.post);
+        this.state.post.viewForm();
     }
 
     render() {
@@ -105,10 +73,10 @@ class Form extends Component {
                 </div>
 
                 <div className="buttons">
-                    <span className="button" onClick={this.sendPost}>Save</span>
-                    <span className="button" onClick={this.sendPost}><b>B</b></span>
-                    <span className="button" onClick={this.sendPost}>Link</span>
-                    <span className="button right" onClick={this.deletePost}>Delete</span>
+                    <span className="button" onClick={this.save}>Save</span>
+                    <span className="button" onClick={console.log('bold')}><b>B</b></span>
+                    <span className="button" onClick={console.log('get post link')}>Link</span>
+                    <span className="button right" onClick={PostActions.deletePost}>Delete</span>
                 </div>
             </div>
         );

@@ -18,8 +18,13 @@
                         var linkText = document.createTextNode("Your image avaliable here");
                         a.appendChild(linkText);
                         a.title = "Your image avaliable here";
-                        a.href = "http://localhost:8000/api/image/imageName=" + document.getElementById("fileUpload").files[0].name;
+                        var model = JSON.parse(e.target.responseText);
+                        a.href = "http://localhost:8000/api/image/" + model.images[0].imageId;
                         document.body.appendChild(a);                        
+                        var img = document.createElement('img');
+                        img.src = "http://localhost:8000/api/image/" + model.images[0].imageId;
+                        img.style = "width: 100px";
+                        document.body.appendChild(img);
                     }
                 }                 
                 var xhr = new XMLHttpRequest();

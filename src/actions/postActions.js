@@ -2,8 +2,8 @@ import Dispatcher from './../dispatcher/appDispatcher';
 import ActionTypes from './../constants/actionTypes';
 import axios from 'axios';
 
-// const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
-const API_URL = 'http://localhost:8000/api/posts';
+const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
+// const API_URL = 'http://localhost:8000/api/posts';
 
 class PostActions {
 
@@ -22,6 +22,8 @@ class PostActions {
         console.log(post)
 
         const formData = new FormData();
+
+        formData.append("_id", post._id);
 
         formData.append("title", post.title);
 

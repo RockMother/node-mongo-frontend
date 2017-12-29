@@ -38,8 +38,14 @@ class PostActions {
         xhr.send(formData);
     }
 
-    deletePost() {
-
+    deletePost(post) {
+        axios.delete(API_URL + "/" + post._id).then(res => {
+            console.log(res)
+            // Dispatcher.dispatch({
+            //     actionType: ActionTypes.GET_POSTS,
+            //     posts: res.data
+            // });
+        });
     }
 }
 

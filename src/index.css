@@ -14,12 +14,16 @@ body {
 }
 
 #root {
-    width: 100%;
+}
 
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     padding-bottom: 50px;
+
+    /*background-color: lightcoral !important;*/
 }
 
 a {

@@ -13,7 +13,9 @@ class Form extends Component {
             post: props.post,
         };
 
-        this.save = this.save.bind(this);
+        this.savePost = this.savePost.bind(this);
+        this.deletePost = this.deletePost.bind(this);
+
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.mouseLeave = this.mouseLeave.bind(this);
@@ -38,8 +40,13 @@ class Form extends Component {
         // this.state.post.viewForm()
     }
 
-    save() {
+    savePost() {
         PostActions.sendPost(this.state.post);
+        this.state.post.viewForm();
+    }
+
+    deletePost() {
+        PostActions.deletePost(this.state.post);
         this.state.post.viewForm();
     }
 
@@ -73,10 +80,10 @@ class Form extends Component {
                 </div>
 
                 <div className="buttons">
-                    <span className="button" onClick={this.save}>Save</span>
+                    <span className="button" onClick={this.savePost}>Save</span>
                     <span className="button" onClick={console.log('bold')}><b>B</b></span>
                     <span className="button" onClick={console.log('get post link')}>Link</span>
-                    <span className="button right" onClick={PostActions.deletePost}>Delete</span>
+                    <span className="button right" onClick={this.deletePost}>Delete</span>
                 </div>
             </div>
         );

@@ -1,9 +1,9 @@
 import Dispatcher from './../dispatcher/appDispatcher';
 import ActionTypes from './../constants/actionTypes';
 import axios from 'axios';
+import config from './../config';
 
-const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
-// const API_URL = 'http://localhost:8000/api/posts';
+ const API_URL = config.API_URL;
 
 class PostActions {
 

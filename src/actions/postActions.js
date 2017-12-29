@@ -17,34 +17,28 @@ class PostActions {
         });
     }
 
-    sendPost(post) {
-
-        console.log(post)
-
+    createPost(post) {
         const formData = new FormData();
-
         formData.append("_id", post._id);
-
         formData.append("title", post.title);
-
         formData.append("texts[]", post.texts);
-
         formData.append("categories[]", post.categories);
-
         formData.append("images", post.images);
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', API_URL);
-        xhr.send(formData);
+        axios.post(API_URL, formData).then(res => {
+            Dispatcher.dispatch({
+                actionType: ActionTypes.CREATE_POST,
+                post: res.data
+            });
+        });
     }
 
     deletePost(post) {
         axios.delete(API_URL + "/" + post._id).then(res => {
             console.log(res)
-            // Dispatcher.dispatch({
-            //     actionType: ActionTypes.GET_POSTS,
-            //     posts: res.data
-            // });
+            Dispatcher.dispatch({
+                actionType: ActionTypes.DELETE_POST,
+                postId: post._id
+            });
         });
     }
 }

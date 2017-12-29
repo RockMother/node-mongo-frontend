@@ -41,7 +41,7 @@ class Form extends Component {
     }
 
     savePost() {
-        PostActions.sendPost(this.state.post);
+        PostActions.createPost(this.state.post);
         this.state.post.viewForm();
     }
 

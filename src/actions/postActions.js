@@ -4,11 +4,12 @@ import axios from 'axios';
 import config from './../config';
 
  const API_URL = config.API_URL;
+ const POSTS_API_URL = `${API_URL}/posts`
 
 class PostActions {
 
     getAllPosts() {
-        axios.get(API_URL).then(res => {
+        axios.get(POSTS_API_URL).then(res => {
             console.log(res)
             Dispatcher.dispatch({
                 actionType: ActionTypes.GET_POSTS,
@@ -24,7 +25,7 @@ class PostActions {
         formData.append("texts[]", post.texts);
         formData.append("categories[]", post.categories);
         formData.append("images", post.images);
-        axios.post(API_URL, formData).then(res => {
+        axios.post(POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
                 actionType: ActionTypes.CREATE_POST,
                 post: res.data
@@ -33,7 +34,7 @@ class PostActions {
     }
 
     deletePost(post) {
-        axios.delete(API_URL + "/" + post._id).then(res => {
+        axios.delete(POSTS_API_URL + "/" + post._id).then(res => {
             console.log(res)
             Dispatcher.dispatch({
                 actionType: ActionTypes.DELETE_POST,

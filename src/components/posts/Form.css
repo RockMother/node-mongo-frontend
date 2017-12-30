@@ -31,7 +31,7 @@ input {
 
     outline: 0 solid transparent;
 
-    background-color: ghostwhite;
+    /*background-color: ghostwhite;*/
 }
 
 ::placeholder {
@@ -111,6 +111,6 @@ textarea:hover {
 
 .drop {
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     background-color: red;
 }

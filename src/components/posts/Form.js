@@ -38,19 +38,19 @@ class Form extends Component {
         this.setState({post: post});
     }
 
-    onDrop(images) {
-        console.log(images);
+    onDrop(files) {
+        console.log(files);
 
         let post = this.state.post;
-        post.images =  images;
+        post.files =  files;
         this.setState({post: post});
     }
 
     savePost() {
-        let post = this.state.post;
-        post.image = document.getElementById("fileUpload").files[0];
+        // let post = this.state.post;
+        // post.image = document.getElementById("fileUpload").files[0];
 
-        PostActions.createPost(post);
+        PostActions.createPost(this.state.post);
         this.state.post.viewForm();
     }
 
@@ -73,8 +73,7 @@ class Form extends Component {
 
                 </div>
 
-                <input type="file"
-                       id="fileUpload"/>
+                {/*<input type="file" id="fileUpload"/>*/}
 
                 <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
                     <Images images={this.state.post.images}/>

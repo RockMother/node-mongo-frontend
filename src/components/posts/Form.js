@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import './Post.css';
 import './Form.css';
+import Images from './Images';
 import PostActions from '../../actions/postActions';
+
+import config from '../../config';
 
 class Form extends Component {
 
@@ -18,7 +21,6 @@ class Form extends Component {
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
-        this.mouseLeave = this.mouseLeave.bind(this);
     }
 
     handleChangeTitle(event) {
@@ -35,27 +37,23 @@ class Form extends Component {
         this.setState({post: post});
     }
 
-    mouseLeave() {
-        // console.log("leave");
-        // this.state.post.viewForm()
-    }
-
     savePost() {
-        PostActions.createPost(this.state.post);
+        let post = this.state.post;
+        post.image = document.getElementById("fileUpload").files[0];
+
+        PostActions.createPost(post);
         this.state.post.viewForm();
     }
 
     deletePost() {
         PostActions.deletePost(this.state.post);
-        this.state.post.viewForm();
     }
 
     render() {
         return (
-            <div className="block form" onMouseLeave={this.mouseLeave}>
-                <div className="text">
+            <div className="block form">
 
-                    {/*<div className="id">{this.state.post._id}</div>*/}
+                <div className="text">
 
                     <input type="text"
                            name="title"
@@ -63,24 +61,12 @@ class Form extends Component {
                            value={this.state.post.title}
                            onChange={this.handleChangeTitle} />
 
-                    <input type="file"
-                           id="fileUpload" />
-
-                    {/*<textarea name="text"*/}
-                              {/*placeholder="Some text here"*/}
-                              {/*value={this.state.post.title}*/}
-                              {/*onChange={this.handleChangeTitle} />*/}
-
-                    {/*{this.state.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
-
-                    {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}
-                    {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}
-
-                    {/*<div contentEditable={true} id="texts">{this.state.post.texts.length}</div>*/}
-                    {/*<div contentEditable={true} id="categories">{this.state.post.categories.length}</div>*/}
-                    {/*<div contentEditable={true} id="images">{this.state.post.images.length}</div>*/}
-
                 </div>
+
+                <input type="file"
+                       id="fileUpload"/>
+
+                <Images images={this.state.post.images}/>
 
                 <div className="buttons">
                     <span className="button" onClick={this.savePost}>Save</span>

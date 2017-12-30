@@ -24,7 +24,7 @@ class PostActions {
         formData.append("title", post.title);
         formData.append("texts[]", post.texts);
         formData.append("categories[]", post.categories);
-        formData.append("images", post.images);
+        formData.append("images", post.image);
         axios.post(POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
                 actionType: ActionTypes.CREATE_POST,

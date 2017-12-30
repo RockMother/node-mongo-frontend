@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './Post.css';
 // import Form from './Form';
 // import Template from './Template';
+import Images from './Images';
+
+import config from '../../config';
 
 class Template extends Component {
 
@@ -31,6 +34,8 @@ class Template extends Component {
                     <div>{this.state.post.title}</div>
             
                 </div>
+
+                <Images images={this.state.post.images} />
 
             </div>
             

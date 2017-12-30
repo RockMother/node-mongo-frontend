@@ -23,6 +23,9 @@ export default class PostPage extends Component {
     onChange() {
         this.setState({ posts: PostsStore.getAllPosts() });
     }
+    removePost() {
+
+    }
     render() {
         return (
             <PostList posts = {this.state.posts} />

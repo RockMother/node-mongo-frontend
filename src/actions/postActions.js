@@ -4,7 +4,7 @@ import axios from 'axios';
 import config from './../config';
 
  const API_URL = config.API_URL;
- const POSTS_API_URL = `${API_URL}/posts`
+ const POSTS_API_URL = API_URL + '/posts';
 
 class PostActions {
 

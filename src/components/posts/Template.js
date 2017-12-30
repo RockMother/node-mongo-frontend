@@ -13,43 +13,22 @@ class Template extends Component {
             post: props.post,
         };
 
-        this.mouseEnter = this.mouseEnter.bind(this);
+        this.editPost = this.editPost.bind(this);
     }
 
-    mouseEnter() {
-        // console.log('enter')
+    editPost() {
+
         this.state.post.viewForm()
     }
 
     render() {
         return (
 
-            <div className="block" onMouseEnter={this.mouseEnter}>
+            <div className="block" onClick={this.editPost}>
 
                 <div className="text">
             
-                    {/*<div className="id">{this.state.post._id}</div>*/}
-            
-                    {/*<div id="title">{this.state.post.title}</div>*/}
-
-                    <div id="text">{this.state.post.title}</div>
-
-                    {/*<div id="categories">{this.state.post.categories[0].name}</div>*/}
-
-                    {/*<div id="images">{this.state.post.images[0].name}</div>*/}
-
-
-
-
-
-                    {/*{this.state.post.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
-            
-                    {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}
-                    {/*{this.state.posts.map(post => <Post key={post._id} post={post} />)}*/}
-            
-                    {/*<div contentEditable={true} id="texts">{this.state.post.texts.length}</div>*/}
-                    {/*<div contentEditable={true} id="categories">{this.state.post.categories.length}</div>*/}
-                    {/*<div contentEditable={true} id="images">{this.state.post.images.length}</div>*/}
+                    <div>{this.state.post.title}</div>
             
                 </div>
 

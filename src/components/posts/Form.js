@@ -57,16 +57,19 @@ class Form extends Component {
 
                     {/*<div className="id">{this.state.post._id}</div>*/}
 
-                    {/*<input type="text"*/}
-                           {/*name="title"*/}
-                           {/*placeholder="Some title here please"*/}
-                           {/*value={this.state.post.title}*/}
-                           {/*onChange={this.handleChangeTitle} />*/}
+                    <input type="text"
+                           name="title"
+                           placeholder="Some title here please"
+                           value={this.state.post.title}
+                           onChange={this.handleChangeTitle} />
 
-                    <textarea name="text"
-                              placeholder="Some text here"
-                              value={this.state.post.title}
-                              onChange={this.handleChangeTitle} />
+                    <input type="file"
+                           id="fileUpload" />
+
+                    {/*<textarea name="text"*/}
+                              {/*placeholder="Some text here"*/}
+                              {/*value={this.state.post.title}*/}
+                              {/*onChange={this.handleChangeTitle} />*/}
 
                     {/*{this.state.texts.map(text => <div key={text._id}>{text.name}</div>)}*/}
 

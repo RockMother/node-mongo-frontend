@@ -4,6 +4,8 @@ import PostsStore from './../../stores/postsStore';
 import PostList from './postList';
 import PostActions from '../../actions/postActions';
 
+import Menu from '../menu/Menu';
+
 import '../app.css';
 
 export default class PostPage extends Component {

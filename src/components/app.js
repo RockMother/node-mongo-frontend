@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import Menu from './menu/Menu';
+
 import './app.css';
 
 
@@ -31,10 +33,11 @@ class App extends Component {
     render() {
         return (
             <main>
-            <Switch>
-              <Route exact path='/' component={PostPage}/>
-            </Switch>
-          </main>
+                <Menu/>
+                <Switch>
+                    <Route exact path='/' component={PostPage}/>
+                </Switch>
+            </main>
         );
     }
 }

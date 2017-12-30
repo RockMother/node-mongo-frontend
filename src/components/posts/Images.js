@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Post.css';
 
 import config from '../../config';
 
@@ -8,10 +9,15 @@ export default class Images extends Component {
     }
     render(){
         return (
-            this.props.images.map(image =>
-                <img src={config.API_URL + '/image/' + image.imageId}
-                     key={image._id} />
-            )
+            <div className="images">
+                {this.props.images.map(image =>
+
+                    <img src={config.API_URL + '/image/' + image.imageId}
+                         key={image._id}
+                         className="image"/>
+
+                )}
+            </div>
         )
     }
 }

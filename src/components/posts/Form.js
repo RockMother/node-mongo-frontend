@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Post.css';
 import './Form.css';
 import Images from './Images';
+import Dropzone from 'react-dropzone'
 import PostActions from '../../actions/postActions';
 
 import config from '../../config';
@@ -37,6 +38,14 @@ class Form extends Component {
         this.setState({post: post});
     }
 
+    onDrop(images) {
+        console.log(images);
+
+        let post = this.state.post;
+        post.images =  images;
+        this.setState({post: post});
+    }
+
     savePost() {
         let post = this.state.post;
         post.image = document.getElementById("fileUpload").files[0];
@@ -46,6 +55,7 @@ class Form extends Component {
     }
 
     deletePost() {
+        //TODO delete from global state
         PostActions.deletePost(this.state.post);
     }
 
@@ -66,7 +76,9 @@ class Form extends Component {
                 <input type="file"
                        id="fileUpload"/>
 
-                <Images images={this.state.post.images}/>
+                <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
+                    <Images images={this.state.post.images}/>
+                </Dropzone>
 
                 <div className="buttons">
                     <span className="button" onClick={this.savePost}>Save</span>

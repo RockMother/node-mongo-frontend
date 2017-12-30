@@ -14,13 +14,13 @@ export default class Menu extends Component {
         return (
             <div className="text">
                 <div id="head">
-                    <div class="section" onclick="spook()">Art</div>
-                    <div class="delimiter">/</div>
-                    <div class="section" onclick="store()">Store</div>
-                    <div class="delimiter">/</div>
-                    <div class="section" onclick="contacts()">Contacts</div>
-                    <div class="delimiter">/</div>
-                    <div class="section" onclick="contacts()">Settings</div>
+                    <div className="section">Art</div>
+                    <div className="delimiter">/</div>
+                    <div className="section">Store</div>
+                    <div className="delimiter">/</div>
+                    <div className="section">Contacts</div>
+                    <div className="delimiter">/</div>
+                    <div className="section">Settings</div>
                 </div>
             </div>
         )

@@ -7,28 +7,12 @@ import './app.css';
 
 
 import PostPage from './posts/postPage';
+import TemplatesPage from './templates/TemplatesPage';
 
 class App extends Component {
     constructor(props) {
         super(props);
-
-        // this.state = {
-        //     posts: []
-        // };
     }
-
-    // componentDidMount() {
-
-    //     const API_URL = 'https://cms-dot.herokuapp.com/api/posts';
-
-    //     axios.get(API_URL).then(res => {
-
-    //         console.log(res)
-
-    //         const posts = res.data;
-    //         this.setState({posts});
-    //     });
-    // }
 
     render() {
         return (
@@ -36,6 +20,7 @@ class App extends Component {
                 <Menu/>
                 <Switch>
                     <Route exact path='/' component={PostPage}/>
+                    <Route exact path='/templates' component={TemplatesPage}/>
                 </Switch>
             </main>
         );

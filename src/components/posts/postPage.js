@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostsStore from './../../stores/postsStore';
+import postsStore from './../../stores/postsStore';
 
 import PostList from './postList';
 import PostActions from '../../actions/postActions';
@@ -12,18 +12,18 @@ export default class PostPage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            posts: PostsStore.getAllPosts() 
+            posts: postsStore.getAllPosts() 
         };
     }
     componentDidMount(){
         PostActions.getAllPosts();
-        PostsStore.addChangeListener(() => this.onChange());
+        postsStore.addChangeListener(() => this.onChange());
     }
     componentWillUnmount(){
-        PostsStore.removeChangeListener(() => this.onChange());
+        postsStore.removeChangeListener(() => this.onChange());
     }
     onChange() {
-        this.setState({ posts: PostsStore.getAllPosts() });
+        this.setState({ posts: postsStore.getAllPosts() });
     }
     removePost() {
 

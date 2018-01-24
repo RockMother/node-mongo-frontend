@@ -10,7 +10,14 @@ export default class TemplateList extends Component {
     render() {
         return (
             this.props.templates.map(template => {
-                return <Template options={template} key={template._id}></Template>
+                return <div className="row no-gutters justify-content-md-center">
+                    <Template
+                        key={template._id} 
+                        title={template.title}
+                        template={template.template}
+                        id={template._id}>
+                    </Template>
+                </div>
             })
         );
     }

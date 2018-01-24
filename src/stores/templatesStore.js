@@ -6,15 +6,23 @@ class TemplatesStore extends BaseStore {
     constructor() {
         super();
         this.templates = [];
-        Dispatcher.register((payload) => {
+        Dispatcher.register((function(payload) {
             switch (payload.actionType) {
                 case ActionTypes.GET_TEMPLATES:
                     this.templates = payload.templates;
-                    console.log(this.templates);
                     this.emitChange();
                     break;
+                case ActionTypes.UPDATE_TEMPLATE:
+                    for(let i = 0; i < this.templates.length; i++) {
+                        if(this.templates[i]._id === payload.template._id){
+                            this.templates[i] = payload.template;
+                            this.emitChange();
+                            break
+                        }
+                    }
+                    break;
             }
-        });
+        }).bind(this));
     }
 
     getTemplates() {

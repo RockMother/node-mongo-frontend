@@ -20,4 +20,8 @@ export default class TemplatesMockApiService {
             ]
         });
     }
+
+    saveTemplate(template) {
+        return Promise.resolve({ data: template});
+    }
 }

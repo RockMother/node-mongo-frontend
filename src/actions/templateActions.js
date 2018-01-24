@@ -16,6 +16,15 @@ class TemplatesActions {
         });
     }
 
+    saveTemplate(template) {
+        this.templatesService.saveTemplate(template).then(res => {
+            Dispatcher.dispatch({
+                actionType: ActionTypes.UPDATE_TEMPLATE,
+                template: res.data
+            })
+        });
+    }
+
 }
 
 export default new TemplatesActions();

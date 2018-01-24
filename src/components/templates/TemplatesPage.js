@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TemplateList from './TemplateList';
 
 import templateActions from './../../actions/templateActions';
@@ -12,22 +12,22 @@ export default class TemplatesPage extends Component {
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         templateActions.getTemplates();
         templatesStore.addChangeListener(() => this.onChange());
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         templatesStore.removeChangeListener(() => this.onChange());
     }
     onChange() {
         this.setState({ templates: templatesStore.getTemplates() });
     }
 
-
-
-    render(){
+    render() {
         return (
-          <TemplateList className="templates-page" templates={this.state.templates}></TemplateList>  
+            <div className="container-fluid">
+                <TemplateList className="container-fluid" templates={this.state.templates}></TemplateList>
+            </div>
         );
     }
 }

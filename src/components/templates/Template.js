@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
+import TemplateView from './TemplateView';
+import TemplateEdit from './TemplateEdit';
+import templateActions from './../../actions/templateActions';
 
-export default class Template extends Component{
+export default class Template extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isEdit: false
+        }
+        this.editTemplate = this.editTemplate.bind(this);
+        this.saveTemplate = this.saveTemplate.bind(this);
+    }
+
+    editTemplate() {
+        this.setState({
+            isEdit: true
+        });
+    }
+
+    saveTemplate(template) {
+        this.setState({
+            isEdit: false
+        });
+        templateActions.saveTemplate(template);
     }
 
     render() {
+        const child = this.state.isEdit ?
+            <TemplateEdit
+                id={this.props.id}
+                title={this.props.title}
+                template={this.props.template}
+                saveTemplateClicked={this.saveTemplate}>
+            </TemplateEdit> :
+            <TemplateView
+                id={this.props.id}
+                title={this.props.title}
+                template={this.props.template}
+                editTemplateClicked={this.editTemplate}>
+            </TemplateView>
         return (
-            <div className="container">
-                <div className="col-8"><span className="title">{this.props.options.title}</span></div>
-                <div className="col-8">
-                    <div className="row">
-                        <div className="col-4 label">
-                            <span>Template body</span>
-                        </div>
-                        <div className="col-8 input">
-                            <textarea value={this.props.options.template} />   
-                        </div>
-                    </div>
-                </div>
-            </div>
+            child
         );
     }
 }

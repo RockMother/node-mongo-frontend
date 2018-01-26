@@ -12,6 +12,8 @@ class PostsStore extends BaseStore {
                     this.posts = payload.posts;
                     this.emitChange();
                     break;
+                default:
+                    break;
             }
         });
     }

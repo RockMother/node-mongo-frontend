@@ -10,10 +10,6 @@ import PostPage from './posts/postPage';
 import TemplatesPage from './templates/TemplatesPage';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <main>

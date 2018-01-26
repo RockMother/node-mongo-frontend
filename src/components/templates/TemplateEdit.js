@@ -42,12 +42,16 @@ export default class TemplateEdit extends Component {
                     <div className="col-11">{this.props.title}</div>
                     <div className="col-1">
                         <div className="row no-gutters justify-content-end">
-                            <a href="#" className="col-6" onClick={this.saveTemplate}>
-                                <i className="fa fa-check" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" className="col-6" onClick={this.cancelEdit}>
-                                <i className="fa fa-times" aria-hidden="true"></i>
-                            </a>
+                            <div className="col-6">
+                                <button className="icon-button" onClick={this.saveTemplate}>
+                                    <i className="fa fa-check" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div className="col-6">
+                                <button className="icon-button" onClick={this.cancelEdit}>
+                                    <i className="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

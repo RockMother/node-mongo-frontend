@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './TemplateView.css';
 import HtmlViewer from './../common/htmlViewer/HtmlViewer'
 
 export default class TemplateView extends Component {
@@ -38,9 +37,9 @@ export default class TemplateView extends Component {
                         {
                             this.state.mouseHovering ?
                                 <div className="row no-gutters justify-content-end">
-                                    <a href="#" className="" onClick={this.editTemplate}>
+                                    <button className="icon-button" onClick={this.editTemplate}>
                                         <i className="fa fa-pencil" aria-hidden="true"></i>
-                                    </a>
+                                    </button>
                                 </div>
                                 : null
                         }

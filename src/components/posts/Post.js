@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Post.css';
-import Form from './Form';
+import PostEdit from './PostEdit';
 import Template from './Template';
 
 class Post extends Component {
@@ -25,7 +25,7 @@ class Post extends Component {
 
             this.state.form === false ?
                 <Template key={this.state.post._id} post={this.state.post} /> :
-                <Form key={this.state.post._id} post={this.state.post} />
+                <PostEdit key={this.state.post._id} post={this.state.post} />
         );
     }
 }

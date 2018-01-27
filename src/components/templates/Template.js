@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import TemplateView from './TemplateView';
 import TemplateEdit from './TemplateEdit';
 import templateActions from './../../actions/templateActions';
@@ -7,9 +7,16 @@ import './Template.css';
 export default class Template extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
+            template: props.template,
             isEdit: false
-        }
+        };
+
+        this.state.template.editTemplateClicked = () => {
+            this.setState({isEdit: !this.state.isEdit})
+        };
+
         this.editTemplate = this.editTemplate.bind(this);
         this.cancelEdit = this.cancelEdit.bind(this);
         this.saveTemplate = this.saveTemplate.bind(this);
@@ -28,27 +35,17 @@ export default class Template extends Component {
         templateActions.saveTemplate(template);
     }
 
-    cancelEdit(){
+    cancelEdit() {
         this.setState({isEdit: false});
     }
 
     render() {
-        const child = this.state.isEdit ?
-            <TemplateEdit
-                id={this.props.id}
-                title={this.props.title}
-                template={this.props.template}
-                saveTemplateClicked={this.saveTemplate}
-                cancelEditClicked={this.cancelEdit}>
-            </TemplateEdit> :
-            <TemplateView
-                id={this.props.id}
-                title={this.props.title}
-                template={this.props.template}
-                editTemplateClicked={this.editTemplate}>
-            </TemplateView>
+
         return (
-            child
-        );
+
+            this.state.isEdit === false ?
+                <TemplateView key={this.state.template.id} template={this.state.template}/> :
+                <TemplateEdit key={this.state.template.id} template={this.state.template}/>
+        )
     }
 }

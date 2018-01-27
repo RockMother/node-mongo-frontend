@@ -6,7 +6,7 @@ import Menu from './menu/Menu';
 import './app.css';
 
 
-import PostPage from './posts/postPage';
+import PostPage from './posts/PostsPage';
 import TemplatesPage from './templates/TemplatesPage';
 
 class App extends Component {

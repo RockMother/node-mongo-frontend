@@ -17,9 +17,9 @@ export default class TemplateEdit extends Component {
 
     saveTemplate() {
         this.props.saveTemplateClicked({
-            _id: this.props.id,
-            title: this.state.title,
-            template: this.state.template
+            _id: this.props.template.id,
+            title: this.state.template.title,
+            template: this.state.template.template
         });
     }
 
@@ -37,34 +37,29 @@ export default class TemplateEdit extends Component {
 
     render() {
         return (
-            <div className="card col-12" style={{ 'maxWidth': '40rem' }}>
-                <div className="card-header row no-gutters">
-                    <div className="col-11">{this.props.title}</div>
-                    <div className="col-1">
-                        <div className="row no-gutters justify-content-end">
-                            <div className="col-6">
-                                <button className="icon-button" onClick={this.saveTemplate}>
-                                    <i className="fa fa-check" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <div className="col-6">
-                                <button className="icon-button" onClick={this.cancelEdit}>
-                                    <i className="fa fa-times" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            <div className="block form">
+
+                <div className="text">
+
+                    <input type="text"
+                           name="title"
+                           placeholder="Some title here please"
+                           value={this.props.template.title}
+                           onChange={this.titleChanged} />
+
                 </div>
-                <div className="card-body">
-                    <div className="form-group">
-                        <label htmlFor="title">Title</label>
-                        <input type="text" className="form-control" id="title" value={this.state.title} onChange={this.titleChanged} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="template">Title</label>
-                        <HtmlViewer className="form-control" id="template" value={this.state.template} onChange={this.templateChanged} />
-                    </div>
+
+                <HtmlViewer type="text"
+                            name="title"
+                            placeholder="Some title here please"
+                            value={this.props.template.template}
+                            onChange={this.templateChanged} />
+
+                <div className="buttons">
+                    <span className="button" onClick={this.saveTemplate}>Save</span>
+                    <span className="button" onClick={this.cancelEdit}>Cancel</span>
                 </div>
+
             </div>
         );
     }

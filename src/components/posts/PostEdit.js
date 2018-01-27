@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Post.css';
-import './Form.css';
+import './PostEdit.css';
 import Images from './Images';
 import Dropzone from 'react-dropzone'
 import PostActions from '../../actions/postActions';
@@ -81,6 +81,7 @@ class Form extends Component {
 
                 <div className="buttons">
                     <span className="button" onClick={this.savePost}>Save</span>
+                    <span className="button" onClick={this.cancelEdit}>Cancel</span>
                     <span className="button" onClick={console.log('bold')}><b>B</b></span>
                     <span className="button" onClick={console.log('get post link')}>Link</span>
                     <span className="button right" onClick={this.deletePost}>Delete</span>

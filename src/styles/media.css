@@ -1,0 +1,19 @@
+@media only screen and (max-width : 800px) {
+
+    .block {
+        width: 100% !important;
+        min-width: auto;
+    }
+    #head {
+        font-size: 35px;
+        padding-bottom: 20px;
+
+        display: block !important;
+    }
+    #head a {
+        display: block !important;
+    }
+    .delimiter {
+        display: none;
+    }
+}

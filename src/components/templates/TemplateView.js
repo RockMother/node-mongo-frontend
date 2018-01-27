@@ -21,7 +21,7 @@ export default class TemplateView extends Component {
     }
 
     editTemplate() {
-        this.props.editTemplateClicked();
+        this.props.template.editTemplateClicked();
     }
 
     render() {
@@ -30,25 +30,25 @@ export default class TemplateView extends Component {
             lineWrapping: true
         };
         return (
-            <div className="card col-12" style={{ 'maxWidth': '40rem' }}>
-                <div className="card-header row no-gutters" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-                    <div className="col-11">{this.props.title}</div>
-                    <div className="col-1">
-                        {
-                            this.state.mouseHovering ?
-                                <div className="row no-gutters justify-content-end">
-                                    <button className="icon-button" onClick={this.editTemplate}>
-                                        <i className="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                                : null
-                        }
-                    </div>
+
+            <div className="block" onClick={this.editTemplate}>
+
+                <div className="text">
+
+                    <div>{this.props.template.title}</div>
+
                 </div>
-                <div className="card-body">
-                    <HtmlViewer className="card-text" value={this.props.template} options={options}></HtmlViewer>
-                </div>
+
+                <HtmlViewer type="text"
+                            name="title"
+                            placeholder="Some title here please"
+                            value={this.props.template.template}
+                            onChange={this.templateChanged} />
+
+                {/*<Images images={this.state.post.images} />*/}
+
             </div>
+
         );
     }
 }

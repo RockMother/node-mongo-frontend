@@ -25,9 +25,7 @@ export default class TemplatesPage extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <TemplateList className="container-fluid" templates={this.state.templates}></TemplateList>
-            </div>
+            <TemplateList templates={this.state.templates} />
         );
     }
 }

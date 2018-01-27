@@ -7,26 +7,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
 
-    background-color: ghostwhite;
-}
-
-@media only screen and (max-width : 800px) {
-
-    .post {
-        width: 100% !important;
-    }
-    .block {
-        width: 100% !important;
-    }
-    #head {
-        font-size: 35px !important;
-        padding-bottom: 20px !important;
-
-        display: block !important;
-    }
-    .delimiter {
-        display: none !important;
-    }
+    background-color: #d7d7dd;
 }
 
 body {

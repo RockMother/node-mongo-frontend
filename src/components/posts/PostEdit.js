@@ -22,6 +22,12 @@ class Form extends Component {
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
+
+        this.stopEditPost = this.stopEditPost.bind(this);
+    }
+
+    stopEditPost() {
+        this.state.post.edit()
     }
 
     handleChangeTitle(event) {
@@ -45,6 +51,8 @@ class Form extends Component {
         post.files =  files;
         this.setState({post: post});
     }
+
+
 
     savePost() {
         // let post = this.state.post;
@@ -81,7 +89,7 @@ class Form extends Component {
 
                 <div className="buttons">
                     <span className="button" onClick={this.savePost}>Save</span>
-                    <span className="button" onClick={this.cancelEdit}>Cancel</span>
+                    <span className="button" onClick={this.stopEditPost}>Cancel</span>
                     <span className="button" onClick={console.log('bold')}><b>B</b></span>
                     <span className="button" onClick={console.log('get post link')}>Link</span>
                     <span className="button right" onClick={this.deletePost}>Delete</span>

@@ -21,7 +21,7 @@ class Template extends Component {
 
     editPost() {
 
-        this.state.post.viewForm()
+        this.state.post.edit()
     }
 
     render() {

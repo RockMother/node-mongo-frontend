@@ -44,9 +44,6 @@ export default class TemplateView extends Component {
                             placeholder="Some title here please"
                             value={this.props.template.template}
                             onChange={this.templateChanged} />
-
-                {/*<Images images={this.state.post.images} />*/}
-
             </div>
 
         );

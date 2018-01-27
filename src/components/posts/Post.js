@@ -11,19 +11,18 @@ class Post extends Component {
 
         this.state = {
             post: props.post,
-            form: false
+            isEdit: false
         };
 
-        this.state.post.viewForm = () => {
-            this.setState({form: !this.state.form})
+        this.state.post.edit = () => {
+            this.setState({isEdit: !this.state.isEdit})
         };
-
     }
 
     render() {
         return (
 
-            this.state.form === false ?
+            this.state.isEdit === false ?
                 <Template key={this.state.post._id} post={this.state.post} /> :
                 <PostEdit key={this.state.post._id} post={this.state.post} />
         );

@@ -24,7 +24,7 @@ export default class TemplateEdit extends Component {
     }
 
     cancelEdit() {
-        this.props.cancelEditClicked();
+        this.props.template.editTemplateClicked();
     }
 
     titleChanged(event) {

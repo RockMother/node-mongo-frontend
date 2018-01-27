@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import './Post.css';
+
+import PostView from './PostView';
 import PostEdit from './PostEdit';
-import Template from './Template';
+
+import './Post.css';
 
 class Post extends Component {
 
@@ -23,7 +25,7 @@ class Post extends Component {
         return (
 
             this.state.isEdit === false ?
-                <Template key={this.state.post._id} post={this.state.post} /> :
+                <PostView key={this.state.post._id} post={this.state.post} /> :
                 <PostEdit key={this.state.post._id} post={this.state.post} />
         );
     }

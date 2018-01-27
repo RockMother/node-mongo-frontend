@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Post.css';
 import './PostEdit.css';
-import Images from './Images';
+import Images from './elements/Images';
 import Dropzone from 'react-dropzone'
 import PostActions from '../../actions/postActions';
 
@@ -80,8 +80,6 @@ class Form extends Component {
                            onChange={this.handleChangeTitle} />
 
                 </div>
-
-                {/*<input type="file" id="fileUpload"/>*/}
 
                 <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
                     <Images images={this.state.post.images}/>

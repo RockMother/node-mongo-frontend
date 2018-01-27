@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './Post.css';
+import '../Post.css';
 
-import config from '../../config';
+import config from '../../../config';
 
 export default class Images extends Component {
     constructor(props) {

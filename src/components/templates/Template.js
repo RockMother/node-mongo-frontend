@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import TemplateView from './TemplateView';
 import TemplateEdit from './TemplateEdit';
 import templateActions from './../../actions/templateActions';
-import './Template.css';
 
 export default class Template extends Component {
     constructor(props) {

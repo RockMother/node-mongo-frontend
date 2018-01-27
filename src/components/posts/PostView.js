@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import './Post.css';
 // import Form from './Form';
-// import Template from './Template';
-import Images from './Images';
+// import PostView from './PostView';
+import Images from './elements/Images';
 
 import config from '../../config';
 
-class Template extends Component {
+class PostView extends Component {
 
     constructor(props) {
 
@@ -43,4 +43,4 @@ class Template extends Component {
     }
 }
 
-export default Template;
+export default PostView;

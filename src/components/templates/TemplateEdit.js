@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import HtmlViewer from './../common/htmlViewer/HtmlViewer';
 
+import Code from './../posts/elements/Code';
+
 export default class TemplateEdit extends Component {
     constructor(props) {
         super(props);
@@ -49,11 +51,7 @@ export default class TemplateEdit extends Component {
 
                 </div>
 
-                <HtmlViewer type="text"
-                            name="title"
-                            placeholder="Some title here please"
-                            value={this.props.template.template}
-                            onChange={this.templateChanged} />
+                <Code code={this.state.template.template} onChange={this.templateChanged} />
 
                 <div className="buttons">
                     <span className="button" onClick={this.saveTemplate}>Save</span>

@@ -23,7 +23,7 @@ export default class Menu extends Component {
                     <div className="delimiter">/</div>
                     <NavLink exact className="section" to="/contacts" activeClassName='active'>Contacts</NavLink>
                     <div className="delimiter">/</div>
-                    <NavLink exact className="section" to="/templates" activeClassName='active'>Settings</NavLink>
+                    <NavLink exact className="section" to="/templates" activeClassName='active'>Templates</NavLink>
                 </div>
             </div>
         )

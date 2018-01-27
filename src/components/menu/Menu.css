@@ -3,14 +3,29 @@
     padding-bottom: 0;
     font-size: 40px;
 
-    color: rgba(0, 0, 0, 0.3);
+    /*color: rgba(0, 0, 0, 0.3);*/
 
     display: flex;
     /*flex-flow: row wrap;*/
     /*justify-content: space-between;*/
 }
 
+.section {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.section:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.active {
+    color: rgba(0, 0, 0, 0.7);
+}
+
 .delimiter {
     padding-left: 20px;
     padding-right: 20px;
+
+    color: rgba(0, 0, 0, 0.3);
 }

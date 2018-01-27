@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { NavLink } from 'react-router-dom'
 import './Menu.css';
 // import Post from './Post';
 
@@ -14,13 +15,13 @@ export default class Menu extends Component {
         return (
             <div className="text">
                 <div id="head">
-                    <div className="section">Art</div>
+                    <NavLink exact className="section" to="/" activeClassName='active'>Art</NavLink>
                     <div className="delimiter">/</div>
-                    <div className="section">Store</div>
+                    <NavLink exact className="section" to="/store" activeClassName='active'>Store</NavLink>
                     <div className="delimiter">/</div>
-                    <div className="section">Contacts</div>
+                    <NavLink exact className="section" to="/contacts" activeClassName='active'>Contacts</NavLink>
                     <div className="delimiter">/</div>
-                    <div className="section">Settings</div>
+                    <NavLink exact className="section" to="/templates" activeClassName='active'>Settings</NavLink>
                 </div>
             </div>
         )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TemplateActions from './../../actions/templateActions';
 
+import Title from '../posts/elements/Title';
 import Code from './../posts/elements/Code';
 
 export default class TemplateEdit extends Component {
@@ -51,15 +52,7 @@ export default class TemplateEdit extends Component {
         return (
             <div className="block edit">
 
-                <div className="text">
-
-                    <input type="text"
-                           name="title"
-                           placeholder="Some title here please"
-                           value={this.props.template.title}
-                           onChange={this.handleChangeTitle} />
-
-                </div>
+                <Title title={this.state.template.title} onChange={this.handleChangeTitle} />
 
                 <Code code={this.state.template.template} onChange={this.handleChangeCode} />
 

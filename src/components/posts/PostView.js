@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './Post.css';
+
 import Images from './elements/Images';
+import Title from './elements/Title';
+import Text from './elements/Text';
 
 class PostView extends Component {
 
@@ -24,13 +27,9 @@ class PostView extends Component {
 
             <div className="block" onClick={this.editPost}>
 
-                <div className="text">
-            
-                    <div>{this.state.post.title}</div>
+                <Title title={this.state.post.title} />
 
-                    {/*<div>{this.state.post.texts[0].text}</div>*/}
-            
-                </div>
+                <Text texts={this.state.post.texts} />
 
                 <Images images={this.state.post.images} />
 

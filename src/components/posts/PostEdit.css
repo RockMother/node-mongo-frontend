@@ -100,11 +100,9 @@ textarea:hover {
 }
 
 .right {
-    padding-right: 0;
-    color: rgba(104, 0, 0, 0.34);
+    margin-left: auto;
     margin-right: 20px;
-    /*float: right;*/
-    justify-content: flex-end;
+    order: 2;
 }
 
 .button:hover {

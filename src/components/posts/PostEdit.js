@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import './Post.css';
 import './PostEdit.css';
+
+import Title from './elements/Title';
 import Images from './elements/Images';
 import Code from './elements/Code';
+import Text from './elements/Text';
+import Categories from './elements/Categories';
 import Dropzone from 'react-dropzone'
-import PostActions from '../../actions/postActions';
 
-import config from '../../config';
+import PostActions from '../../actions/postActions';
 
 class PostEdit extends Component {
 
@@ -27,6 +30,8 @@ class PostEdit extends Component {
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
+        this.handleChangeImages = this.handleChangeImages.bind(this);
+        this.handleChangeCode = this.handleChangeCode.bind(this);
     }
 
     savePost() {
@@ -46,6 +51,7 @@ class PostEdit extends Component {
         PostActions.deletePost(this.state.post);
     }
 
+
     handleChangeTitle(event) {
 
         let post = this.state.post;
@@ -60,6 +66,21 @@ class PostEdit extends Component {
         this.setState({post: post});
     }
 
+    handleChangeImages(event) {
+
+        let post = this.state.post;
+        post.images =  event.target.value;
+        this.setState({post: post});
+    }
+
+    handleChangeCode(event) {
+
+        let post = this.state.post;
+        post.code =  event.target.value;
+        this.setState({post: post});
+    }
+
+
     onDrop(files) {
         console.log(files);
 
@@ -72,25 +93,22 @@ class PostEdit extends Component {
         return (
             <div className="block edit">
 
-                <div className="text">
-
-                    <input type="text"
-                           name="title"
-                           placeholder="Some title here please"
-                           value={this.state.post.title}
-                           onChange={this.handleChangeTitle} />
-                </div>
-
                 {/*Template elements here*/}
 
+                <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
+
                 <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
-                    <div className="text">Drop images here</div>
+                    <div className="title">Drop images here</div>
                     <Images images={this.state.post.images}/>
                 </Dropzone>
 
-                <Code />
+                <Text texts={this.state.post.texts} />
+
+                <Code onChange={this.handleChangeCode} />
 
                 {/*End template elements*/}
+
+                <Categories categories={this.state.post.categories} />
 
                 <div className="buttons">
 

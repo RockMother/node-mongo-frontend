@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Title from '../posts/elements/Title';
 import Code from './../posts/elements/Code';
 
 export default class TemplateView extends Component {
@@ -24,11 +25,7 @@ export default class TemplateView extends Component {
 
             <div className="block" onClick={this.editTemplate}>
 
-                <div className="text">
-
-                    <div>{this.props.template.title}</div>
-
-                </div>
+                <Title title={this.state.template.title} />
 
                 <Code code={this.props.template.template} />
 

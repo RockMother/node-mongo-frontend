@@ -4,9 +4,11 @@ import '../Post.css';
 import config from '../../../config';
 
 export default class Images extends Component {
+
     constructor(props) {
         super(props);
     }
+
     render(){
         return (
             <div className="images">

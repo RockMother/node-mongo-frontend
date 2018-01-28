@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import postsStore from './../../stores/postsStore';
 
-import PostList from './PostList';
+import Post from './Post';
 import PostActions from '../../actions/postActions';
 
-export default class PostPage extends Component {
+export default class Posts extends Component {
+
     constructor(props) {
+
         super(props);
+
         this.state = { 
             posts: postsStore.getAllPosts() 
         };
@@ -27,7 +30,10 @@ export default class PostPage extends Component {
     }
     render() {
         return (
-            <PostList posts={this.state.posts} />
+            <div className="list">
+                <Post key="new" post={{_id: "new", title: "", images: []}} />
+                {this.state.posts.map(post => <Post key={post._id} post={post} />)}
+            </div>
         );
     }
 }

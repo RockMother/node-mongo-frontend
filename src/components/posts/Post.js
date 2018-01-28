@@ -5,7 +5,7 @@ import PostEdit from './PostEdit';
 
 import './Post.css';
 
-class Post extends Component {
+export default class Post extends Component {
 
     constructor(props) {
 
@@ -32,5 +32,3 @@ class Post extends Component {
         );
     }
 }
-
-export default Post;

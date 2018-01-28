@@ -101,7 +101,8 @@ textarea:hover {
     padding-right: 0;
     color: rgba(104, 0, 0, 0.34);
     margin-right: 20px;
-    float: right;
+    /*float: right;*/
+    justify-content: flex-end;
 }
 
 .button:hover {

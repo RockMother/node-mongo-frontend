@@ -88,8 +88,8 @@ class PostEdit extends Component {
                 <div className="buttons">
                     <div className="button" onClick={this.savePost}>Save</div>
                     <div className="button" onClick={this.stopEditPost}>Cancel</div>
-                    <div className="button" onClick={console.log('bold')}><b>B</b></div>
-                    <div className="button" onClick={console.log('get post link')}>Link</div>
+                    {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
+                    {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
                     <div className="button right" onClick={this.deletePost}>Delete</div>
                 </div>
             </div>

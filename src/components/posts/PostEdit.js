@@ -11,6 +11,9 @@ class PostEdit extends Component {
 
     constructor(props) {
 
+        if (props.post._id === "new")
+            props.post.title = "";
+
         super(props);
 
         this.state = {
@@ -18,16 +21,28 @@ class PostEdit extends Component {
         };
 
         this.savePost = this.savePost.bind(this);
+        this.cancelPost = this.cancelPost.bind(this);
         this.deletePost = this.deletePost.bind(this);
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
-
-        this.stopEditPost = this.stopEditPost.bind(this);
     }
 
-    stopEditPost() {
-        this.state.post.edit()
+    savePost() {
+        // let post = this.state.post;
+        // post.image = document.getElementById("fileUpload").files[0];
+
+        PostActions.createPost(this.state.post);
+        this.props.isEdit();
+    }
+
+    cancelPost() {
+        this.props.isEdit();
+    }
+
+    deletePost() {
+        //TODO delete from global state
+        PostActions.deletePost(this.state.post);
     }
 
     handleChangeTitle(event) {
@@ -52,21 +67,6 @@ class PostEdit extends Component {
         this.setState({post: post});
     }
 
-
-
-    savePost() {
-        // let post = this.state.post;
-        // post.image = document.getElementById("fileUpload").files[0];
-
-        PostActions.createPost(this.state.post);
-        this.state.post.edit();
-    }
-
-    deletePost() {
-        //TODO delete from global state
-        PostActions.deletePost(this.state.post);
-    }
-
     render() {
         return (
             <div className="block edit">
@@ -80,17 +80,23 @@ class PostEdit extends Component {
                            onChange={this.handleChangeTitle} />
                 </div>
 
+                {/*Template elements here*/}
+
                 <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
                     <div className="text">Drop images here</div>
                     <Images images={this.state.post.images}/>
                 </Dropzone>
 
+                {/*End template elements*/}
+
                 <div className="buttons">
+
                     <div className="button" onClick={this.savePost}>Save</div>
-                    <div className="button" onClick={this.stopEditPost}>Cancel</div>
+                    <div className="button" onClick={this.cancelPost}>Cancel</div>
                     {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
                     {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
                     <div className="button right" onClick={this.deletePost}>Delete</div>
+
                 </div>
             </div>
         );

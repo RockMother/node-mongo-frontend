@@ -13,15 +13,14 @@ class PostView extends Component {
         super(props);
 
         this.state = {
-            post: props.post,
+            post: props.post
         };
 
         this.editPost = this.editPost.bind(this);
     }
 
     editPost() {
-
-        this.state.post.edit()
+        this.props.isEdit();
     }
 
     render() {

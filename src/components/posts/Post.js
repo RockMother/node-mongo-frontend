@@ -16,17 +16,19 @@ class Post extends Component {
             isEdit: false
         };
 
-        this.state.post.edit = () => {
-            this.setState({isEdit: !this.state.isEdit})
-        };
+        this.isEdit = this.isEdit.bind(this);
+    }
+
+    isEdit() {
+        this.setState({isEdit: !this.state.isEdit})
     }
 
     render() {
         return (
 
             this.state.isEdit === false ?
-                <PostView key={this.state.post._id} post={this.state.post} /> :
-                <PostEdit key={this.state.post._id} post={this.state.post} />
+                <PostView key={this.state.post._id} post={this.state.post} isEdit={this.isEdit}/> :
+                <PostEdit key={this.state.post._id} post={this.state.post} isEdit={this.isEdit} />
         );
     }
 }

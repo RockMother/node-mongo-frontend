@@ -37,7 +37,6 @@ class PostView extends Component {
                 <Images images={this.state.post.images} />
 
             </div>
-            
         );
     }
 }

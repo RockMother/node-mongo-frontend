@@ -4,33 +4,47 @@ import TemplateActions from './../../actions/templateActions';
 import Code from './../posts/elements/Code';
 
 export default class TemplateEdit extends Component {
+
     constructor(props) {
+
         super(props);
 
         this.state = {
             template: this.props.template,
         };
-        this.titleChanged = this.titleChanged.bind(this);
-        this.templateChanged = this.templateChanged.bind(this);
+
         this.saveTemplate = this.saveTemplate.bind(this);
-        this.cancelEdit = this.cancelEdit.bind(this);
+        this.cancelTemplate = this.cancelTemplate.bind(this);
+        this.deleteTemplate = this.deleteTemplate.bind(this);
+
+        this.handleChangeTitle = this.handleChangeTitle.bind(this);
+        this.handleChangeCode = this.handleChangeCode.bind(this);
+
     }
 
     saveTemplate() {
         TemplateActions.saveTemplate(this.state.template);
-        this.props.template.editTemplateClicked();
+        this.props.isEdit();
     }
 
-    cancelEdit() {
-        this.props.template.editTemplateClicked();
+    cancelTemplate() {
+        this.props.isEdit();
     }
 
-    titleChanged(event) {
-        this.setState({ title: event.target.value });
+    deleteTemplate() {
+
     }
 
-    templateChanged(updatedTemplate) {
-        this.setState({ template: updatedTemplate });
+    handleChangeTitle(event) {
+        let template = this.state.template;
+        template.title =  event.target.value;
+        this.setState({template: template});
+    }
+
+    handleChangeCode(event) {
+        let template = this.state.template;
+        template.template =  event.target.value;
+        this.setState({template: template});
     }
 
     render() {
@@ -43,15 +57,15 @@ export default class TemplateEdit extends Component {
                            name="title"
                            placeholder="Some title here please"
                            value={this.props.template.title}
-                           onChange={this.titleChanged} />
+                           onChange={this.handleChangeTitle} />
 
                 </div>
 
-                <Code code={this.state.template.template} onChange={this.templateChanged} />
+                <Code code={this.state.template.template} onChange={this.handleChangeCode} />
 
                 <div className="buttons">
                     <div className="button" onClick={this.saveTemplate}>Save</div>
-                    <div className="button" onClick={this.cancelEdit}>Cancel</div>
+                    <div className="button" onClick={this.cancelTemplate}>Cancel</div>
                 </div>
 
             </div>

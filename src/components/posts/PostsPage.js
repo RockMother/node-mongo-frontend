@@ -4,10 +4,6 @@ import postsStore from './../../stores/postsStore';
 import PostList from './PostList';
 import PostActions from '../../actions/postActions';
 
-import Menu from '../menu/Menu';
-
-import '../app.css';
-
 export default class PostPage extends Component {
     constructor(props) {
         super(props);

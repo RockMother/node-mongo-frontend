@@ -3,9 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 
 import Menu from './menu/Menu';
 
-import './app.css';
-
-
 import PostPage from './posts/PostsPage';
 import TemplatesPage from './templates/TemplatesPage';
 

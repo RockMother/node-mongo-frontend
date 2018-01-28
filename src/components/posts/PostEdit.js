@@ -78,19 +78,19 @@ class Form extends Component {
                            placeholder="Some title here please"
                            value={this.state.post.title}
                            onChange={this.handleChangeTitle} />
-
                 </div>
 
                 <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
+                    <div className="text">Drop images here</div>
                     <Images images={this.state.post.images}/>
                 </Dropzone>
 
                 <div className="buttons">
-                    <span className="button" onClick={this.savePost}>Save</span>
-                    <span className="button" onClick={this.stopEditPost}>Cancel</span>
-                    <span className="button" onClick={console.log('bold')}><b>B</b></span>
-                    <span className="button" onClick={console.log('get post link')}>Link</span>
-                    <span className="button right" onClick={this.deletePost}>Delete</span>
+                    <div className="button" onClick={this.savePost}>Save</div>
+                    <div className="button" onClick={this.stopEditPost}>Cancel</div>
+                    <div className="button" onClick={console.log('bold')}><b>B</b></div>
+                    <div className="button" onClick={console.log('get post link')}>Link</div>
+                    <div className="button right" onClick={this.deletePost}>Delete</div>
                 </div>
             </div>
         );

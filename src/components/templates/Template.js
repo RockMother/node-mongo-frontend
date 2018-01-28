@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TemplateView from './TemplateView';
 import TemplateEdit from './TemplateEdit';
-import templateActions from './../../actions/templateActions';
+import TemplateActions from './../../actions/templateActions';
 
 export default class Template extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ export default class Template extends Component {
         this.setState({
             isEdit: false
         });
-        templateActions.saveTemplate(template);
+        TemplateActions.saveTemplate(this.state.template);
     }
 
     cancelEdit() {

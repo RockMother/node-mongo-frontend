@@ -42,6 +42,7 @@ export default class TemplateView extends Component {
                 </div>
 
                 <Code code={this.props.template.template} />
+
             </div>
 
         );

@@ -1,10 +1,4 @@
 .edit {
-
-    /*width: 800px;*/
-    /*height: 250px;*/
-    /*max-width: 800px;*/
-
-
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 1s box-shadow;
 
@@ -13,10 +7,6 @@
 
 .edit:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.block .text > * {
-    /*padding-bottom: 10px;*/
 }
 
 input {
@@ -38,11 +28,6 @@ input {
 
 ::placeholder {
     color: lightgray;
-}
-
-#text {
-    /*min-height: 50px;*/
-    /*background-color: red;*/
 }
 
 textarea {
@@ -76,12 +61,24 @@ textarea:hover {
     background-color: rgba(248, 248, 255, 0.29);
 }
 
+/*Images*/
+
+.drop {
+    width: 100%;
+    min-height: 100px;
+    background-color: red;
+}
+
+/*Buttons*/
+
 .buttons {
     /*position: absolute;*/
-    bottom: 0;
+    /*bottom: 0;*/
+    display: flex;
+    flex-direction: row;
     width: 100%;
 
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     /*padding-bottom: 10px;*/
     /*padding-top: 10px;*/
     /*margin: 10px;*/
@@ -91,7 +88,7 @@ textarea:hover {
 }
 
 .buttons:hover {
-    opacity: 1.0;
+    /*opacity: 1.0;*/
 }
 
 .button {
@@ -109,10 +106,4 @@ textarea:hover {
 
 .button:hover {
     color: #18bf45;
-}
-
-.drop {
-    width: 100%;
-    min-height: 100px;
-    background-color: red;
 }

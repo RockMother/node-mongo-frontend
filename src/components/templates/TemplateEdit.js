@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import HtmlViewer from './../common/htmlViewer/HtmlViewer';
+import TemplateActions from './../../actions/templateActions';
 
 import Code from './../posts/elements/Code';
 
 export default class TemplateEdit extends Component {
     constructor(props) {
         super(props);
-        this.saveTemplate = this.saveTemplate.bind(this);
+
         this.state = {
-            title: this.props.title,
-            template: this.props.template
+            template: this.props.template,
         };
         this.titleChanged = this.titleChanged.bind(this);
         this.templateChanged = this.templateChanged.bind(this);
@@ -18,11 +17,8 @@ export default class TemplateEdit extends Component {
     }
 
     saveTemplate() {
-        this.props.saveTemplateClicked({
-            _id: this.props.template.id,
-            title: this.state.template.title,
-            template: this.state.template.template
-        });
+        TemplateActions.saveTemplate(this.state.template);
+        this.props.template.editTemplateClicked();
     }
 
     cancelEdit() {
@@ -54,8 +50,8 @@ export default class TemplateEdit extends Component {
                 <Code code={this.state.template.template} onChange={this.templateChanged} />
 
                 <div className="buttons">
-                    <span className="button" onClick={this.saveTemplate}>Save</span>
-                    <span className="button" onClick={this.cancelEdit}>Cancel</span>
+                    <div className="button" onClick={this.saveTemplate}>Save</div>
+                    <div className="button" onClick={this.cancelEdit}>Cancel</div>
                 </div>
 
             </div>

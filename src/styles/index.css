@@ -32,13 +32,23 @@ body {
 }
 
 main {
+    /*width: 100%;*/
+
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+
+    /*padding-bottom: 50px;*/
+
+    /*background-color: lightcoral !important;*/
+}
+
+.list {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding-bottom: 50px;
-
-    /*background-color: lightcoral !important;*/
 }
 
 a {

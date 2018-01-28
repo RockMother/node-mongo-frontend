@@ -7,7 +7,10 @@ export default class TemplateList extends Component {
     }
     render() {
         return (
-            this.props.templates.map(template => <Template key={template._id} template={template} />)
+            <div className="list">
+                <Template key="new" template={{_id: "new", title: "New", template: ""}} />
+                {this.props.templates.map(template => <Template key={template._id} template={template} />)}
+            </div>
         );
     }
 }

@@ -14,6 +14,7 @@ export default class PostPage extends Component {
         this.state = { 
             posts: postsStore.getAllPosts() 
         };
+
     }
     componentDidMount(){
         PostActions.getAllPosts();
@@ -30,7 +31,7 @@ export default class PostPage extends Component {
     }
     render() {
         return (
-            <PostList posts = {this.state.posts} />
+            <PostList posts={this.state.posts} />
         );
     }
 }

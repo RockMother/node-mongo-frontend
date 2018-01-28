@@ -6,24 +6,38 @@ import './Menu.css';
 export default class Menu extends Component {
 
     constructor(props) {
+
         super(props);
 
         let categories = [];
+
+        categories = ['Art', 'Store', 'Contacts'];
+
+        categories.push('Templates');
+
+        this.state = {
+            categories: categories
+        };
     }
 
     render(){
         return (
             <div id="head">
                 <div id="menu">
-                    <NavLink exact className="section" to="/" activeClassName='active'>Art</NavLink>
-                    {/*<div className="delimiter">/</div>*/}
-                    {/*<NavLink exact className="section" to="/comics" activeClassName='active'>Comics</NavLink>*/}
-                    <div className="delimiter">/</div>
-                    <NavLink exact className="section" to="/store" activeClassName='active'>Store</NavLink>
-                    <div className="delimiter">/</div>
-                    <NavLink exact className="section" to="/contacts" activeClassName='active'>Contacts</NavLink>
-                    <div className="delimiter">/</div>
-                    <NavLink exact className="section" to="/templates" activeClassName='active'>Templates</NavLink>
+
+                    {this.state.categories.length === 0 ? 'No categories' : ''}
+
+                    {this.state.categories.length > 0 ? <NavLink exact className="section" to="/" activeClassName='active'>{this.state.categories[0]}</NavLink> : ''}
+
+                    {this.state.categories.length > 1 ?
+
+                        this.state.categories.map(function(category, index) {
+
+                            return (index !== 0 ? <span><span className="delimiter">/</span><NavLink exact className="section" to={'/' + category.toLowerCase()} activeClassName='active'>{category}</NavLink></span> : '');
+                        }
+
+                    ) : ''}
+
                 </div>
             </div>
         )

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Post.css';
 import './PostEdit.css';
 import Images from './elements/Images';
+import Code from './elements/Code';
 import Dropzone from 'react-dropzone'
 import PostActions from '../../actions/postActions';
 
@@ -11,8 +12,8 @@ class PostEdit extends Component {
 
     constructor(props) {
 
-        if (props.post._id === "new")
-            props.post.title = "";
+        // if (props.post._id === "new")
+        //     props.post.title = "";
 
         super(props);
 
@@ -32,7 +33,7 @@ class PostEdit extends Component {
         // let post = this.state.post;
         // post.image = document.getElementById("fileUpload").files[0];
 
-        PostActions.createPost(this.state.post);
+        PostActions.savePost(this.state.post);
         this.props.isEdit();
     }
 
@@ -87,14 +88,18 @@ class PostEdit extends Component {
                     <Images images={this.state.post.images}/>
                 </Dropzone>
 
+                <Code />
+
                 {/*End template elements*/}
 
                 <div className="buttons">
 
                     <div className="button" onClick={this.savePost}>Save</div>
                     <div className="button" onClick={this.cancelPost}>Cancel</div>
+
                     {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
                     {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
+
                     <div className="button right" onClick={this.deletePost}>Delete</div>
 
                 </div>

@@ -21,19 +21,19 @@ export default class Code extends Component {
 
     render() {
         return (
-            <div className="code">
-                <CodeMirror
-                    value={this.state.value}
-                    options={{
-                        lineWrapping: true,
-                        mode: 'text/html',
-                        theme: 'material',
-                        lineNumbers: true
-                    }}
-                    onChange={(editor, data, value) => {
-                    }}
-                />
-            </div>
+
+            <CodeMirror
+                className="code"
+                value={this.state.value}
+                options={{
+                    lineWrapping: true,
+                    mode: 'text/html',
+                    theme: 'material',
+                    lineNumbers: true
+                }}
+                onChange={(editor, data, value) => {
+                }}
+            />
         )
     }
 }

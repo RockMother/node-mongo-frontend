@@ -6,6 +6,8 @@ import Menu from './menu/Menu';
 import PostPage from './posts/PostsPage';
 import TemplatesPage from './templates/TemplatesPage';
 
+import Contacts from './contacts/Contacts';
+
 class App extends Component {
     render() {
         return (
@@ -13,6 +15,7 @@ class App extends Component {
                 <Menu/>
                 <Switch>
                     <Route exact path='/' component={PostPage}/>
+                    <Route exact path='/contacts' component={Contacts}/>
                     <Route exact path='/templates' component={TemplatesPage}/>
                 </Switch>
             </main>

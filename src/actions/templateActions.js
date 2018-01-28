@@ -3,6 +3,7 @@ import Dispatcher from "./../dispatcher/appDispatcher";
 import TemplatesService from './../services/templatesApiService';
 
 class TemplatesActions {
+
     constructor() {
         this.templatesService = new TemplatesService();
     }

@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import './Post.css';
-// import Form from './Form';
-// import PostView from './PostView';
 import Images from './elements/Images';
-
-import config from '../../config';
 
 class PostView extends Component {
 
@@ -31,6 +27,8 @@ class PostView extends Component {
                 <div className="text">
             
                     <div>{this.state.post.title}</div>
+
+                    {/*<div>{this.state.post.texts[0].text}</div>*/}
             
                 </div>
 

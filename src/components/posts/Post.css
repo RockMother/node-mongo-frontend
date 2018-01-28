@@ -57,6 +57,7 @@
     display: block;
 }
 
-.code {
-    background-color: #18bf45;
+.CodeMirror {
+    height: auto !important;
+    min-height: 100px !important;
 }

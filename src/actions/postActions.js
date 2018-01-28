@@ -18,7 +18,7 @@ class PostActions {
         });
     }
 
-    createPost(post) {
+    savePost(post) {
         const formData = new FormData();
         formData.append("_id", post._id);
         formData.append("title", post.title);

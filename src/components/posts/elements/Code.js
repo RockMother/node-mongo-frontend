@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 
 export default class Images extends Component {
+
     constructor(props) {
         super(props);
     }
-    render(){
+
+    render() {
         return (
             <div className="code">
                 {this.props.code}

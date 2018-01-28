@@ -14,15 +14,17 @@ export default class Menu extends Component {
     render(){
         return (
             <div id="head">
-                <NavLink exact className="section" to="/" activeClassName='active'>Art</NavLink>
-                <div className="delimiter">/</div>
-                <NavLink exact className="section" to="/comics" activeClassName='active'>Comics</NavLink>
-                <div className="delimiter">/</div>
-                <NavLink exact className="section" to="/store" activeClassName='active'>Store</NavLink>
-                <div className="delimiter">/</div>
-                <NavLink exact className="section" to="/contacts" activeClassName='active'>Contacts</NavLink>
-                <div className="delimiter">/</div>
-                <NavLink exact className="section" to="/templates" activeClassName='active'>Templates</NavLink>
+                <div id="menu">
+                    <NavLink exact className="section" to="/" activeClassName='active'>Art</NavLink>
+                    <div className="delimiter">/</div>
+                    <NavLink exact className="section" to="/comics" activeClassName='active'>Comics</NavLink>
+                    <div className="delimiter">/</div>
+                    <NavLink exact className="section" to="/store" activeClassName='active'>Store</NavLink>
+                    <div className="delimiter">/</div>
+                    <NavLink exact className="section" to="/contacts" activeClassName='active'>Contacts</NavLink>
+                    <div className="delimiter">/</div>
+                    <NavLink exact className="section" to="/templates" activeClassName='active'>Templates</NavLink>
+                </div>
             </div>
         )
     }

@@ -4,17 +4,19 @@
         width: 100% !important;
         min-width: 0;
     }
-    #head {
+    #menu {
         /*font-size: 30px !important;*/
         /*padding-bottom: 20px !important;*/
 
         display: block !important;
-        padding-left: 50px;
-        width: auto;
+
+        /*TODO*/
+        /*padding-left: 50px;*/
+
     }
-    #head a {
+    #menu a {
         /*font-size: 36px !important;*/
-        padding-bottom: 5px;
+        padding-bottom: 10px;
         display: block !important;
     }
     .delimiter {

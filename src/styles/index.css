@@ -10,37 +10,8 @@ body {
     background-color: #d7d7dd;
 }
 
-body {
-
-    /*animation: colorchange 50s infinite; !* animation-name followed by duration in seconds*!*/
-    /*!* you could also use milliseconds (ms) or something like 2.5s *!*/
-    /*-webkit-animation: colorchange 50s infinite;*/
-}
-
-@keyframes colorchange {
-
-    0%   {background: #fed9e6;}
-    20%  {background: #e4c6e3;}
-    35%  {background: #bce8fd;}
-    55%  {background: #d0f5db;}
-    70% {background: #fffab6;}
-    85% {background: #ffcbab;}
-    100%   {background: #fed9e6;}
-}
-
-#root {
-}
-
 main {
-    /*width: 100%;*/
-
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-
     padding-bottom: 100px;
-
-    /*background-color: lightcoral !important;*/
 }
 
 .list {

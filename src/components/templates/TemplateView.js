@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import HtmlViewer from './../common/htmlViewer/HtmlViewer'
 
+import Code from './../posts/elements/Code';
+
 export default class TemplateView extends Component {
     constructor(props) {
         super(props);
@@ -39,11 +41,7 @@ export default class TemplateView extends Component {
 
                 </div>
 
-                <HtmlViewer type="text"
-                            name="title"
-                            placeholder="Some title here please"
-                            value={this.props.template.template}
-                            onChange={this.templateChanged} />
+                <Code code={this.props.template.template} />
             </div>
 
         );

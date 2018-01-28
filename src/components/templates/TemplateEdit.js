@@ -39,7 +39,7 @@ export default class TemplateEdit extends Component {
 
     render() {
         return (
-            <div className="block form">
+            <div className="block edit">
 
                 <div className="text">
 

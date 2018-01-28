@@ -7,7 +7,7 @@ import PostActions from '../../actions/postActions';
 
 import config from '../../config';
 
-class Form extends Component {
+class PostEdit extends Component {
 
     constructor(props) {
 
@@ -59,7 +59,7 @@ class Form extends Component {
         // post.image = document.getElementById("fileUpload").files[0];
 
         PostActions.createPost(this.state.post);
-        this.state.post.viewForm();
+        this.state.post.edit();
     }
 
     deletePost() {
@@ -97,4 +97,4 @@ class Form extends Component {
     }
 }
 
-export default Form;
+export default PostEdit;

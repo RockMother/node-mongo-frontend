@@ -13,7 +13,6 @@ export default class Template extends Component {
         super(props);
 
         this.state = {
-            template: props.template,
             isEdit: false
         };
 
@@ -29,8 +28,8 @@ export default class Template extends Component {
         return (
 
             this.state.isEdit === false ?
-                <TemplateView key={this.state.template.id} template={this.state.template} isEdit={this.isEdit}/> :
-                <TemplateEdit key={this.state.template.id} template={this.state.template} isEdit={this.isEdit} />
+                <TemplateView key={this.props.template.id} template={this.props.template} isEdit={this.isEdit}/> :
+                <TemplateEdit key={this.props.template.id} template={this.props.template} isEdit={this.isEdit} />
         )
     }
 }

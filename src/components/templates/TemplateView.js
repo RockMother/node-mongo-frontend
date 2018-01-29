@@ -6,12 +6,7 @@ import Code from './../posts/elements/Code';
 export default class TemplateView extends Component {
 
     constructor(props) {
-
         super(props);
-
-        this.state = {
-            template: props.template
-        }
 
         this.editTemplate = this.editTemplate.bind(this);
     }
@@ -22,13 +17,9 @@ export default class TemplateView extends Component {
 
     render() {
         return (
-
             <div className="block" onClick={this.editTemplate}>
-
-                <Title title={this.state.template.title} />
-
+                <Title title={this.props.template.title} />
                 <Code code={this.props.template.template} />
-
             </div>
         );
     }

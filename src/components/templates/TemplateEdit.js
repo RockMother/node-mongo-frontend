@@ -11,7 +11,8 @@ export default class TemplateEdit extends Component {
         super(props);
 
         this.state = {
-            template: this.props.template,
+            title: this.props.template.title,
+            template: this.props.template.template
         };
 
         this.saveTemplate = this.saveTemplate.bind(this);
@@ -24,7 +25,11 @@ export default class TemplateEdit extends Component {
     }
 
     saveTemplate() {
-        TemplateActions.saveTemplate(this.state.template);
+        TemplateActions.saveTemplate({
+            _id: this.props.template._id,
+            title: this.state.title,
+            template: this.state.template
+        });
         this.props.isEdit();
     }
 
@@ -37,24 +42,20 @@ export default class TemplateEdit extends Component {
     }
 
     handleChangeTitle(event) {
-        let template = this.state.template;
-        template.title =  event.target.value;
-        this.setState({template: template});
+        this.setState({title: event.target.value});
     }
 
     handleChangeCode(event) {
-        let template = this.state.template;
-        template.template =  event.target.value;
-        this.setState({template: template});
+        this.setState({template: event.target.value});
     }
 
     render() {
         return (
             <div className="block edit">
 
-                <Title title={this.state.template.title} onChange={this.handleChangeTitle} />
+                <Title title={this.state.title} onChange={this.handleChangeTitle} />
 
-                <Code code={this.state.template.template} onChange={this.handleChangeCode} />
+                <Code code={this.state.template} onChange={this.handleChangeCode} />
 
                 <div className="buttons">
                     <div className="button" onClick={this.saveTemplate}>Save</div>

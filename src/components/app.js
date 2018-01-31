@@ -15,6 +15,7 @@ class App extends Component {
                 <Menu/>
                 <Switch>
                     <Route exact path='/' component={Posts}/>
+                    <Route exact path='/shop' component={Posts}/>
                     <Route exact path='/contacts' component={Contacts}/>
                     <Route exact path='/templates' component={TemplatesPage}/>
                 </Switch>

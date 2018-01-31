@@ -44,7 +44,7 @@
     /*padding-left: 20px;*/
     /*padding-bottom: 20px;*/
     padding: 20px;
-    background-color: lightcyan;
+    background-color: rgba(91, 211, 177, 0.1);
 }
 
 .images {
@@ -64,6 +64,10 @@
     min-height: 100px !important;
 }
 
+.CodeMirror-lines {
+    /*padding: 15px 0 !important;*/
+}
+
 .categories {
-    background-color: lightgreen !important;
+    background-color: rgba(0, 63, 38, 0.4);
 }

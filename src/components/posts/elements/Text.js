@@ -10,7 +10,7 @@ export default class Text extends Component {
     render(){
         return (
             this.props.texts && this.props.texts.length > 0 ? <div className="text">
-                {this.props.texts.map(text => <div className="">{text.text}</div>)}
+                {this.props.texts.map(text => <div className="" contentEditable="true">{text.text}</div>)}
             </div> : ''
         )
     }

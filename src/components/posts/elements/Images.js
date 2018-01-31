@@ -23,3 +23,9 @@ export default class Images extends Component {
         )
     }
 }
+
+{/*<Dropzone className="drop" onDrop={this.onDrop.bind(this)}>*/}
+{/*<div className="title">Drop images here</div>*/}
+{/*<Images images={this.state.post.images}/>*/}
+{/*</Dropzone>*/}
+

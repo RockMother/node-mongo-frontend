@@ -6,10 +6,10 @@ import Title from './elements/Title';
 import Images from './elements/Images';
 import Code from './elements/Code';
 import Text from './elements/Text';
+import Appender from './elements/Appender';
 import Categories from './elements/Categories';
-import Dropzone from 'react-dropzone'
 
-import PostActions from '../../actions/postActions';
+import Buttons from "./elements/Buttons";
 
 class PostEdit extends Component {
 
@@ -24,33 +24,15 @@ class PostEdit extends Component {
             post: props.post,
         };
 
-        this.savePost = this.savePost.bind(this);
-        this.cancelPost = this.cancelPost.bind(this);
-        this.deletePost = this.deletePost.bind(this);
+        // this.savePost = this.savePost.bind(this);
+        // this.cancelPost = this.cancelPost.bind(this);
+        // this.deletePost = this.deletePost.bind(this);
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleChangeImages = this.handleChangeImages.bind(this);
         this.handleChangeCode = this.handleChangeCode.bind(this);
     }
-
-    savePost() {
-        // let post = this.state.post;
-        // post.image = document.getElementById("fileUpload").files[0];
-
-        PostActions.savePost(this.state.post);
-        this.props.isEdit();
-    }
-
-    cancelPost() {
-        this.props.isEdit();
-    }
-
-    deletePost() {
-        //TODO delete from global state
-        PostActions.deletePost(this.state.post);
-    }
-
 
     handleChangeTitle(event) {
 
@@ -97,30 +79,20 @@ class PostEdit extends Component {
 
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
-                <Dropzone className="drop" onDrop={this.onDrop.bind(this)}>
-                    <div className="title">Drop images here</div>
-                    <Images images={this.state.post.images}/>
-                </Dropzone>
+                <Images images={this.state.post.images}/>
 
                 <Text texts={this.state.post.texts} />
 
-                <Code onChange={this.handleChangeCode} />
+                {/*<Code onChange={this.handleChangeCode} />*/}
+
+                {/*<Appender onChange={this.handleChangeCode} />*/}
 
                 {/*End template elements*/}
 
                 <Categories categories={this.state.post.categories} />
 
-                <div className="buttons">
+                <Buttons post={this.state.post} isEdit={this.props.isEdit} />
 
-                    <div className="button" onClick={this.savePost}>Save</div>
-                    <div className="button" onClick={this.cancelPost}>Cancel</div>
-
-                    {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
-                    {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
-
-                    <div className="button right" onClick={this.deletePost}>Delete</div>
-
-                </div>
             </div>
         );
     }

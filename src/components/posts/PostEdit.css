@@ -71,6 +71,15 @@ textarea:hover {
     color: white;
 }
 
+/*Experimental*/
+
+.appender {
+    padding: 20px;
+    box-shadow: 0 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*transform: scale(1.1);*/
+    /*transition: 1s scale;*/
+}
+
 /*Buttons*/
 
 .buttons {

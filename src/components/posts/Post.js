@@ -27,7 +27,7 @@ export default class Post extends Component {
         return (
 
             this.state.isEdit === false ?
-                <PostView key={this.state.post._id} post={this.state.post} isEdit={this.isEdit}/> :
+                <PostView key={this.state.post._id} post={this.state.post} isEdit={this.isEdit} /> :
                 <PostEdit key={this.state.post._id} post={this.state.post} isEdit={this.isEdit} />
         );
     }

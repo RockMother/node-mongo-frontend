@@ -21,6 +21,20 @@ class PostsStore extends BaseStore {
     getAllPosts() {
         return this.posts;
     }
+
+    getCategoryPosts(path) {
+
+        // console.log(path);
+
+        path = path.replace("/", "").toLowerCase();
+
+        if (path === "")
+            path = "art";
+
+        return this.posts.filter(function (post) {
+            return (post.categories && post.categories.length > 0 && post.categories[0].name.toLowerCase() === path);
+        });
+    }
 }
 export default new PostsStore();
 

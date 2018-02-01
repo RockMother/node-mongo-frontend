@@ -69,5 +69,6 @@
 }
 
 .categories {
-    background-color: rgba(0, 63, 38, 0.4);
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white;
 }

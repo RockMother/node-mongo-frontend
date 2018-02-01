@@ -27,13 +27,19 @@ export default class Menu extends Component {
 
                     {this.state.categories.length === 0 ? 'No categories' : ''}
 
-                    {this.state.categories.length > 0 ? <NavLink exact className="section" to="/" activeClassName='active'>{this.state.categories[0]}</NavLink> : ''}
+                    {this.state.categories.length > 0 ? <span key="/"><NavLink exact className="section" to="/" activeClassName='active'>{this.state.categories[0]}</NavLink></span> : ''}
 
                     {this.state.categories.length > 1 ?
 
                         this.state.categories.map(function(category, index) {
 
-                            return (index !== 0 ? <span><span className="delimiter">/</span><NavLink exact className="section" to={'/' + category.toLowerCase()} activeClassName='active'>{category}</NavLink></span> : '');
+                            return (index !== 0 ? <span key={category.toLowerCase()}>
+                                <span className="delimiter">/</span>
+                                <NavLink exact
+                                         className="section"
+                                         to={'/' + category.toLowerCase()}
+                                         activeClassName='active'>{category}</NavLink>
+                            </span> : '');
                         }
 
                     ) : ''}

@@ -89,7 +89,7 @@ class PostEdit extends Component {
 
                 {/*End template elements*/}
 
-                <Categories categories={this.state.post.categories} />
+                {/*<Categories categories={this.state.post.categories} />*/}
 
                 <Buttons post={this.state.post} isEdit={this.props.isEdit} />
 

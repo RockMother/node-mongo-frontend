@@ -4,10 +4,6 @@ export default class Appender extends Component {
 
     // Element thet add other elements (Experimental)
 
-    constructor(props) {
-        super(props);
-    }
-
     render(){
         return (
             <input className="appender"

@@ -11,7 +11,7 @@ export default class Posts extends Component {
         super(props);
 
         this.state = { 
-            posts: postsStore.getAllPosts() 
+            posts: postsStore.getCategoryPosts(this.props.location.pathname)
         };
 
     }
@@ -23,7 +23,7 @@ export default class Posts extends Component {
         postsStore.removeChangeListener(() => this.onChange());
     }
     onChange() {
-        this.setState({ posts: postsStore.getAllPosts() });
+        this.setState({ posts: postsStore.getCategoryPosts(this.props.location.pathname) });
     }
     removePost() {
 

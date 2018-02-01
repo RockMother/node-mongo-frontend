@@ -108,12 +108,18 @@ textarea:hover {
     float: left;
 }
 
+.button:hover {
+    color: #18bf45;
+}
+
+
+.implicit {
+    opacity: 0.3;
+}
+
 .right {
     margin-left: auto;
     margin-right: 20px;
     order: 2;
 }
 
-.button:hover {
-    color: #18bf45;
-}

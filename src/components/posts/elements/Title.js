@@ -6,7 +6,7 @@ export default class Title extends Component {
             <input className="title"
                    type="text"
                    name="title"
-                   placeholder="Some title here please"
+                   placeholder="Text"
                    value={this.props.title}
                    onChange={this.props.onChange} />
         )

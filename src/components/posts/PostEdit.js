@@ -79,9 +79,9 @@ class PostEdit extends Component {
 
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
-                <Images images={this.state.post.images}/>
-
                 <Text texts={this.state.post.texts} />
+
+                <Images images={this.state.post.images}/>
 
                 {/*<Code onChange={this.handleChangeCode} />*/}
 

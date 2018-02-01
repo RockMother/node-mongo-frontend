@@ -3,6 +3,7 @@ import BaseStore from './baseStore';
 import ActionTypes from './../constants/actionTypes';
 
 class PostsStore extends BaseStore {
+
     constructor() {
         super();
         this.posts = [];

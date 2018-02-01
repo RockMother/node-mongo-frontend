@@ -27,7 +27,7 @@ class PostView extends Component {
 
             <div className="block" onClick={this.editPost}>
 
-                <Title title={this.state.post.title} />
+                <Title title={this.state.post.title} onChange={function() {}}/>
 
                 <Text texts={this.state.post.texts} />
 

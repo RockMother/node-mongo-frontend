@@ -13,7 +13,7 @@ export default class Menu extends Component {
 
         categories = ['Art', 'Store', 'Contacts'];
 
-        categories.push('Templates');
+        categories.push('Settings');
 
         this.state = {
             categories: categories

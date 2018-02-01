@@ -7,8 +7,16 @@ export default class Text extends Component {
             this.props.texts && this.props.texts.length > 0 ? <div className="text">
 
                 {this.props.texts.map(text => <div className=""
-                                                   key={text._id}>{text.text}</div>)}
+                                                   key={text._id}>{breakLine(text.text)}</div>)}
             </div> : ''
         )
     }
+}
+
+function breakLine(text) {
+    var br = React.createElement('br');
+    var regex = /(<br \/>)/g;
+    return text.split(regex).map(function(line, index) {
+        return line.match(regex) ? <br key={"key_" + index} /> : line;
+    });
 }

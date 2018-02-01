@@ -13,21 +13,29 @@ export default class Posts extends Component {
         this.state = { 
             posts: postsStore.getCategoryPosts(this.props.location.pathname)
         };
-
     }
-    componentDidMount(){
+
+    componentWillReceiveProps(props) {
+        this.setState({posts: postsStore.getCategoryPosts(this.props.location.pathname)});
+    }
+
+    componentDidMount() {
         PostActions.getAllPosts();
         postsStore.addChangeListener(() => this.onChange());
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         postsStore.removeChangeListener(() => this.onChange());
     }
+
     onChange() {
         this.setState({ posts: postsStore.getCategoryPosts(this.props.location.pathname) });
     }
+
     removePost() {
 
     }
+
     render() {
         return (
             <div className="list">

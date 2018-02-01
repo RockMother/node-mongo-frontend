@@ -42,6 +42,16 @@ class PostActions {
             });
         });
     }
+
+    getSettings() {
+        axios.get(POSTS_API_URL).then(res => {
+            console.log(res)
+            Dispatcher.dispatch({
+                actionType: ActionTypes.GET_POSTS,
+                posts: res.data
+            });
+        });
+    }
 }
 
 export default new PostActions();

@@ -10,8 +10,9 @@ export default class Posts extends Component {
 
         super(props);
 
-        this.state = { 
-            posts: postsStore.getCategoryPosts(this.props.location.pathname)
+        this.state = {
+            posts: postsStore.getCategoryPosts(this.props.location.pathname),
+            root: true
         };
     }
 
@@ -39,7 +40,7 @@ export default class Posts extends Component {
     render() {
         return (
             <div className="list">
-                <Post key="new" post={{_id: "new", title: "", images: []}} />
+                {this.state.root ? <Post key="new" post={{_id: "new", title: "", images: []}} /> : ''}
                 {this.state.posts.map(post => <Post key={post._id} post={post} />)}
             </div>
         );

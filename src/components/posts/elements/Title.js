@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 
+import ContentEditable from 'react-contenteditable';
+
 export default class Title extends Component {
-    render(){
+
+    render() {
         return (
-            <input className="title"
-                   type="text"
-                   name="title"
-                   placeholder="Text"
-                   value={this.props.title}
-                   onChange={this.props.onChange} />
+            <ContentEditable
+                ref={(c) => this.contentEditable = c}
+                className="text"
+                html={this.props.title}             // innerHTML of the editable div
+                disabled={false}                    // use true to disable edition
+                onChange={this.props.onChange}      // handle innerHTML change
+            />
         )
     }
 }

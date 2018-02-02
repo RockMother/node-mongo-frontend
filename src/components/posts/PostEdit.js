@@ -32,6 +32,8 @@ class PostEdit extends Component {
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleChangeImages = this.handleChangeImages.bind(this);
         this.handleChangeCode = this.handleChangeCode.bind(this);
+
+        this.editPost = this.editPost.bind(this);
     }
 
     handleChangeTitle(event) {
@@ -71,27 +73,21 @@ class PostEdit extends Component {
         this.setState({post: post});
     }
 
+    editPost() {
+        this.props.isEdit();
+    }
+
     render() {
         return (
-            <div className="block edit">
-
-                {/*Template elements here*/}
+            <div className={this.props.stateEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.stateEdit ? this.editPost : function() {}}>
 
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
-                <Text texts={this.state.post.texts} />
+                <Text texts={this.state.post.texts} onChange={this.handleChangeTitle} />
 
                 <Images images={this.state.post.images}/>
 
-                {/*<Code onChange={this.handleChangeCode} />*/}
-
-                {/*<Appender onChange={this.handleChangeCode} />*/}
-
-                {/*End template elements*/}
-
-                {/*<Categories categories={this.state.post.categories} />*/}
-
-                <Buttons post={this.state.post} isEdit={this.props.isEdit} />
+                {this.props.stateEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} isEdit={this.props.isEdit} /> : ''}
 
             </div>
         );

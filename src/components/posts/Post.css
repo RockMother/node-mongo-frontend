@@ -22,7 +22,8 @@
 
     cursor: pointer;
 
-    transition: min-width 1s, margin-top 1s, width 1s;
+    transition: min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+    transition-timing-function: linear;
 
     /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
     /*transition: box-shadow 5s ease-in-out;*/
@@ -30,7 +31,7 @@
 
 .block.edit {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+    transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
 
     min-width: 800px;
     min-height: 0;
@@ -52,12 +53,14 @@
 
     margin-top: 0;
 
-    transition: min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+    transition: border-radius 1s, min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
     cursor: pointer;
 }
 
 .block.new:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+    border-radius: 3px;
 }
 
 [contenteditable]:focus {

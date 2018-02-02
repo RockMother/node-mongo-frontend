@@ -83,7 +83,7 @@ class PostEdit extends Component {
 
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
-                <Text texts={this.state.post.texts} onChange={this.handleChangeTitle} />
+                <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
 
                 <Images images={this.state.post.images}/>
 

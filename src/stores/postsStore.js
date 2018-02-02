@@ -33,7 +33,7 @@ class PostsStore extends BaseStore {
             path = "art";
 
         return this.posts.filter(function (post) {
-            return (post.categories && post.categories.length > 0 && post.categories[0].name.toLowerCase() === path);
+            return (post.categories && post.categories.length > 0 && post.categories[0] && post.categories[0].name.toLowerCase() === path);
         });
     }
 }

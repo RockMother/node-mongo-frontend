@@ -22,8 +22,7 @@ export default class Buttons extends Component {
         // let post = this.state.post;
         // post.image = document.getElementById("fileUpload").files[0];
 
-        PostActions.savePost(this.state.post);
-        this.props.isEdit();
+        PostActions.savePost(this.state.post, this.props.isEdit);
     }
 
     cancelPost() {
@@ -38,9 +37,6 @@ export default class Buttons extends Component {
     render(){
         return (
             <div className="buttons">
-
-
-
 
                 {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
                 {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}

@@ -18,18 +18,28 @@ class PostActions {
         });
     }
 
-    savePost(post) {
+    savePost(post, isEdit) {
+
         const formData = new FormData();
         formData.append("_id", post._id);
         formData.append("title", post.title);
-        formData.append("texts[]", post.texts);
-        formData.append("categories[]", post.categories);
+        formData.append("texts[]", JSON.stringify(post.texts));
+        formData.append("categories[]", JSON.stringify(post.categories));
         formData.append("images", post.image);
+
         axios.post(POSTS_API_URL, formData).then(res => {
+
+            isEdit();
+
             Dispatcher.dispatch({
+
                 actionType: ActionTypes.CREATE_POST,
                 post: res.data
             });
+
+        }).catch(err => {
+
+            console.log(err)
         });
     }
 

@@ -5,7 +5,7 @@ import Menu from './menu/Menu';
 import Posts from './posts/Posts';
 import TemplatesPage from './templates/TemplatesPage';
 
-import Settings from './utils/Settings';
+import Settings from './settings/Settings';
 
 
 class App extends Component {

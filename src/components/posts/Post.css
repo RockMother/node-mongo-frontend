@@ -46,8 +46,8 @@
 .block.new {
 
     width: auto !important;
-    min-width: 100px !important;
-    min-height: 100px;
+    min-width: 60px !important;
+    min-height: 60px;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
@@ -55,12 +55,14 @@
 
     transition: border-radius 1s, min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
     cursor: pointer;
+
+    border-radius: 3px;
 }
 
 .block.new:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 
-    border-radius: 3px;
+
 }
 
 [contenteditable]:focus {

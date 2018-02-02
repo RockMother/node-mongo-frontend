@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Menu from './menu/Menu';
 import Posts from './posts/Posts';
 import TemplatesPage from './templates/TemplatesPage';
+import categoriesStore from './../stores/categoriesStore';
 
 class App extends Component {
     render() {
@@ -11,11 +12,7 @@ class App extends Component {
             <main>
                 <Menu/>
                 <Switch>
-                    <Route exact path='/' component={Posts}/>
-                    <Route exact path='/store' component={Posts}/>
-                    <Route exact path='/contacts' component={Posts}/>
-                    {/*<Route exact path='/settings' component={Settings}/>*/}
-
+                    <Route exact path='/posts/:category' component={Posts}/>
                     <Route exact path='/templates' component={TemplatesPage}/>
                 </Switch>
             </main>

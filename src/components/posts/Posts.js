@@ -2,27 +2,24 @@ import React, { Component } from 'react';
 import postsStore from './../../stores/postsStore';
 
 import Post from './Post';
-import PostActions from '../../actions/postActions';
+import postActions from '../../actions/postActions';
 
 export default class Posts extends Component {
 
     constructor(props) {
-
         super(props);
-
         this.state = {
-            posts: postsStore.getCategoryPosts(this.props.location.pathname),
+            posts: postsStore.getPosts(),
             root: true
         };
     }
 
-    componentWillReceiveProps(props) {
-        this.setState({posts: postsStore.getCategoryPosts(this.props.location.pathname)});
+    componentDidMount() {
+        postsStore.addChangeListener(() => this.onChange());
     }
 
-    componentDidMount() {
-        PostActions.getAllPosts();
-        postsStore.addChangeListener(() => this.onChange());
+    componentWillReceiveProps(nextProps) {
+        postActions.getPosts(nextProps.match.params.category);
     }
 
     componentWillUnmount() {
@@ -30,7 +27,7 @@ export default class Posts extends Component {
     }
 
     onChange() {
-        this.setState({ posts: postsStore.getCategoryPosts(this.props.location.pathname) });
+        this.setState({ posts: postsStore.getPosts() });
     }
 
     removePost() {

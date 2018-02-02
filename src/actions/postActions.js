@@ -7,14 +7,22 @@ import config from './../config';
  const POSTS_API_URL = API_URL + '/posts';
 
 class PostActions {
+    dispatchPosts(posts) {
+        Dispatcher.dispatch({
+            actionType: ActionTypes.GET_POSTS,
+            posts: posts
+        });
+    }
+
+    getPosts(category) {
+        axios.get(`${POSTS_API_URL}?category=${category}`).then(res => {
+            this.dispatchPosts(res.data);
+        });
+    }
 
     getAllPosts() {
         axios.get(POSTS_API_URL).then(res => {
-            console.log(res)
-            Dispatcher.dispatch({
-                actionType: ActionTypes.GET_POSTS,
-                posts: res.data
-            });
+            this.dispatchPosts(res.data);
         });
     }
 
@@ -49,16 +57,6 @@ class PostActions {
             Dispatcher.dispatch({
                 actionType: ActionTypes.DELETE_POST,
                 postId: post._id
-            });
-        });
-    }
-
-    getSettings() {
-        axios.get(POSTS_API_URL).then(res => {
-            console.log(res)
-            Dispatcher.dispatch({
-                actionType: ActionTypes.GET_POSTS,
-                posts: res.data
             });
         });
     }

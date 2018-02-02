@@ -21,22 +21,17 @@ export default class Menu extends Component {
 
                     {this.state.categories.length === 0 ? 'No categories' : ''}
 
-                    {this.state.categories.length > 0 ? <span key="/"><NavLink exact className="section" to={`/posts/${this.state.categories[0]}`} activeClassName='active'>{this.state.categories[0]}</NavLink></span> : ''}
-
-                    {this.state.categories.length > 1 ?
-
+                    { 
                         this.state.categories.map(function (category, index) {
-
-                            return (index !== 0 ? <span key={category}>
-                                <span className="delimiter">/</span>
+                            return <span key={category}>
+                                { index != 0 ? <span className="delimiter">/</span> : ''}
                                 <NavLink exact
                                     className="section"
                                     to={'/posts/' + category}
                                     activeClassName='active'>{category}</NavLink>
-                            </span> : '');
-                        }
-
-                        ) : ''}
+                            </span>;
+                        })
+                    }
 
                 </div>
             </div>

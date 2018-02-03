@@ -9,16 +9,16 @@ export default class Post extends Component {
             isEdit: false
         };
 
-        this.isEdit = this.isEdit.bind(this);
+        this.setEdit = this.setEdit.bind(this);
     }
 
-    isEdit() {
+    setEdit() {
         this.setState({ isEdit: !this.state.isEdit })
     }
 
     render() {
         return (
-            <PostEdit key={this.props.post._id} post={this.props.post} stateEdit={this.state.isEdit} isEdit={this.isEdit} />
+            <PostEdit key={this.props.post._id} post={this.props.post} isEdit={this.state.isEdit} setEdit={this.setEdit} />
         );
     }
 }

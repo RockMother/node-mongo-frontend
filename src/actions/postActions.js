@@ -27,7 +27,7 @@ class PostActions {
         });
     }
 
-    savePost(post, isEdit) {
+    savePost(post, setEdit) {
 
         const formData = new FormData();
         formData.append("_id", post._id);
@@ -38,7 +38,7 @@ class PostActions {
 
         axios.post(POSTS_API_URL, formData).then(res => {
 
-            isEdit();
+            setEdit();
 
             Dispatcher.dispatch({
 

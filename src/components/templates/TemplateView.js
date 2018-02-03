@@ -12,7 +12,7 @@ export default class TemplateView extends Component {
     }
 
     editTemplate() {
-        this.props.isEdit();
+        this.props.setEdit();
     }
 
     render() {

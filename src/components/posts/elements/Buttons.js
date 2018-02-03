@@ -22,11 +22,11 @@ export default class Buttons extends Component {
         // let post = this.state.post;
         // post.image = document.getElementById("fileUpload").files[0];
 
-        PostActions.savePost(this.state.post, this.props.isEdit);
+        PostActions.savePost(this.state.post, this.props.setEdit);
     }
 
     cancelPost() {
-        this.props.isEdit();
+        this.props.setEdit();
     }
 
     deletePost() {

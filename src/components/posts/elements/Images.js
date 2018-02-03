@@ -4,6 +4,15 @@ import '../Post.css';
 import config from '../../../config';
 
 export default class Images extends Component {
+
+    onDrop(files) {
+        console.log(files);
+
+        let post = this.state.post;
+        post.files =  files;
+        this.setState({post: post});
+    }
+
     render(){
         return (
             <div className="images">

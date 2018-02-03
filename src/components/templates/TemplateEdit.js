@@ -30,11 +30,11 @@ export default class TemplateEdit extends Component {
             title: this.state.title,
             template: this.state.template
         });
-        this.props.isEdit();
+        this.props.setEdit();
     }
 
     cancelTemplate() {
-        this.props.isEdit();
+        this.props.setEdit();
     }
 
     deleteTemplate() {

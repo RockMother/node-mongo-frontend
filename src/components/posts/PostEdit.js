@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Post.css';
 import './PostEdit.css';
 
@@ -20,6 +20,7 @@ class PostEdit extends Component {
 
         super(props);
 
+        // TODO Use fields separately instead of the post object
         this.state = {
             post: props.post,
         };
@@ -37,39 +38,35 @@ class PostEdit extends Component {
     }
 
     handleChangeTitle(event) {
-
-        let post = this.state.post;
-        post.title =  event.target.value;
-        this.setState({post: post});
+        const { post } = this.state;
+        post.title = event.target.value;
+        this.setState({ post: post });
     }
 
     handleChangeText(event) {
-
-        let post = this.state.post;
-        post.text =  event.target.value;
-        this.setState({post: post});
+        const { post } = this.state;
+        post.text = event.target.value;
+        this.setState({ post: post });
     }
 
     handleChangeImages(event) {
-
-        let post = this.state.post;
-        post.images =  event.target.value;
-        this.setState({post: post});
+        const { post } = this.state;
+        post.images = event.target.value;
+        this.setState({ post: post });
     }
 
     handleChangeCode(event) {
-
-        let post = this.state.post;
-        post.code =  event.target.value;
-        this.setState({post: post});
+        const { post } = this.state;
+        post.code = event.target.value;
+        this.setState({ post: post });
     }
+
 
     onDrop(files) {
         console.log(files);
-
-        let post = this.state.post;
-        post.files =  files;
-        this.setState({post: post});
+        const { post } = this.state;
+        post.files = files;
+        this.setState({ post: post });
     }
 
     editPost() {
@@ -78,13 +75,14 @@ class PostEdit extends Component {
 
     render() {
         return (
-            <div className={this.props.stateEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.stateEdit ? this.editPost : function() {}}>
-
+            <div className={this.props.stateEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.stateEdit ? this.editPost : function () { }}>
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
-
+                <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
                 <Images images={this.state.post.images} />
+
+                <Images images={this.state.post.images}/>
 
                 {this.props.stateEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} isEdit={this.props.isEdit} /> : ''}
 

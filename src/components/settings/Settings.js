@@ -6,11 +6,10 @@ import Posts from '../posts/Posts';
 export default class Settings extends Posts {
 
     constructor(props) {
-
         super(props);
-
+        const { match: { category }} = this.props; 
         this.state = {
-            posts: postsStore.getCategoryPosts(this.props.location.pathname)
+            posts: postsStore.getCategoryPosts(category)
         };
     }
 }

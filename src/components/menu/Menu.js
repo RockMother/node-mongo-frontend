@@ -19,12 +19,10 @@ export default class Menu extends Component {
             <div id="head">
                 <div id="menu">
 
-                    {this.state.categories.length === 0 ? 'No categories' : ''}
-
-                    { 
-                        this.state.categories.map(function (category, index) {
+                    {this.state.categories.length === 0 ? 'No categories' :
+                        this.state.categories.map((category, index) => {
                             return <span key={category}>
-                                { index !== 0 ? <span className="delimiter">/</span> : ''}
+                                {index != 0 ? <span className="delimiter">/</span> : ''}
                                 <NavLink exact
                                     className="section"
                                     to={'/' + category.toLowerCase()}

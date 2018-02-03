@@ -64,7 +64,6 @@ class PostEdit extends Component {
         this.setState({post: post});
     }
 
-
     onDrop(files) {
         console.log(files);
 
@@ -85,7 +84,7 @@ class PostEdit extends Component {
 
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
 
-                <Images images={this.state.post.images}/>
+                <Images images={this.state.post.images} />
 
                 {this.props.stateEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} isEdit={this.props.isEdit} /> : ''}
 

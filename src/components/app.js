@@ -12,9 +12,9 @@ class App extends Component {
             <main>
                 <Menu/>
                 <Switch>
-                    <Route exact path='/posts/:category' component={Posts}/>
                     <Route exact path='/templates' component={TemplatesPage}/>
-                    <Redirect path='/' to={`/posts/${categoriesStore.getCategories()[0]}`} />
+                    <Route exact path='/:category' component={Posts}/>
+                    <Redirect path='/' to={`/${categoriesStore.getCategories()[0].toLowerCase()}`} />
                 </Switch>
             </main>
         );

@@ -41,9 +41,9 @@ export default class Buttons extends Component {
                 {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
                 {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
 
-                <div className="button right" onClick={this.savePost}>Save</div>
-                <div className="button right implicit" onClick={this.deletePost}>Delete</div>
-                <div className="button right" onClick={this.cancelPost}>Cancel</div>
+                <div className="button green" onClick={this.savePost}>Save</div>
+                <div className="button red" onClick={this.deletePost}>Delete</div>
+                <div className="button" onClick={this.cancelPost}>Cancel</div>
 
             </div>
         )

@@ -99,20 +99,29 @@ textarea:hover {
     cursor: pointer;
     margin: 10px 20px 10px 0;
     float: left;
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .button:hover {
-    color: #18bf45;
+    color: black;
 }
 
 
 .implicit {
-    opacity: 0.3;
+    /*opacity: 0.3;*/
+}
+
+.red:hover {
+    color: rgba(255, 0, 0, 0.54);
+}
+
+.green:hover {
+    color: rgba(0, 178, 0, 0.8);
 }
 
 .right {
     /*margin-left: auto;*/
-    float: right;
+    /*float: right;*/
     /*margin-right: 20px;*/
     /*order: 2;*/
 }

@@ -16,7 +16,7 @@ class PostActions {
 
     getPosts(category) {
 
-        axios.get(`${POSTS_API_URL}?category=${category.charAt(0).toUpperCase() + category.slice(1)}`).then(res => {
+        axios.get(`${POSTS_API_URL}?category=${category}`).then(res => {
             this.dispatchPosts(res.data);
         });
     }

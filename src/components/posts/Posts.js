@@ -16,10 +16,10 @@ export default class Posts extends Component {
                 title: "",
                 texts: [],
                 categories: [{
-                    name: this.props.match.params.category.charAt(0).toUpperCase() +
-                        this.props.match.params.category.slice(1)}],
+                    name: this.props.category
+                }],
 
-                    images: []
+                images: []
             }
         }
     }

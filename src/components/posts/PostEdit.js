@@ -75,7 +75,7 @@ class PostEdit extends Component {
 
     render() {
         return (
-            <div className={this.props.stateEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.stateEdit ? this.editPost : function () { }}>
+            <div className={this.props.isEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.isEdit ? this.editPost : function () {}}>
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
 
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />

@@ -10,8 +10,18 @@ export default class Posts extends Component {
         super(props);
         this.state = {
             posts: postsStore.getPosts(),
-            root: true
-        };
+            root: true,
+            newPost: {
+                _id: "new",
+                title: "",
+                texts: [],
+                categories: [{
+                    name: this.props.match.params.category.charAt(0).toUpperCase() +
+                        this.props.match.params.category.slice(1)}],
+
+                    images: []
+            }
+        }
     }
 
     componentDidMount() {
@@ -40,7 +50,7 @@ export default class Posts extends Component {
     render() {
         return (
             <div className="list">
-                {this.state.root ? <Post key="new" post={{_id: "new", title: "", texts: [], categories: [], images: []}} /> : ''}
+                {this.state.root ? <Post key={this.state.newPost._id} post={this.state.newPost} /> : ''}
                 {this.state.posts.map(post => <Post key={post._id} post={post} />)}
             </div>
         );

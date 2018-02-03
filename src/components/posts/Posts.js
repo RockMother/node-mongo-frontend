@@ -25,13 +25,13 @@ export default class Posts extends Component {
     }
 
     componentDidMount() {
-        postActions.getPosts(this.props.match.params.category);
+        postActions.getPosts(this.props.category);
         postsStore.addChangeListener(() => this.onChange());
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.match.params.category !== nextProps.match.params.category) {
-            postActions.getPosts(nextProps.match.params.category);
+        if (this.props.category !== nextProps.category) {
+            postActions.getPosts(nextProps.category);
         }
     }
 

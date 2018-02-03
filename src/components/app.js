@@ -12,8 +12,13 @@ class App extends Component {
             <main>
                 <Menu/>
                 <Switch>
-                    <Route exact path='/templates' component={TemplatesPage}/>
-                    <Route exact path='/:category' component={Posts}/>
+                    <Route exact path='/templates'  component={TemplatesPage}/>
+                    {
+                        categoriesStore.getCategories().map(category => {
+                            return <Route exact path={`/${category.toLowerCase()}`} 
+                                render= {() => <Posts category={category}/> }/>
+                        })
+                    }
                     <Redirect path='/' to={`/${categoriesStore.getCategories()[0].toLowerCase()}`} />
                 </Switch>
             </main>

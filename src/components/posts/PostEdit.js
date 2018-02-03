@@ -84,7 +84,7 @@ class PostEdit extends Component {
 
                 <Images images={this.state.post.images}/>
 
-                {this.props.stateEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} isEdit={this.props.setEdit} /> : ''}
+                {this.props.isEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} isEdit={this.props.setEdit} /> : ''}
 
             </div>
         );

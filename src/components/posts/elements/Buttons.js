@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../Post.css';
+import './Buttons.css';
 
 import PostActions from '../../../actions/postActions';
 

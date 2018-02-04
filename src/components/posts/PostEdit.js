@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Post.css';
-import './PostEdit.css';
 
 import Title from './elements/Title';
 import Images from './elements/Images';
@@ -14,9 +13,6 @@ import Buttons from "./elements/Buttons";
 class PostEdit extends Component {
 
     constructor(props) {
-
-        // if (props.post._id === "new")
-        //     props.post.title = "";
 
         super(props);
 
@@ -58,14 +54,6 @@ class PostEdit extends Component {
     handleChangeCode(event) {
         const { post } = this.state;
         post.code = event.target.value;
-        this.setState({ post: post });
-    }
-
-
-    onDrop(files) {
-        console.log(files);
-        const { post } = this.state;
-        post.files = files;
         this.setState({ post: post });
     }
 

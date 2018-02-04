@@ -22,6 +22,40 @@ main {
     align-items: center;
 }
 
+.center {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+
+    /*background-color: lightgreen;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.center {
+    /*background-color: #fff;*/
+    -webkit-animation: random 50s infinite;
+    animation: random 50s infinite;
+}
+
+@keyframes  random {
+    0% { background-color: #d4ff99; }
+    15% { background-color: rgb(255, 203, 176); }
+    30% { background-color: #ffdb7c; }
+    45% { background-color: #ffdb7c; }
+    60% { background-color: #b9ff9f; }
+    75% { background-color: #9fe7ff; }
+    100% { background-color: #d4ff99; }
+}
+
+.center .block {
+    margin-top: 0 !important;
+}
+
 a {
     text-decoration: none;
     color: black;

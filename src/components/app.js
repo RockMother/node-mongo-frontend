@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Menu from './menu/Menu';
 import Posts from './posts/Posts';
 import TemplatesPage from './templates/TemplatesPage';
+import Nothing from './nothing/Nothing';
 import categoriesStore from './../stores/categoriesStore';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
                 <Menu/>
                 <Switch>
                     <Route exact path='/templates' component={TemplatesPage}/>
+                    <Route exact path='/nothing' component={Nothing}/>
                     {
                         categoriesStore.getCategories().map(category => {
                             return <Route exact

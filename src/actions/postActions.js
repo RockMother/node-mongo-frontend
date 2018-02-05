@@ -27,37 +27,35 @@ class PostActions {
         });
     }
 
-    savePost(post, setEdit) {
-
+    savePost(post) {
+        //Temp solution for update
+        let actionType = ActionTypes.CREATE_POST;
         const formData = new FormData();
-        formData.append("_id", post._id);
+        if (post._id){ 
+            actionType = ActionTypes.UPDATE_POST;
+            formData.append("_id", post._id);
+        }
         formData.append("title", post.title);
         formData.append("texts[]", JSON.stringify(post.texts));
         formData.append("categories[]", JSON.stringify(post.categories));
         formData.append("images", post.image);
 
-        axios.post(POSTS_API_URL, formData).then(res => {
-
-            setEdit();
-
+        return axios.post(POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
-
-                actionType: ActionTypes.CREATE_POST,
+                actionType: actionType,
                 post: res.data
             });
-
         }).catch(err => {
 
             console.log(err)
         });
     }
 
-    deletePost(post) {
-        axios.delete(POSTS_API_URL + "/" + post._id).then(res => {
-            console.log(res)
+    deletePost(id) {
+        return axios.delete(`${POSTS_API_URL}/${id}`).then(res => {
             Dispatcher.dispatch({
                 actionType: ActionTypes.DELETE_POST,
-                postId: post._id
+                postId: id
             });
         });
     }

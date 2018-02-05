@@ -6,45 +6,30 @@ import PostActions from '../../../actions/postActions';
 export default class Buttons extends Component {
 
     constructor(props) {
-
         super(props);
-
-        this.state = {
-            post: props.post,
-        };
-
-        this.savePost = this.savePost.bind(this);
-        this.cancelPost = this.cancelPost.bind(this);
-        this.deletePost = this.deletePost.bind(this);
+        this.save = this.save.bind(this);
+        this.cancel = this.cancel.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
-    savePost() {
-        // let post = this.state.post;
-        // post.image = document.getElementById("fileUpload").files[0];
-
-        PostActions.savePost(this.state.post, this.props.setEdit);
+    save() {
+        this.props.saveClicked();
     }
 
-    cancelPost() {
-        this.props.setEdit();
+    cancel() {
+        this.props.cancelClicked();
     }
 
-    deletePost() {
-        //TODO delete from global state
-        PostActions.deletePost(this.state.post);
+    delete() {
+        this.props.deleteClicked();
     }
 
     render(){
         return (
             <div className="buttons">
-
-                {/*<div className="button" onClick={console.log('bold')}><b>B</b></div>*/}
-                {/*<div className="button" onClick={console.log('get post link')}>Link</div>*/}
-
-                <div className="button green" onClick={this.savePost}>Save</div>
-                <div className="button red" onClick={this.deletePost}>Delete</div>
-                <div className="button" onClick={this.cancelPost}>Cancel</div>
-
+                <div className="button green" onClick={this.save}>Save</div>
+                <div className="button red" onClick={this.delete}>Delete</div>
+                <div className="button" onClick={this.cancel}>Cancel</div>
             </div>
         )
     }

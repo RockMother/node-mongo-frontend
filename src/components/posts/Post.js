@@ -18,7 +18,7 @@ export default class Post extends Component {
 
     render() {
         return (
-            <PostEdit key={this.props.post._id} post={this.props.post} isEdit={this.state.isEdit} setEdit={this.setEdit} />
+            <PostEdit post={this.props.post} isEdit={this.state.isEdit} setEdit={this.setEdit} />
         );
     }
 }

@@ -7,16 +7,31 @@ class PostsStore extends BaseStore {
     constructor() {
         super();
         this.posts = [];
-        Dispatcher.register((payload) => {
+        Dispatcher.register(((payload) => {
             switch (payload.actionType) {
                 case ActionTypes.GET_POSTS:
                     this.posts = payload.posts;
                     this.emitChange();
                     break;
+                case ActionTypes.CREATE_POST:
+                    this.posts.push(payload.post);
+                    this.emitChange();
+                    break;
+                case ActionTypes.UPDATE_POST:
+                    const index = this.posts.findIndex(p => p._id === payload.post);
+                    if (index >= 0) {
+                        this.posts[index] = payload.post;
+                        this.emitChange();
+                    }
+                    break;
+                case ActionTypes.DELETE_POST:
+                    this.posts.splice(this.posts.find(p => p._id === payload.postId), 1);
+                    this.emitChange();
+                    break;
                 default:
                     break;
             }
-        });
+        }).bind(this));
     }
 
     getPosts() {

@@ -27,7 +27,7 @@ export default class Nothing extends Component {
     render() {
         return (
             <div className="center">
-                {<Post key={this.state.newPost._id} post={this.state.newPost} />}
+                {<Post post={this.state.newPost} />}
             </div>
         );
     }

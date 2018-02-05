@@ -12,7 +12,6 @@ export default class Posts extends Component {
             posts: postsStore.getPosts(),
             root: true,
             newPost: {
-                _id: "new",
                 title: "",
                 texts: [],
                 categories: [{
@@ -43,14 +42,10 @@ export default class Posts extends Component {
         this.setState({ posts: postsStore.getPosts() });
     }
 
-    removePost() {
-
-    }
-
     render() {
         return (
             <div className="list">
-                {this.state.root ? <Post key={this.state.newPost._id} post={this.state.newPost} /> : ''}
+                {this.state.root ? <Post key="new" post={this.state.newPost} /> : ''}
                 {this.state.posts.map(post => <Post key={post._id} post={post} />)}
             </div>
         );

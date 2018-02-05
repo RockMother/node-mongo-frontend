@@ -9,70 +9,60 @@ import Appender from './elements/Appender';
 import Categories from './elements/Categories';
 
 import Buttons from "./elements/Buttons";
+import postActions from '../../actions/postActions';
 
 class PostEdit extends Component {
 
     constructor(props) {
-
         super(props);
-
-        // TODO Use fields separately instead of the post object
         this.state = {
-            post: props.post,
-        };
+            post: Object.assign({}, this.props.post, )
+        } 
 
-        // this.savePost = this.savePost.bind(this);
-        // this.cancelPost = this.cancelPost.bind(this);
-        // this.deletePost = this.deletePost.bind(this);
-
-        this.handleChangeTitle = this.handleChangeTitle.bind(this);
-        this.handleChangeText = this.handleChangeText.bind(this);
-        this.handleChangeImages = this.handleChangeImages.bind(this);
-        this.handleChangeCode = this.handleChangeCode.bind(this);
-
-        this.editPost = this.editPost.bind(this);
+        this.savePost = this.savePost.bind(this);
+        this.deletePost = this.deletePost.bind(this);
+        this.cancelClicked = this.cancelClicked.bind(this);
+        this.editPost = this.props.setEdit.bind(this);
+        
+        this.handleChangeTitle = this.fieldChanged.bind(this, 'title');
+        this.handleChangeText = this.fieldChanged.bind(this, 'text');
+        this.handleChangeImages = this.fieldChanged.bind(this, 'images');
+        this.handleChangeCode = this.fieldChanged.bind(this, 'code');
     }
 
-    handleChangeTitle(event) {
-        const { post } = this.state;
-        post.title = event.target.value;
-        this.setState({ post: post });
+    cancelClicked() {
+        this.setState({post: Object.assign({}, this.props.post)});
+        this.editPost();
     }
 
-    handleChangeText(event) {
-        const { post } = this.state;
-        post.text = event.target.value;
-        this.setState({ post: post });
+    savePost(){
+        postActions.savePost(this.state.post).then(() => {
+            this.editPost();
+        })
     }
 
-    handleChangeImages(event) {
-        const { post } = this.state;
-        post.images = event.target.value;
-        this.setState({ post: post });
+    deletePost() {
+        postActions.deletePost(this.props.post._id);
     }
 
-    handleChangeCode(event) {
-        const { post } = this.state;
-        post.code = event.target.value;
-        this.setState({ post: post });
-    }
-
-    editPost() {
-        this.props.setEdit();
+    fieldChanged(name, event) {
+        const post = this.state.post;
+        post[name] = event.target.value;
+        this.setState({post: post });
     }
 
     render() {
         return (
-            <div className={this.props.isEdit ? "block edit" : "block" + (this.state.post._id === "new" ? " new" : "")} onClick={!this.props.isEdit ? this.editPost : function () {}}>
+            <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
-
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
                 <Images images={this.state.post.images} />
-
-                <Images images={this.state.post.images}/>
-
-                {this.props.isEdit && this.state.post.title.length > 0 ? <Buttons post={this.state.post} setEdit={this.props.setEdit} /> : ''}
+                <Images images={this.state.post.images} />
+                {this.props.isEdit && this.state.post.title.length > 0 ?
+                    <Buttons saveClicked={this.savePost}
+                        deleteClicked={this.deletePost}
+                        cancelClicked={this.cancelClicked} /> : ''}
 
             </div>
         );

@@ -16,13 +16,13 @@ export default class Images extends Component {
     render(){
         return (
             <div className="images">
-                {this.props.images.map(image =>
+                {this.props.images? this.props.images.map(image =>
 
                     <img src={config.API_URL + '/image/' + image.imageId}
                          key={image._id}
                          className="image"/>
 
-                )}
+                ): ''}
             </div>
         )
     }

@@ -14,7 +14,7 @@ class PostsStore extends BaseStore {
                     this.emitChange();
                     break;
                 case ActionTypes.CREATE_POST:
-                    this.posts.push(payload.post);
+                    this.posts.unshift(payload.post);
                     this.emitChange();
                     break;
                 case ActionTypes.UPDATE_POST:

@@ -16,9 +16,9 @@ class App extends Component {
                     <Route exact path='/templates' component={TemplatesPage}/>
                     <Route exact path='/nothing' component={Nothing}/>
                     {
-                        categoriesStore.getCategories().map(category => {
+                        categoriesStore.getCategories().map((category, index) => {
                             return <Route exact
-                                          key={category.name}
+                                          key={index}
                                           path={`/${category.toLowerCase()}`}
                                           render={() => <Posts category={category}/> }/>
                         })

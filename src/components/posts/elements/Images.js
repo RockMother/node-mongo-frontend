@@ -19,6 +19,7 @@ export default class Images extends Component {
                 {this.props.images? this.props.images.map(image =>
 
                     <img src={config.API_URL + '/image/' + image.imageId}
+                         alt={image.imageName}
                          key={image._id}
                          className="image"/>
 
@@ -28,8 +29,8 @@ export default class Images extends Component {
     }
 }
 
-{/*<Dropzone className="drop" onDrop={this.onDrop.bind(this)}>*/}
-{/*<div className="title">Drop images here</div>*/}
-{/*<Images images={this.state.post.images}/>*/}
-{/*</Dropzone>*/}
+// {/*<Dropzone className="drop" onDrop={this.onDrop.bind(this)}>*/}
+// {/*<div className="title">Drop images here</div>*/}
+// {/*<Images images={this.state.post.images}/>*/}
+// {/*</Dropzone>*/}
 

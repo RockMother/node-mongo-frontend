@@ -16,7 +16,7 @@
     /*margin: 10px;*/
     /*padding-left: 20px;*/
     /*padding-right: 20px;*/
-    background: linear-gradient(left, white, ghostwhite);
+    background: linear-gradient(to right, white, ghostwhite);
 }
 
 .buttons:hover {

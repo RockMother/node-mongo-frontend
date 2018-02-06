@@ -7,7 +7,7 @@ class PostsStore extends BaseStore {
     constructor() {
         super();
         this.posts = [];
-        Dispatcher.register(((payload) => {
+        const callback = (function(payload) {
             switch (payload.actionType) {
                 case ActionTypes.GET_POSTS:
                     this.posts = payload.posts;
@@ -31,7 +31,8 @@ class PostsStore extends BaseStore {
                 default:
                     break;
             }
-        }).bind(this));
+        }).bind(this);
+        Dispatcher.register(callback);
     }
 
     getPosts() {

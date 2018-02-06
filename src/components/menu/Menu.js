@@ -22,7 +22,7 @@ export default class Menu extends Component {
                     {this.state.categories.length === 0 ? 'No categories' :
                         this.state.categories.map((category, index) => {
                             return <span key={category}>
-                                {index != 0 ? <span className="delimiter">/</span> : ''}
+                                {index !== 0 ? <span className="delimiter">/</span> : ''}
                                 <NavLink exact
                                     className="section"
                                     to={'/' + category.toLowerCase()}

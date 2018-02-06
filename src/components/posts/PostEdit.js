@@ -3,10 +3,10 @@ import './Post.css';
 
 import Title from './elements/Title';
 import Images from './elements/Images';
-import Code from './elements/Code';
+//import Code from './elements/Code';
 import Text from './elements/Text';
-import Appender from './elements/Appender';
-import Categories from './elements/Categories';
+//import Appender from './elements/Appender';
+//import Categories from './elements/Categories';
 
 import Buttons from "./elements/Buttons";
 import postActions from '../../actions/postActions';

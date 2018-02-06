@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import postsStore from './../../stores/postsStore';
 
 import Post from '../posts/Post';
-import postActions from '../../actions/postActions';
 
 export default class Nothing extends Component {
 
@@ -12,7 +11,6 @@ export default class Nothing extends Component {
             posts: postsStore.getPosts(),
             root: true,
             newPost: {
-                _id: "new",
                 title: "",
                 texts: [],
                 categories: [{
@@ -27,7 +25,7 @@ export default class Nothing extends Component {
     render() {
         return (
             <div className="center">
-                {<Post post={this.state.newPost} />}
+                {<Post key={this.state.newPost._id} post={this.state.newPost} />}
             </div>
         );
     }

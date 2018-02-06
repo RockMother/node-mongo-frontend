@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Post.css';
+import config from '../../config';
 
 import Title from './elements/Title';
 import Images from './elements/Images';
@@ -15,15 +16,13 @@ class PostEdit extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            post: Object.assign({}, this.props.post, )
-        } 
+        this.state = this.getInitialState(this.props);
 
         this.savePost = this.savePost.bind(this);
         this.deletePost = this.deletePost.bind(this);
         this.cancelClicked = this.cancelClicked.bind(this);
         this.editPost = this.props.setEdit.bind(this);
-        
+
         this.imageAdded = this.imageAdded.bind(this);
 
         this.handleChangeTitle = this.fieldChanged.bind(this, 'title');
@@ -31,18 +30,35 @@ class PostEdit extends Component {
         this.handleChangeCode = this.fieldChanged.bind(this, 'code');
     }
 
+    getInitialState(props) {
+        const images = [];
+        if (props.post.images && props.post.images.length > 0) {
+            props.post.images.forEach((image, index) => {
+                images.push({
+                    url: config.API_URL + '/image/' + image.imageId,
+                    imageName: image.imageName
+                });
+            });
+        }
+        return {
+            post: Object.assign({}, props.post),
+            newImages: [],
+            images
+        }
+    }
+
     cancelClicked() {
-        this.setState({post: Object.assign({}, this.props.post)});
+        this.setState(this.getInitialState(this.props));
         this.editPost();
     }
 
-    async savePost(){
+    async savePost() {
         await postActions.savePost(this.state.post);
         this.editPost();
     }
 
     componentWillReceiveProps(newProps) {
-        this.setState({post: Object.assign({}, newProps.post)});
+        this.setState(this.getInitialState(newProps));
     }
 
     deletePost() {
@@ -50,14 +66,20 @@ class PostEdit extends Component {
     }
 
     imageAdded(image) {
-        this.state.post.newImages = this.state.post.newImages || [];
-        this.state.post.newImages.push(image);
+        const post = this.state.post;
+        post.newImages = post.newImages || [];
+        post.newImages.push(image);
+        const images = this.state.images.concat({
+            imageName: image.name,
+            url: image.preview
+        });
+        this.setState({ post, images });
     }
 
     fieldChanged(name, event) {
         const post = this.state.post;
         post[name] = event.target.value;
-        this.setState({post: post });
+        this.setState({ post });
     }
 
     render() {
@@ -65,7 +87,7 @@ class PostEdit extends Component {
             <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
-                <Images images={this.state.post.images} imageAdded={this.imageAdded} isEdit={this.props.isEdit}/>
+                <Images images={this.state.images} imageAdded={this.imageAdded} isEdit={this.props.isEdit} />
                 {this.props.isEdit && this.state.post.title.length > 0 ?
                     <Buttons saveClicked={this.savePost}
                         deleteClicked={this.deletePost}

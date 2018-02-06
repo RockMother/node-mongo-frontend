@@ -37,9 +37,9 @@ class PostActions {
             formData.append("_id", post._id);
         }
         formData.append("title", post.title);
+        formData.append('images[]', JSON.stringify(post.images));
         formData.append("texts[]", JSON.stringify(post.texts));
         formData.append("categories[]", JSON.stringify(post.categories));
-        formData.append('images', post.images);
         post.newImages.forEach((newImage, index) => {
             formData.append('newImage' + index, newImage);
         });

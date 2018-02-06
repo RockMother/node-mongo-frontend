@@ -18,7 +18,7 @@ class PostsStore extends BaseStore {
                     this.emitChange();
                     break;
                 case ActionTypes.UPDATE_POST:
-                    const index = this.posts.findIndex(p => p._id === payload.post);
+                    const index = this.posts.findIndex(p => p._id === payload.post._id);
                     if (index >= 0) {
                         this.posts[index] = payload.post;
                         this.emitChange();

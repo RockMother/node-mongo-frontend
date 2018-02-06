@@ -37,9 +37,12 @@ class PostEdit extends Component {
 
     savePost(){
         postActions.savePost(this.state.post).then(() => {
-            this.setState({post: Object.assign({}, this.props.post)});
             this.editPost();
         })
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({post: Object.assign({}, newProps.post)});
     }
 
     deletePost() {

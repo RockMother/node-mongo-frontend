@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './Buttons.css';
 
-import PostActions from '../../../actions/postActions';
-
 export default class Buttons extends Component {
 
     constructor(props) {

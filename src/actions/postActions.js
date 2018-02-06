@@ -28,19 +28,20 @@ class PostActions {
     }
 
     savePost(post) {
-        //Temp solution for update
         let actionType = ActionTypes.CREATE_POST;
+        let method = 'post';
         const formData = new FormData();
-        if (post._id){ 
+        if (post._id) { 
+            method = 'put';
             actionType = ActionTypes.UPDATE_POST;
             formData.append("_id", post._id);
         }
         formData.append("title", post.title);
         formData.append("texts[]", JSON.stringify(post.texts));
         formData.append("categories[]", JSON.stringify(post.categories));
-        formData.append("images", post.image);
+        formData.append("images", post.images);
 
-        return axios.post(POSTS_API_URL, formData).then(res => {
+        return axios[method](POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
                 actionType: actionType,
                 post: res.data

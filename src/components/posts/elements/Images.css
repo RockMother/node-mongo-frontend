@@ -1,0 +1,19 @@
+.images {
+    flex-direction: column;
+    display: flex;
+    margin: 0 20px;
+}
+.drop-zone {
+    flex: 1;
+    padding: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.uploaded-images{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+.image {
+    display: flex;
+}

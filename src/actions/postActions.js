@@ -39,7 +39,8 @@ class PostActions {
         formData.append("title", post.title);
         formData.append("texts[]", JSON.stringify(post.texts));
         formData.append("categories[]", JSON.stringify(post.categories));
-        formData.append("images", post.images);
+        formData.append('images', post.images);
+        formData.append('newImages', post.newImages);
 
         return axios[method](POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
@@ -47,7 +48,6 @@ class PostActions {
                 post: res.data
             });
         }).catch(err => {
-
             console.log(err)
         });
     }

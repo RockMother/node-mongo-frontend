@@ -24,9 +24,10 @@ class PostEdit extends Component {
         this.cancelClicked = this.cancelClicked.bind(this);
         this.editPost = this.props.setEdit.bind(this);
         
+        this.imageAdded = this.imageAdded.bind(this);
+
         this.handleChangeTitle = this.fieldChanged.bind(this, 'title');
         this.handleChangeText = this.fieldChanged.bind(this, 'text');
-        this.handleChangeImages = this.fieldChanged.bind(this, 'images');
         this.handleChangeCode = this.fieldChanged.bind(this, 'code');
     }
 
@@ -35,10 +36,9 @@ class PostEdit extends Component {
         this.editPost();
     }
 
-    savePost(){
-        postActions.savePost(this.state.post).then(() => {
-            this.editPost();
-        })
+    async savePost(){
+        await postActions.savePost(this.state.post);
+        this.editPost();
     }
 
     componentWillReceiveProps(newProps) {
@@ -47,6 +47,11 @@ class PostEdit extends Component {
 
     deletePost() {
         postActions.deletePost(this.props.post._id);
+    }
+
+    imageAdded(image) {
+        this.state.post.newImages = this.state.post.newImages || [];
+        this.state.post.newImages.push(image);
     }
 
     fieldChanged(name, event) {
@@ -60,9 +65,7 @@ class PostEdit extends Component {
             <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
                 <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
-                <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
-                <Images images={this.state.post.images} />
-                <Images images={this.state.post.images} />
+                <Images images={this.state.post.images} imageAdded={this.imageAdded} isEdit={this.props.isEdit}/>
                 {this.props.isEdit && this.state.post.title.length > 0 ?
                     <Buttons saveClicked={this.savePost}
                         deleteClicked={this.deletePost}

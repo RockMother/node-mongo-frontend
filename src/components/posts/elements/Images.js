@@ -1,29 +1,65 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../Post.css';
+import Dropzone from 'react-dropzone';
+import './Images.css';
 
 import config from '../../../config';
 
 export default class Images extends Component {
-
-    onDrop(files) {
-        console.log(files);
-
-        let post = this.state.post;
-        post.files =  files;
-        this.setState({post: post});
+    constructor(props) {
+        super(props);
+        this.onDrop = this.onDrop.bind(this);
+        this.state = {
+            images: this.getInitialState(this.props)
+        }
     }
 
-    render(){
+    getInitialState(props){
+        const images = [];
+        props.images.forEach((image, index) => {
+            images.push({
+                url: config.API_URL + '/image/' + image.imageId,
+                imageName: image.imageName
+            });
+        });
+        return images;
+    }
+
+    onDrop(files) {
+        this.setState({
+            images: this.state.images.concat({
+                imageName: files[0].name,
+                url: files[0].preview
+            })
+        });
+        this.props.imageAdded(files[0]);
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({images: this.getInitialState(newProps)});
+    }
+
+    render() {
+        let dropZone = '';
+        if (this.props.isEdit) {
+            dropZone =
+                <Dropzone className="drop-zone" onDrop={this.onDrop}>
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                </Dropzone>;
+        }
+
         return (
             <div className="images">
-                {this.props.images? this.props.images.map(image =>
-
-                    <img src={config.API_URL + '/image/' + image.imageId}
-                         alt={image.imageName}
-                         key={image._id}
-                         className="image"/>
-
-                ): ''}
+                {dropZone}
+                <div className="uploaded-images">
+                    {this.state.images ? this.state.images.map((image, index) =>
+                        <div className="image-wrapper" key={index}>
+                            <img src={image.url}
+                                alt={image.imageName}
+                                className="image" />
+                        </div>
+                    ) : ''}
+                </div>
             </div>
         )
     }

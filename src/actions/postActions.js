@@ -40,8 +40,9 @@ class PostActions {
         formData.append("texts[]", JSON.stringify(post.texts));
         formData.append("categories[]", JSON.stringify(post.categories));
         formData.append('images', post.images);
-        formData.append('newImages', post.newImages);
-
+        post.newImages.forEach((newImage, index) => {
+            formData.append('newImage' + index, newImage);
+        });
         return axios[method](POSTS_API_URL, formData).then(res => {
             Dispatcher.dispatch({
                 actionType: actionType,

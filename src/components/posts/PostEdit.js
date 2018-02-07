@@ -85,13 +85,22 @@ class PostEdit extends Component {
     render() {
         return (
             <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
-                <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
+
+                {/*We need some render here*/}
+
+                <div className="row">
+                    <Title title={this.state.post.title} onChange={this.handleChangeTitle} />
+                    <Images images={this.state.images} imageAdded={this.imageAdded} isEdit={this.props.isEdit} />
+                </div>
+
                 <Text texts={this.state.post.texts} onChange={this.handleChangeText} />
-                <Images images={this.state.images} imageAdded={this.imageAdded} isEdit={this.props.isEdit} />
-                {this.props.isEdit && this.state.post.title.length > 0 ?
+
+                {/*End of render*/}
+
+                {this.props.isEdit && (this.state.post.title.length > 0 || this.state.post.images.length > 0 || this.state.images.length > 0) ?
                     <Buttons saveClicked={this.savePost}
-                        deleteClicked={this.deletePost}
-                        cancelClicked={this.cancelClicked} /> : ''}
+                             deleteClicked={this.deletePost}
+                             cancelClicked={this.cancelClicked} /> : ''}
 
             </div>
         );

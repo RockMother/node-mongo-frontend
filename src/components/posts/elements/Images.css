@@ -6,12 +6,33 @@
     background-color: lightgreen;
 }
 
+.image {
+    max-width: 500px;
+    max-height: 200px;
+    display: block;
+}
+
+.image {
+    display: flex;
+    background-color: red;
+
+    transition: transform 1s;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
 .drop-zone {
-    flex: 1;
+    /*flex: 1;*/
     /*padding: 0 20px;*/
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 
-    background-color: #63d153;
+    cursor: pointer;
+
+    background-color: #616161;
+    /*background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);*/
+    color: white;
 }
 
 .uploaded-images{
@@ -20,12 +41,6 @@
     width: 100%;
     /*margin-top: 10px;*/
 
-    background-color: #4a7b4a;
-}
-
-.image {
-    display: flex;
-
-    background-color: #070b07;
+    background-color: red;
 }
 

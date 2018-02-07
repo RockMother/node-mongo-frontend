@@ -20,22 +20,28 @@ export default class Images extends Component {
         if (this.props.isEdit) {
             dropZone =
                 <Dropzone className="drop-zone text" onDrop={this.onDrop}>
-                    Drop or click
+                    Image
                 </Dropzone>;
         }
 
+        let imagesList = <div className="uploaded-images">
+            {this.props.images ? this.props.images.map((image, index) =>
+                <div className="image-wrapper" key={index}>
+                    <img src={image.url}
+                         alt={image.imageName}
+                         className="image" />
+                </div>
+            ) : ''}
+        </div>;
+
         return (
             <div className="images">
-                {dropZone}
-                <div className="uploaded-images">
-                    {this.props.images ? this.props.images.map((image, index) =>
-                        <div className="image-wrapper" key={index}>
-                            <img src={image.url}
-                                alt={image.imageName}
-                                className="image" />
-                        </div>
-                    ) : ''}
-                </div>
+                {this.props.isEdit ?
+                    <Dropzone className="drop-zone" onDrop={this.onDrop}>
+                        {this.props.images.length === 0 ? <div className="text">Image</div> : imagesList}
+                    </Dropzone> :
+                    imagesList
+                }
             </div>
         )
     }

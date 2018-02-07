@@ -69,36 +69,14 @@
     outline: 0 solid transparent;
 }
 
-.id {
-    /*font-size: 8px;*/
-    color: lightgray;
-    padding-bottom: 10px;
-}
-
-.title {
-    /*font-weight: 600;*/
-    padding: 20px;
-    /*padding-bottom: 20px;*/
-}
-
 .text {
     /*padding-left: 20px;*/
     /*padding-bottom: 20px;*/
+
     padding: 20px;
+    width: calc(100% - 40px);
     line-height: 20px;
     /*background-color: rgba(91, 211, 177, 0.1);*/
-}
-
-.images {
-    display: flex;
-    /*flex-direction: row;*/
-    /*align-content: space-between;*/
-}
-
-.image {
-    max-width: 300px;
-    max-height: 150px;
-    display: block;
 }
 
 .CodeMirror {
@@ -106,15 +84,12 @@
     min-height: 100px !important;
 }
 
-.CodeMirror-lines {
-    /*padding: 15px 0 !important;*/
-}
-
-.categories {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-    color: white;
-}
-
 .new {
     max-width: none !important;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

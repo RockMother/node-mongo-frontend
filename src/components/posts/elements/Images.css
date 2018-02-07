@@ -1,19 +1,31 @@
 .images {
     flex-direction: column;
     display: flex;
-    margin: 0 20px;
+    /*margin: 0 20px;*/
+
+    background-color: lightgreen;
 }
+
 .drop-zone {
     flex: 1;
-    padding: 0 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*padding: 0 20px;*/
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+
+    background-color: #63d153;
 }
+
 .uploaded-images{
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+
+    background-color: #4a7b4a;
 }
+
 .image {
     display: flex;
+
+    background-color: #070b07;
 }
+

@@ -19,8 +19,8 @@ export default class Images extends Component {
         let dropZone = '';
         if (this.props.isEdit) {
             dropZone =
-                <Dropzone className="drop-zone" onDrop={this.onDrop}>
-                    <p>Try dropping some files here, or click to select files to upload.</p>
+                <Dropzone className="drop-zone text" onDrop={this.onDrop}>
+                    Drop or click
                 </Dropzone>;
         }
 

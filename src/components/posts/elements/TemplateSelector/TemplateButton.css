@@ -1,9 +1,10 @@
 .template-button {
     width: 100px;
-    margin-left: 15px;
     display: flex;
-    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .row {
@@ -18,12 +19,13 @@
 .column {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.template-button  .image {
+.template-button  .template-image {
     background: green;
 }
 
-.template-button  .text {
+.template-button  .template-text {
     background: red;
 }

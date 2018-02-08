@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import './app.css';
+
 import Menu from './menu/Menu';
 import Posts from './posts/Posts';
 import TemplatesPage from './templates/TemplatesPage';

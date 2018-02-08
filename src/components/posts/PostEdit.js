@@ -85,7 +85,7 @@ class PostEdit extends Component {
     render() {
         return (
             <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
-                {this.props.isEdit? <TemplateSelector/>: ""}
+
                 {/*We need some render here*/}
 
                 <div className="row">
@@ -101,6 +101,8 @@ class PostEdit extends Component {
                     <Buttons saveClicked={this.savePost}
                              deleteClicked={this.deletePost}
                              cancelClicked={this.cancelClicked} /> : ''}
+
+                {this.props.isEdit ? <TemplateSelector/>: ""}
 
             </div>
         );

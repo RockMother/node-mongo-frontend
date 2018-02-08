@@ -36,11 +36,13 @@ export default class TemplateSelector extends Component {
             <div className="template-selector">
                 {this.state.templates.length > 0 ?
                     this.state.templates.map((template, index) => {
+
                         return <TemplateButton
                             template={template}
                             className={template === this.state.selectedTemplate ? "selected" : ""}
                             key={index} OnClick={this.templateSelected}>
                         </TemplateButton>
+
                     }) : ''
                 }
             </div>

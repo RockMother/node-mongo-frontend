@@ -8,6 +8,7 @@ export default class Buttons extends Component {
         this.save = this.save.bind(this);
         this.cancel = this.cancel.bind(this);
         this.delete = this.delete.bind(this);
+        this.next = this.next.bind(this);
     }
 
     save() {
@@ -22,9 +23,16 @@ export default class Buttons extends Component {
         this.props.deleteClicked();
     }
 
+    next() {
+        console.log("next template")
+    }
+
     render(){
         return (
             <div className="buttons">
+
+                <div className="button" onClick={this.next}>Templates</div>
+
                 <div className="button green" onClick={this.save}>Save</div>
                 <div className="button red" onClick={this.delete}>Delete</div>
                 <div className="button" onClick={this.cancel}>Cancel</div>

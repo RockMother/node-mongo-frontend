@@ -11,6 +11,7 @@ import Text from './elements/Text';
 
 import Buttons from "./elements/Buttons";
 import postActions from '../../actions/postActions';
+import TemplateSelector from './elements/TemplateSelector/TemplateSelector';
 
 class PostEdit extends Component {
 
@@ -42,7 +43,6 @@ class PostEdit extends Component {
         }
         return {
             post: Object.assign({}, props.post),
-            newImages: [],
             images
         }
     }
@@ -85,7 +85,7 @@ class PostEdit extends Component {
     render() {
         return (
             <div className={this.props.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={!this.props.isEdit ? this.editPost : function () { }}>
-
+                {this.props.isEdit? <TemplateSelector/>: ""}
                 {/*We need some render here*/}
 
                 <div className="row">
@@ -97,7 +97,7 @@ class PostEdit extends Component {
 
                 {/*End of render*/}
 
-                {this.props.isEdit && (this.state.post.title.length > 0 || this.state.post.images.length > 0 || this.state.images.length > 0) ?
+                {this.props.isEdit && (this.state.post.title.length > 0 || this.state.images.length > 0) ?
                     <Buttons saveClicked={this.savePost}
                              deleteClicked={this.deletePost}
                              cancelClicked={this.cancelClicked} /> : ''}

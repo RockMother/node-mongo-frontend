@@ -1,0 +1,6 @@
+.template-selector {
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

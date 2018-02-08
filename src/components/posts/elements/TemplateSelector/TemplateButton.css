@@ -1,0 +1,29 @@
+.template-button {
+    width: 100px;
+    margin-left: 15px;
+    display: flex;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.half {
+    flex: 50;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.template-button  .image {
+    background: green;
+}
+
+.template-button  .text {
+    background: red;
+}

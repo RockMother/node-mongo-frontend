@@ -1,15 +1,22 @@
 .template-button {
-    width: 100px;
+    width: 80px;
     display: flex;
     margin: 5px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    height: 80px;
+}
+
+.selected.template-button {
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .row {
     display: flex;
     flex-direction: row;
+    flex: 1;
 }
 
 .half {
@@ -22,10 +29,12 @@
     width: 100%;
 }
 
-.template-button  .template-image {
+.template-button .template-image {
     background: green;
+    height: 100%;
 }
 
-.template-button  .template-text {
+.template-button .template-title {
     background: red;
+    height: 100%;
 }

@@ -1,24 +1,123 @@
 import React, { Component } from 'react';
-import PostEdit from './PostEdit';
 import './Post.css';
 
-export default class Post extends Component {
+
+import Title from './elements/Title';
+import Images from './elements/Images';
+//import Code from './elements/Code';
+import Text from './elements/Text';
+//import Appender from './elements/Appender';
+//import Categories from './elements/Categories';
+
+import PostTemplate from './PostTemplate';
+import config from '../../config';
+
+import Buttons from "./elements/Buttons";
+import postActions from '../../actions/postActions';
+import TemplateSelector from './elements/TemplateSelector/TemplateSelector';
+
+class Post extends Component {
+
     constructor(props) {
         super(props);
-        this.state = {
-            isEdit: false
-        };
 
+        this.state = this.getInitialState(props);
+
+        this.savePost = this.savePost.bind(this);
+        this.deletePost = this.deletePost.bind(this);
+        this.cancelClicked = this.cancelClicked.bind(this);
         this.setEdit = this.setEdit.bind(this);
+
+        this.imageAdded = this.imageAdded.bind(this);
+        this.titleChanged = this.titleChanged.bind(this);
+        this.templateSelected = this.templateSelected.bind(this);
+    }
+
+    getInitialState(props) {
+        const images = [];
+        if (props.post.images && props.post.images.length > 0) {
+            props.post.images.forEach((image, index) => {
+                images.push({
+                    url: config.API_URL + '/image/' + image.imageId,
+                    imageName: image.imageName
+                });
+            });
+        }
+        return {
+            post: Object.assign({}, props.post),
+            images,
+            isEdit: false
+        }
     }
 
     setEdit() {
-        this.setState({ isEdit: !this.state.isEdit })
+        if (!this.state.isEdit)
+            this.setState({ isEdit: !this.state.isEdit });
+    }
+
+    cancelClicked() {
+        this.setState(this.getInitialState(this.props));
+        this.setEdit();
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState(this.getInitialState(newProps));
+    }
+
+    async savePost() {
+        await postActions.savePost(this.state.post, this.state.template._id);
+        this.setEdit();
+    }
+
+    deletePost() {
+        postActions.deletePost(this.props.post._id);
+    }
+
+    templateSelected(template) {
+        this.setState({ template });
+    }
+
+    titleChanged(title) {
+        const post = this.state.post;
+        post.title = title
+        this.setState({ post });
+    }
+
+    imageAdded(image) {
+        const post = this.state.post;
+        post.newImages = post.newImages || [];
+        post.newImages.push(image);
+        const images = this.state.images.concat({
+            imageName: image.name,
+            url: image.preview
+        });
+        this.setState({ post, images });
     }
 
     render() {
         return (
-            <PostEdit post={this.props.post} isEdit={this.state.isEdit} setEdit={this.setEdit} />
+            <div className={this.state.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={this.setEdit}>
+                {/*We need some render here*/}
+                {
+                    this.state.template ? <PostTemplate
+                        template={this.state.template}
+                        isEdit={this.state.isEdit}
+                        title={this.state.post.title}
+                        images={this.state.images}
+                        imageAdded={this.imageAdded}
+                        titleChanged={this.titleChanged}
+                    /> : ""
+                }
+                {/*End of render*/}
+                {this.state.isEdit ?
+                    <Buttons saveClicked={this.savePost}
+                        deleteClicked={this.deletePost}
+                        cancelClicked={this.cancelClicked} /> : ''}
+
+                {this.state.isEdit ? <TemplateSelector templateSelected={this.templateSelected} /> : ""}
+            </div>
         );
     }
 }
+
+export default Post;

@@ -9,6 +9,9 @@ export default class PostTemplate extends Component {
     }
 
     getReactElement(node, context) {
+        if (!node) {
+            debugger;
+        }
         if (node.children.length === 0) {
             let child = null;
             if (node.className.indexOf('template-image') >= 0) {

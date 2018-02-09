@@ -25,7 +25,15 @@ export default class TemplatesMockApiService {
                             <div class="half template-image"></div>
                             <div class="half template-title"></div>
                         </div>`
-                }                  
+                },
+                { 
+                    _id: 3,
+                    title: 'Image above Text', 
+                    template: `<div class = "column">
+                            <div class="half template-title"></div>
+                            <div class="half template-image"></div>
+                        </div>`
+                }                                 
             ]
         });
     }

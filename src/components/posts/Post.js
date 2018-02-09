@@ -30,7 +30,7 @@ class Post extends Component {
 
         this.imageAdded = this.imageAdded.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
-        this.templateSelected = this.templateSelected.bind(this);
+        this.onTemplateSelected = this.onTemplateSelected.bind(this);
     }
 
     getInitialState(props) {
@@ -57,7 +57,7 @@ class Post extends Component {
 
     cancelClicked() {
         this.setState(this.getInitialState(this.props));
-        this.setEdit();
+        this.setState({isEdit: false});
     }
 
     componentWillReceiveProps(newProps) {
@@ -65,16 +65,18 @@ class Post extends Component {
     }
 
     async savePost() {
-        await postActions.savePost(this.state.post, this.state.template._id);
-        this.setEdit();
+        await postActions.savePost(this.state.post);
+        this.setState({isEdit: false});
     }
 
     deletePost() {
         postActions.deletePost(this.props.post._id);
     }
 
-    templateSelected(template) {
-        this.setState({ template });
+    onTemplateSelected(template) {
+        const post = this.state.post;
+        post.template = template
+        this.setState({ post });
     }
 
     titleChanged(title) {
@@ -99,8 +101,8 @@ class Post extends Component {
             <div className={this.state.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={this.setEdit}>
                 {/*We need some render here*/}
                 {
-                    this.state.template ? <PostTemplate
-                        template={this.state.template}
+                    this.state.post.template ? <PostTemplate
+                        template={this.state.post.template}
                         isEdit={this.state.isEdit}
                         title={this.state.post.title}
                         images={this.state.images}
@@ -114,7 +116,9 @@ class Post extends Component {
                         deleteClicked={this.deletePost}
                         cancelClicked={this.cancelClicked} /> : ''}
 
-                {this.state.isEdit ? <TemplateSelector templateSelected={this.templateSelected} /> : ""}
+                {this.state.isEdit ? <TemplateSelector 
+                    selectedTemplate={this.state.post.template}
+                    onTemplateSelected={this.onTemplateSelected} /> : ""}
             </div>
         );
     }

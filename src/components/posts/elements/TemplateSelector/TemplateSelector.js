@@ -9,7 +9,6 @@ export default class TemplateSelector extends Component {
         super(props);
         this.state = {
             templates: templatesStore.getTemplates(),
-            selectedTemplate: null
         }
 
         this.templateSelected = this.templateSelected.bind(this);
@@ -26,13 +25,10 @@ export default class TemplateSelector extends Component {
 
     onChange() {
         this.setState({ templates: templatesStore.getTemplates() });
-        if (this.state.templates.length > 0)
-            this.templateSelected(this.state.templates[0]);
     }
 
     templateSelected(template) {
-        this.setState({selectedTemplate: template});
-        this.props.templateSelected(template);
+        this.props.onTemplateSelected(template);
     }
 
     render() {
@@ -43,7 +39,7 @@ export default class TemplateSelector extends Component {
 
                         return <TemplateButton
                             template={template}
-                            selected={template === this.state.selectedTemplate}
+                            selected={template === this.props.selectedTemplate}
                             key={index} clicked={this.templateSelected}>
                         </TemplateButton>
 

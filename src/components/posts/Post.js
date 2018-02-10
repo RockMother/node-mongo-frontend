@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import './Post.css';
 
-
-import Title from './elements/Title';
-import Images from './elements/Images';
-//import Code from './elements/Code';
-import Text from './elements/Text';
-//import Appender from './elements/Appender';
-//import Categories from './elements/Categories';
-
 import PostTemplate from './PostTemplate';
 import config from '../../config';
 

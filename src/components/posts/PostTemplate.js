@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Images from './elements/Images';
 import Title from './elements/Title';
 
 export default class PostTemplate extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     getReactElement(node, context) {
         if (!node) {
             debugger;

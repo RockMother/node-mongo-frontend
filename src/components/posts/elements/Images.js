@@ -16,14 +16,6 @@ export default class Images extends Component {
     }
 
     render() {
-        let dropZone = '';
-        if (this.props.isEdit) {
-            dropZone =
-                <Dropzone className="drop-zone text" onDrop={this.onDrop}>
-                    Image
-                </Dropzone>;
-        }
-
         let imagesList = <div className="uploaded-images">
             {this.props.images ? this.props.images.map((image, index) =>
                 <div className="image-wrapper" key={index}>

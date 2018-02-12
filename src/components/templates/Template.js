@@ -15,19 +15,20 @@ export default class Template extends Component {
             isEdit: false
         };
 
-        this.isEdit = this.isEdit.bind(this);
+        this.setEdit = this.setEdit.bind(this);
     }
 
-    isEdit() {
-        this.setState({isEdit: !this.state.isEdit})
+    setEdit() {
+        if (!this.state.isEdit)
+            this.setState({isEdit: !this.state.isEdit});
     }
 
     render() {
 
         return (
 
-            this.state.isEdit === false ?
-                <TemplateView key={this.props.template.id} template={this.props.template} isEdit={this.isEdit}/> :
+            !this.state.isEdit ?
+                <TemplateView key={this.props.template.id} template={this.props.template} setEdit={this.setEdit}/> :
                 <TemplateEdit key={this.props.template.id} template={this.props.template} isEdit={this.isEdit} />
         )
     }

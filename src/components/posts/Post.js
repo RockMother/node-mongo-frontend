@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Post.css';
 
 import PostTemplate from './PostTemplate';
@@ -44,7 +44,7 @@ class Post extends Component {
 
     setEdit() {
         if (!this.state.isEdit)
-            this.setState({ isEdit: !this.state.isEdit });
+            this.setState({isEdit: !this.state.isEdit});
     }
 
     cancelClicked() {
@@ -67,14 +67,14 @@ class Post extends Component {
 
     onTemplateSelected(template) {
         const post = this.state.post;
-        post.template = template
-        this.setState({ post });
+        post.template = template;
+        this.setState({post});
     }
 
     titleChanged(title) {
         const post = this.state.post;
-        post.title = title
-        this.setState({ post });
+        post.title = title;
+        this.setState({post});
     }
 
     imageAdded(image) {
@@ -85,7 +85,7 @@ class Post extends Component {
             imageName: image.name,
             url: image.preview
         });
-        this.setState({ post, images });
+        this.setState({post, images});
     }
 
     render() {
@@ -108,7 +108,7 @@ class Post extends Component {
                         deleteClicked={this.deletePost}
                         cancelClicked={this.cancelClicked} /> : ''}
 
-                {this.state.isEdit ? <TemplateSelector 
+                {this.state.isEdit ? <TemplateSelector
                     selectedTemplate={this.state.post.template}
                     onTemplateSelected={this.onTemplateSelected} /> : ""}
             </div>

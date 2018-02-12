@@ -13,9 +13,9 @@ export default class TemplateButton extends Component {
 
     render() {
         return (
-            <div className={`template-button ${this.props.selected ? 'selected' : ''}`}
-                onClick={this.templateClicked}
-                dangerouslySetInnerHTML={{ __html: this.props.template.template }}></div >
+            <div className={`template-button ${this.props.selected ? 'edit' : ''}`}
+                 onClick={this.templateClicked}
+                 dangerouslySetInnerHTML={{__html: this.props.template.template}}/>
         );
     }
 }

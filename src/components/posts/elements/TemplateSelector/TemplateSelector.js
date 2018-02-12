@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import templatesStore from './../../../../stores/templatesStore';
 import templateActions from './../../../../actions/templateActions';
 import TemplateButton from './TemplateButton';
-import './TemplateSelector.css';
+import './TemplateButton.css';
 
 export default class TemplateSelector extends Component {
     constructor(props) {
@@ -40,11 +40,11 @@ export default class TemplateSelector extends Component {
                         return <TemplateButton
                             template={template}
                             selected={template === this.props.selectedTemplate}
-                            key={index} clicked={this.templateSelected}>
+                            key={index}
+                            clicked={this.templateSelected}>
                         </TemplateButton>
 
-                    }) : ''
-                }
+                    }) : ''}
             </div>
         );
     }

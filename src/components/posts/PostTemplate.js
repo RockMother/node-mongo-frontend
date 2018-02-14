@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Images from './elements/Images';
 import Title from './elements/Title';
+import Code from './elements/Code';
 
 export default class PostTemplate extends Component {
     getReactElement(node, context) {
@@ -15,16 +16,24 @@ export default class PostTemplate extends Component {
                     images: this.props.images,
                     className: node.className,
                     isEdit: this.props.isEdit,
-                    imageAdded: (image) => { this.props.imageAdded(image); }
+                    imageAdded: (image) => { this.props.onImagedAdded(image); }
                 });
             } else if (node.className.indexOf('template-title') >= 0) {
                 child = React.createElement(Title, {
                     key: context.titleIndex++,
                     title: this.props.title,
                     className: node.className,
-                    onChange: (event) => { this.props.titleChanged(event.target.value); }
+                    onChange: (event) => { this.props.onTitleChanged(event.target.value); }
                 });
             }
+            else if (node.className.indexOf('template-code') >= 0) {
+                child = React.createElement(Code, {
+                    key: context.titleIndex++,
+                    code: this.props.code,
+                    className: node.className,
+                    onChange: (event) => { this.props.onCodeChanged(code); }
+                });
+            }            
             return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, child ? [child] : undefined);
         } else {
             const children = [];

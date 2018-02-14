@@ -22,7 +22,8 @@ class Post extends Component {
         this.setEdit = this.setEdit.bind(this);
 
         this.imageAdded = this.imageAdded.bind(this);
-        this.titleChanged = this.titleChanged.bind(this);
+        this.titleChanged = this.fieldChanged.bind('title', this);
+        this.codeChanged = this.fieldChanged.bind('code', this);
         this.onTemplateSelected = this.onTemplateSelected.bind(this);
     }
 
@@ -77,9 +78,9 @@ class Post extends Component {
         this.setState({ showTemplateSelector: !this.state.showTemplateSelector });
     }
 
-    titleChanged(title) {
+    fieldChanged(name, value) {
         const post = this.state.post;
-        post.title = title;
+        post[name] = value;
         this.setState({post});
     }
 
@@ -103,9 +104,11 @@ class Post extends Component {
                         template={this.state.post.template}
                         isEdit={this.state.isEdit}
                         title={this.state.post.title}
+                        code={this.state.post.code}
                         images={this.state.images}
-                        imageAdded={this.imageAdded}
-                        titleChanged={this.titleChanged}
+                        onImageAdded={this.imageAdded}
+                        onTitleChanged={this.titleChanged}
+                        onCodeChanged={this.codeChanged}
                     /> : ""
                 }
                 {/*End of render*/}

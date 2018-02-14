@@ -18,6 +18,7 @@ class Post extends Component {
         this.savePost = this.savePost.bind(this);
         this.deletePost = this.deletePost.bind(this);
         this.cancelClicked = this.cancelClicked.bind(this);
+        this.onTemplateClicked = this.onTemplateClicked.bind(this);
         this.setEdit = this.setEdit.bind(this);
 
         this.imageAdded = this.imageAdded.bind(this);
@@ -38,7 +39,8 @@ class Post extends Component {
         return {
             post: Object.assign({}, props.post),
             images,
-            isEdit: false
+            isEdit: false,
+            showTemplateSelector: false
         }
     }
 
@@ -69,6 +71,10 @@ class Post extends Component {
         const post = this.state.post;
         post.template = template;
         this.setState({post});
+    }
+
+    onTemplateClicked() {
+        this.setState({ showTemplateSelector: !this.state.showTemplateSelector });
     }
 
     titleChanged(title) {
@@ -104,11 +110,12 @@ class Post extends Component {
                 }
                 {/*End of render*/}
                 {this.state.isEdit ?
-                    <Buttons saveClicked={this.savePost}
-                        deleteClicked={this.deletePost}
-                        cancelClicked={this.cancelClicked} /> : ''}
+                    <Buttons onTemplateClicked={this.onTemplateClicked} 
+                            onSaveClicked={this.savePost}
+                            onDeleteClicked={this.deletePost}
+                            onCancelClicked={this.cancelClicked} /> : ''}
 
-                {this.state.isEdit ? <TemplateSelector
+                {this.state.isEdit && this.state.showTemplateSelector ? <TemplateSelector
                     selectedTemplate={this.state.post.template}
                     onTemplateSelected={this.onTemplateSelected} /> : ""}
             </div>

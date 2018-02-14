@@ -8,34 +8,39 @@ export default class Buttons extends Component {
         this.save = this.save.bind(this);
         this.cancel = this.cancel.bind(this);
         this.delete = this.delete.bind(this);
-        this.next = this.next.bind(this);
+        this.template = this.template.bind(this);
     }
 
     save() {
-        this.props.saveClicked();
+        this.props.onSaveClicked();
     }
 
     cancel() {
-        this.props.cancelClicked();
+        this.props.onCancelClicked();
     }
 
     delete() {
-        this.props.deleteClicked();
+        this.props.onDeleteClicked();
     }
 
-    next() {
-        console.log("next template")
+    template() {
+        this.props.onTemplateClicked();
     }
 
     render(){
+        const buttons = [];
+        if (this.props.onTemplateClicked)
+            buttons.push(<div className="button" onClick={this.template}>Templates</div>);
+        if (this.props.onSaveClicked)
+            buttons.push(<div className="button green" onClick={this.save}>Save</div>);
+        if (this.props.onDeleteClicked)
+            buttons.push(<div className="button red" onClick={this.delete}>Delete</div>);
+        if (this.props.onCancelClicked)
+            buttons.push(<div className="button" onClick={this.cancel}>Cancel</div>);            
+
         return (
             <div className="buttons">
-
-                <div className="button" onClick={this.next}>Templates</div>
-
-                <div className="button green" onClick={this.save}>Save</div>
-                <div className="button red" onClick={this.delete}>Delete</div>
-                <div className="button" onClick={this.cancel}>Cancel</div>
+                {buttons}
             </div>
         )
     }

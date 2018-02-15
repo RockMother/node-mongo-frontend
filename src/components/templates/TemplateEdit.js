@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TemplateActions from './../../actions/templateActions';
+import * as TemplateActions from './../../actions/templateActions';
 
 import Title from '../posts/elements/Title';
 import Code from './../posts/elements/Code';

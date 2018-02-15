@@ -1,30 +1,16 @@
 import React, { Component } from 'react';
-import templatesStore from './../../../../stores/templatesStore';
-import templateActions from './../../../../actions/templateActions';
+import * as templateActions from './../../../../actions/templateActions';
 import TemplateButton from './TemplateButton';
 import './TemplateButton.css';
 
-export default class TemplateSelector extends Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+class TemplateSelector extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            templates: templatesStore.getTemplates(),
-        }
-
+        this.props.actions.getTemplates()
         this.templateSelected = this.templateSelected.bind(this);
-    }
-
-    componentDidMount() {
-        templateActions.getTemplates();
-        templatesStore.addChangeListener(() => this.onChange());
-    }
-
-    componentWillUnmount() {
-        templatesStore.removeChangeListener(() => this.onChange());
-    }
-
-    onChange() {
-        this.setState({ templates: templatesStore.getTemplates() });
     }
 
     templateSelected(template) {
@@ -34,8 +20,8 @@ export default class TemplateSelector extends Component {
     render() {
         return (
             <div className="template-selector">
-                {this.state.templates.length > 0 ?
-                    this.state.templates.map((template, index) => {
+                {this.props.templates.length > 0 ?
+                    this.props.templates.map((template, index) => {
 
                         return <TemplateButton
                             template={template}
@@ -49,3 +35,17 @@ export default class TemplateSelector extends Component {
         );
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return {
+        templates: state.templates,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(templateActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelector);

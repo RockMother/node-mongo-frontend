@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import './Post.css';
 
+import {connect} from 'react-redux';
+
 import PostTemplate from './PostTemplate';
 import config from '../../config';
 
 import Buttons from "./elements/Buttons";
-import postActions from '../../actions/postActions';
+import * as postActions from '../../actions/postActions';
 import TemplateSelector from './elements/TemplateSelector/TemplateSelector';
+import { bindActionCreators } from 'redux';
 
 class Post extends Component {
-
     constructor(props) {
         super(props);
 
@@ -126,4 +128,11 @@ class Post extends Component {
     }
 }
 
-export default Post;
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(postActions, dispatch)
+    };
+}
+
+export default connect(undefined, mapDispatchToProps)(Post);

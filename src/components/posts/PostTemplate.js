@@ -31,7 +31,7 @@ export default class PostTemplate extends Component {
                     key: context.titleIndex++,
                     code: this.props.code,
                     className: node.className,
-                    onChange: (event) => { this.props.onCodeChanged(code); }
+                    onChange: (code) => { this.props.onCodeChanged(code); }
                 });
             }            
             return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, child ? [child] : undefined);

@@ -30,19 +30,19 @@ export default class Buttons extends Component {
     render(){
         const buttons = [];
         if (this.props.onTemplateClicked)
-            buttons.push(<div className="button" onClick={this.template}>Templates</div>);
+            buttons.push(<div className="button" key="1" onClick={this.template}>Templates</div>);
         if (this.props.onSaveClicked)
-            buttons.push(<div className="button green" onClick={this.save}>Save</div>);
+            buttons.push(<div className="button green" key="2" onClick={this.save}>Save</div>);
         if (this.props.onDeleteClicked)
-            buttons.push(<div className="button red" onClick={this.delete}>Delete</div>);
+            buttons.push(<div className="button red" key="3" onClick={this.delete}>Delete</div>);
         if (this.props.onCancelClicked)
-            buttons.push(<div className="button" onClick={this.cancel}>Cancel</div>);            
+            buttons.push(<div className="button" key="4" onClick={this.cancel}>Cancel</div>);            
 
         return (
             <div className="buttons">
                 {buttons}
             </div>
-        )
+        );
     }
 }
 

@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import postsStore from './../../stores/postsStore';
+// import React, { Component } from 'react';
 
-import Post from '../posts/Post';
+// import Post from '../posts/Post';
 
-export default class Nothing extends Component {
+// export default class Nothing extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: postsStore.getPosts(),
-            root: true,
-            newPost: {
-                title: "",
-                texts: [],
-                categories: [{
-                    name: this.props.category
-                }],
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             posts: postsStore.getPosts(),
+//             root: true,
+//             newPost: {
+//                 title: "",
+//                 texts: [],
+//                 categories: [{
+//                     name: this.props.category
+//                 }],
 
-                images: []
-            }
-        }
-    }
+//                 images: []
+//             }
+//         }
+//     }
 
-    render() {
-        return (
-            <div className="center">
-                {<Post key={this.state.newPost._id} post={this.state.newPost} />}
-            </div>
-        );
-    }
-}
+//     render() {
+//         return (
+//             <div className="center">
+//                 {<Post key={this.state.newPost._id} post={this.state.newPost} />}
+//             </div>
+//         );
+//     }
+// }

@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import TemplateList from './TemplateList';
 
-import templateActions from './../../actions/templateActions';
-import templatesStore from './../../stores/templatesStore';
+import * as templateActions from './../../actions/templateActions';
 
 export default class TemplatesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            templates: templatesStore.getTemplates()
+            templates: []
         };
-    }
-
-    componentDidMount() {
-        templateActions.getTemplates();
-        templatesStore.addChangeListener(() => this.onChange());
-    }
-    componentWillUnmount() {
-        templatesStore.removeChangeListener(() => this.onChange());
-    }
-    onChange() {
-        this.setState({ templates: templatesStore.getTemplates() });
     }
 
     render() {

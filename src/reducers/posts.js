@@ -8,16 +8,16 @@ export default (state = initialState.posts, action) => {
         case ActionTypes.CREATE_POST:
             return [
                 ...state,
-                Object.assign({}, action.post)
+                Object.assign({}, action.payload)
             ];
         case ActionTypes.UPDATE_POST:
             return [
-                ...state.filter(p => p._id !== action.post._id),
-                Object.assign({}, action.post)
+                ...state.filter(p => p._id !== action.payload._id),
+                Object.assign({}, action.payload)
             ];
         case ActionTypes.DELETE_POST:
             return [
-                ...state.filter(p => p._id !== action.postId)
+                ...state.filter(p => p._id !== action.payload)
             ];
         default:
             return state;

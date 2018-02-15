@@ -24,8 +24,8 @@ class Post extends Component {
         this.setEdit = this.setEdit.bind(this);
 
         this.imageAdded = this.imageAdded.bind(this);
-        this.titleChanged = this.fieldChanged.bind('title', this);
-        this.codeChanged = this.fieldChanged.bind('code', this);
+        this.titleChanged = this.fieldChanged.bind(this, 'title');
+        this.codeChanged = this.fieldChanged.bind(this, 'code');
         this.onTemplateSelected = this.onTemplateSelected.bind(this);
     }
 
@@ -61,8 +61,8 @@ class Post extends Component {
         this.setState(this.getInitialState(newProps));
     }
 
-    async savePost() {
-        await postActions.savePost(this.state.post);
+    savePost() {
+        postActions.savePost(this.state.post);
         this.setState({isEdit: false});
     }
 

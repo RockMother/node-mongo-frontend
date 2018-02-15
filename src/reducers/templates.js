@@ -4,7 +4,7 @@ import ActionTypes from '../constants/actionTypes';
 export default (state = initialState.templates, action) => {
     switch(action.type) {
         case ActionTypes.GET_TEMPLATES:
-            return action.templates;
+            return action.payload;
         case ActionTypes.CREATE_TEMPLATE:
             return [
                 ...state,

@@ -6,13 +6,9 @@ const API_URL = config.API_URL;
 const TEMPLATES_API_URL = API_URL + '/templates';
 
 export function getTemplates() {
-    return dispatch => {
-        return axios.get(TEMPLATES_API_URL).then(res => {
-            dispatch({
-                type: ActionTypes.GET_TEMPLATES,
-                templates: res.data
-            });
-        }).catch(console.error);
+    return {
+        type: ActionTypes.GET_TEMPLATES,
+        payload: axios.get(TEMPLATES_API_URL).then(res => res.data)
     }
 }
 

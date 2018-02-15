@@ -31,19 +31,15 @@ export function savePost(post) {
             formData.append('newImage' + index, newImage);
         });
     }
-    return axios[method](POSTS_API_URL, formData).then(res => {
-        return {
-            type: actionType,
-            post: res.data
-        };
-    }).catch(console.error);
+    return {
+        type: actionType,
+        payload: axios[method](POSTS_API_URL, formData).then(res => res.data)
+    };
 }
 
 export function deletePost(id) {
-    return axios.delete(`${POSTS_API_URL}/${id}`).then(res => {
-        return {
-            type: ActionTypes.DELETE_POST,
-            postId: id
-        };
-    }).catch(console.error);
+    return {
+        type: ActionTypes.DELETE_POST,
+        payload: axios.delete(`${POSTS_API_URL}/${id}`).then(() => id)
+    }
 }

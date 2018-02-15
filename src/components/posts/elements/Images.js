@@ -12,7 +12,7 @@ export default class Images extends Component {
     }
 
     onDrop(files) {
-        this.props.imageAdded(files[0]);
+        this.props.onImageAdded(files[0]);
     }
 
     render() {

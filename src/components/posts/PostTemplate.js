@@ -4,6 +4,13 @@ import Title from './elements/Title';
 import Code from './elements/Code';
 
 export default class PostTemplate extends Component {
+    constructor(props){
+        super(props);
+        this.onImageAdded = ((image) => {
+            this.props.onImageAdded(image);
+        }).bind(this);
+    }
+
     getReactElement(node, context) {
         if (!node) {
             debugger;
@@ -16,7 +23,7 @@ export default class PostTemplate extends Component {
                     images: this.props.images,
                     className: node.className,
                     isEdit: this.props.isEdit,
-                    imageAdded: (image) => { this.props.onImagedAdded(image); }
+                    onImageAdded: this.onImageAdded
                 });
             } else if (node.className.indexOf('template-title') >= 0) {
                 child = React.createElement(Title, {

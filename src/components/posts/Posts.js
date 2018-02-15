@@ -20,6 +20,9 @@ class Posts extends Component {
                 images: []
             }
         }
+
+        this.deletePost = this.deletePost.bind(this);
+        this.savePost = this.savePost.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,11 +31,25 @@ class Posts extends Component {
         }
     }
 
+    deletePost(id){
+        this.props.postActions.deletePost(id);
+    }
+
+    savePost(post) {
+        this.props.postActions.savePost(post);
+    }
+
     render() {
         return (
             <div className="list">
-                {this.state.root ? <Post key="new" post={this.state.newPost} /> : ''}
-                {this.props.posts.map(post => <Post key={post._id} post={post} />)}
+                {this.state.root ? <Post key="new" post={this.state.newPost} 
+                savePostClicked={this.savePost}
+                /> : ''}
+                {this.props.posts.map(post => <Post key={post._id} 
+                post={post} 
+                deletePostClicked={this.deletePost}
+                savePostClicked={this.savePost}
+                />)}
             </div>
         );
     }

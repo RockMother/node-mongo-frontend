@@ -62,12 +62,12 @@ class Post extends Component {
     }
 
     savePost() {
-        postActions.savePost(this.state.post);
+        this.props.savePostClicked(this.state.post);
         this.setState({isEdit: false});
     }
 
     deletePost() {
-        postActions.deletePost(this.props.post._id);
+        this.props.deletePostClicked(this.props.post._id);
     }
 
     onTemplateSelected(template) {
@@ -128,11 +128,4 @@ class Post extends Component {
     }
 }
 
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(postActions, dispatch)
-    };
-}
-
-export default connect(undefined, mapDispatchToProps)(Post);
+export default Post;

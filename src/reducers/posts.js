@@ -7,8 +7,8 @@ export default (state = initialState.posts, action) => {
             return action.payload;
         case ActionTypes.CREATE_POST:
             return [
-                ...state,
-                Object.assign({}, action.payload)
+                Object.assign({}, action.payload),
+                ...state
             ];
         case ActionTypes.UPDATE_POST:
             return [

@@ -12,8 +12,7 @@ export default (state = initialState.posts, action) => {
             ];
         case ActionTypes.UPDATE_POST:
             return [
-                ...state.filter(p => p._id !== action.payload._id),
-                Object.assign({}, action.payload)
+                ...state.map(p => p._id === action.payload._id? action.payload: p)
             ];
         case ActionTypes.DELETE_POST:
             return [

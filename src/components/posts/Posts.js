@@ -4,11 +4,16 @@ import { bindActionCreators } from 'redux';
 
 import Post from './Post';
 import * as postActions from '../../actions/postActions';
+import * as templatesActions from './../../actions/templateActions';
 
 class Posts extends Component {
     constructor(props) {
         super(props);
-        this.props.postActions.getPosts(this.props.category);
+        if (this.props.category.toLowerCase() === 'templates')
+            this.props.templatesActions.getTemplatesAsPosts();
+        else 
+            this.props.postActions.getPosts(this.props.category);
+            
         this.state = {
             root: true,
             newPost: {
@@ -64,7 +69,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        postActions: bindActionCreators(postActions, dispatch)
+        postActions: bindActionCreators(postActions, dispatch),
+        templatesActions: bindActionCreators(templatesActions, dispatch)
     };
 }
 

@@ -22,14 +22,12 @@ class TemplateSelector extends Component {
             <div className="template-selector">
                 {this.props.templates.length > 0 ?
                     this.props.templates.map((template, index) => {
-
                         return <TemplateButton
                             template={template}
                             selected={template === this.props.selectedTemplate}
                             key={index}
-                            clicked={this.templateSelected}>
+                            onTemplateClicked={this.templateSelected}>
                         </TemplateButton>
-
                     }) : ''}
             </div>
         );

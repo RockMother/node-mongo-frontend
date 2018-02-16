@@ -16,7 +16,6 @@ class App extends Component {
             <main>
                 <Menu />
                 <Switch>
-                    <Route exact path='/templates' component={TemplatesPage} />
                     {
                         this.props.categories.map((category, index) => {
                             return <Route exact

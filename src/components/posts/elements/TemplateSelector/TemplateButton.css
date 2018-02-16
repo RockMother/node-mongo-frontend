@@ -1,15 +1,37 @@
+.template-selector {
+    /*margin: 10px;*/
+    width: 100%;
+    height: 120px;
+
+    display: flex;
+    flex-direction: row;
+
+    /*padding: 5px;*/
+
+    background-color: lightgray;
+}
+
 .template-button {
-    width: 100px;
-    height: 100px;
+    width: 150px !important;
+    /*min-height: 20px;*/
+    /*max-height: 100px;*/
+    /*min-height: 50px;*/
+    height: 80px;
 
     display: flex;
     /*margin: 5px;*/
     cursor: pointer;
-    background-color: greenyellow;
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     margin-left: 20px;
     margin-top: 20px;
+
+}
+
+.template-button .template-title {
+    padding: 5px;
+    font-size: 3px;
 }
 
 .template-button:hover {
@@ -34,21 +56,15 @@
 
 .template-button .template-image {
     background: green;
+    width: 100%;
     height: 100%;
+}
+
+.template-button .template-image img {
+    width: 100%;
 }
 
 .template-button .template-title {
     /*background: red;*/
     height: 100%;
-}
-
-.template-selector {
-    /*margin: 10px;*/
-    max-height: 100px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    /*padding: 5px;*/
-
-    background-color: blueviolet;
 }

@@ -7,7 +7,6 @@ import './app.css';
 
 import Menu from './menu/Menu';
 import Posts from './posts/Posts';
-import TemplatesPage from './templates/TemplatesPage';
 import { withRouter } from 'react-router-dom';
 
 class App extends Component {

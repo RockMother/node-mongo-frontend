@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
 import './Post.css';
 
-import {connect} from 'react-redux';
-
 import PostTemplate from './PostTemplate';
 import config from '../../config';
 
 import Buttons from "./elements/Buttons";
-import * as postActions from '../../actions/postActions';
 import TemplateSelector from './elements/TemplateSelector/TemplateSelector';
-import { bindActionCreators } from 'redux';
 
 class Post extends Component {
     constructor(props) {
@@ -49,7 +45,7 @@ class Post extends Component {
 
     setEdit() {
         if (!this.state.isEdit)
-            this.setState({isEdit: !this.state.isEdit});
+            this.setState({isEdit: true});
     }
 
     cancelClicked() {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './TemplateButton.css';
 
 export default ({onTemplateClicked, selected, template}) => {

@@ -1,25 +1,13 @@
+
 .template-selector {
-    /*margin: 10px;*/
-    width: 100%;
-    height: 120px;
-
-    display: flex;
-    flex-direction: row;
-
-    /*padding: 5px;*/
-
-    background-color: lightgray;
+    display: inline-block;
 }
 
 .template-button {
-    width: 150px !important;
-    /*min-height: 20px;*/
-    /*max-height: 100px;*/
-    /*min-height: 50px;*/
-    height: 80px;
+    float: left;
+    width: 100px;
+    height: auto;
 
-    display: flex;
-    /*margin: 5px;*/
     cursor: pointer;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,6 +15,7 @@
     margin-left: 20px;
     margin-top: 20px;
 
+    overflow: hidden;
 }
 
 .template-button .template-title {
@@ -41,30 +30,26 @@
 .row {
     display: flex;
     flex-direction: row;
-    flex: 1;
-}
-
-.half {
-    flex: 50;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
 }
 
 .template-button .template-image {
     background: green;
-    width: 100%;
-    height: 100%;
+    /*min-width: 10px;*/
+    /*min-height: 10px;*/
+    overflow: hidden;
 }
 
 .template-button .template-image img {
+    max-height: 100px;
+    overflow: hidden;
+
+    display: block;
+}
+
+.column .template-image img {
     width: 100%;
 }
 
-.template-button .template-title {
-    /*background: red;*/
+.row .template-image img {
     height: 100%;
 }

@@ -115,12 +115,11 @@ class Post extends Component {
                 {/*End of render*/}
                 {
                     this.state.isEdit &&
-                    <Buttons onTemplateClicked={this.onTemplateClicked}
+                    <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
                         onSaveClicked={this.savePost}
                         onDeleteClicked={this.deletePost}
                         onCancelClicked={this.cancelClicked} />
                 }
-
                 {
                     this.state.isEdit && this.state.showTemplateSelector && <TemplateSelector
                         selectedTemplate={this.state.post.template}

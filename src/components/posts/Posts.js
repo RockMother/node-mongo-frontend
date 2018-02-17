@@ -6,7 +6,7 @@ import { bindToThis } from '../../utils/utils';
 export default class Posts extends Component {
     constructor(props) {
         super(props);
-            
+
         this.state = {
             root: true,
             newPost: {
@@ -22,7 +22,7 @@ export default class Posts extends Component {
         bindToThis(this, this.deletePostClicked, this.savePostClicked);
     }
 
-    deletePostClicked(id){
+    deletePostClicked(id) {
         this.props.deletePost(id);
     }
 
@@ -33,13 +33,14 @@ export default class Posts extends Component {
     render() {
         return (
             <div className="list">
-                {this.state.root ? <Post key="new" post={this.state.newPost} 
-                savePostClicked={this.savePostClicked}
+                {this.state.root ? <Post key="new" post={this.state.newPost}
+                    savePostClicked={this.savePostClicked}
                 /> : ''}
-                {this.props.posts.map(post => <Post key={post._id} 
-                post={post} 
-                deletePostClicked={this.deletePostClicked}
-                savePostClicked={this.savePostClicked}
+                {this.props.posts.map(post => <Post key={post._id}
+                    post={post}
+                    hideTemplatesButton={this.props.hideTemplatesButton}
+                    deletePostClicked={this.deletePostClicked}
+                    savePostClicked={this.savePostClicked}
                 />)}
             </div>
         );

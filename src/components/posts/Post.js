@@ -100,26 +100,28 @@ class Post extends Component {
     render() {
         return (
             <div className={this.state.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={this.setEdit}>
-                {/*We need some render here*/}
-                {
-                    this.state.post.template && <PostTemplate
-                        template={this.state.post.template}
-                        isEdit={this.state.isEdit}
-                        title={this.state.post.title}
-                        code={this.state.post.code}
-                        images={this.state.images}
-                        onImageAdded={this.imageAdded}
-                        onTitleChanged={this.titleChanged}
-                        onCodeChanged={this.codeChanged} />
-                }
-                {/*End of render*/}
-                {
-                    this.state.isEdit &&
-                    <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
-                        onSaveClicked={this.savePost}
-                        onDeleteClicked={this.deletePost}
-                        onCancelClicked={this.cancelClicked} />
-                }
+                <div className="paper">
+                    {/*We need some render here*/}
+                    {
+                        this.state.post.template && <PostTemplate
+                            template={this.state.post.template}
+                            isEdit={this.state.isEdit}
+                            title={this.state.post.title}
+                            code={this.state.post.code}
+                            images={this.state.images}
+                            onImageAdded={this.imageAdded}
+                            onTitleChanged={this.titleChanged}
+                            onCodeChanged={this.codeChanged} />
+                    }
+                    {/*End of render*/}
+                    {
+                        this.state.isEdit &&
+                        <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
+                            onSaveClicked={this.savePost}
+                            onDeleteClicked={this.deletePost}
+                            onCancelClicked={this.cancelClicked} />
+                    }
+                </div>
                 {
                     this.state.isEdit && this.state.showTemplateSelector && <TemplateSelector
                         selectedTemplate={this.state.post.template}

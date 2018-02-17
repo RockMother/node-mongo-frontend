@@ -1,19 +1,25 @@
-
 .template-selector {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+
+    margin-top: 10px;
 }
 
 .template-button {
-    float: left;
+    /*display: table-cell;*/
     width: 100px;
-    height: auto;
+    /*height: 100px;*/
 
     cursor: pointer;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-    margin-left: 20px;
-    margin-top: 20px;
+    /*margin-left: 20px;*/
+    margin: 10px;
+
+    transition: box-shadow 1s;
 
     overflow: hidden;
 }
@@ -21,6 +27,9 @@
 .template-button .template-title {
     padding: 5px;
     font-size: 3px;
+    /*width: calc(100% - 10px);*/
+
+    /*background-color: red;*/
 }
 
 .template-button:hover {

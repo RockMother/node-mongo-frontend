@@ -1,3 +1,7 @@
+.paper {
+    background-color: white;
+}
+
 .block {
     position: relative;
 
@@ -12,7 +16,7 @@
 
     /*height: 250px;*/
 
-    background-color: white;
+
 
 
     z-index: 1;
@@ -30,7 +34,7 @@
 }
 
 .block.edit {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
 
     min-width: 800px;
@@ -40,7 +44,7 @@
 }
 
 .block.edit:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
 }
 
 .block.new {
@@ -49,7 +53,9 @@
     min-width: 60px !important;
     min-height: 60px;
 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+
+    background-color: white;
 
     margin-top: 0;
 
@@ -60,7 +66,7 @@
 }
 
 .block.new:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
 
 
 }
@@ -86,6 +92,7 @@
 
 .new {
     max-width: none !important;
+    /*margin-top: 50px !important;*/
 }
 
 .row {

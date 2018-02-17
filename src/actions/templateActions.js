@@ -5,7 +5,7 @@ import axios from 'axios';
 const API_URL = config.API_URL;
 const TEMPLATES_API_URL = API_URL + '/templates';
 
-const templateAsPostTemplate = {
+export const templateAsPostTemplate = {
     _id: -1,
     title: "Template of template =)",
     template: "<div class='column'><div class='template-title'></div><div class='template-code'></div></div>"

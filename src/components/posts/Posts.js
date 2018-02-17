@@ -15,7 +15,8 @@ export default class Posts extends Component {
                 categories: [{
                     name: this.props.category
                 }],
-                images: []
+                images: [],
+                template: props.newPostTemplate
             }
         }
 
@@ -33,9 +34,10 @@ export default class Posts extends Component {
     render() {
         return (
             <div className="list">
-                {this.state.root ? <Post key="new" post={this.state.newPost}
+                <Post key="new" post={this.state.newPost}
                     savePostClicked={this.savePostClicked}
-                /> : ''}
+                    hideTemplatesButton={this.props.hideTemplatesButton}>
+                </Post>
                 {this.props.posts.map(post => <Post key={post._id}
                     post={post}
                     hideTemplatesButton={this.props.hideTemplatesButton}

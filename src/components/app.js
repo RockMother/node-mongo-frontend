@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './app.css';
 
-
 import Menu from './menu/Menu';
-import Posts from './posts/Posts';
-import { withRouter } from 'react-router-dom';
+import PostsContainer from './posts/PostsContainer';
 
 class App extends Component {
     render() {
@@ -20,7 +18,7 @@ class App extends Component {
                             return <Route exact
                                 key={index}
                                 path={`/${category.toLowerCase()}`}
-                                component={() => <Posts category={category} />} />
+                                component={() => <PostsContainer category={category} />} />
                         })
                     }
                     <Redirect path='/' to={`/${this.props.categories[0].toLowerCase()}`} />

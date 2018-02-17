@@ -27,6 +27,6 @@ export function getCodeComponent(context, node, code, onCodeChanged) {
         key: context.codeIndex++,
         code: code,
         className: node.className,
-        onChange: onCodeChanged
+        onCodeChanged: onCodeChanged
     });
 }

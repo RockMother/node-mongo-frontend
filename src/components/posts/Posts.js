@@ -13,7 +13,7 @@ export default class Posts extends Component {
                 title: "",
                 texts: [],
                 categories: [{
-                    name: this.props.category
+                    name: props.category
                 }],
                 images: [],
                 template: props.newPostTemplate

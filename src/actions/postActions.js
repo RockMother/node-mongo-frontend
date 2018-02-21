@@ -28,7 +28,7 @@ export function savePost(post) {
     formData.append("categories[]", JSON.stringify(post.categories));
     if (post.newImages) {
         post.newImages.forEach((newImage, index) => {
-            formData.append('newImage' + index, newImage);
+            formData.append('i' + newImage.orderInTemplate, newImage);
         });
     }
     return {

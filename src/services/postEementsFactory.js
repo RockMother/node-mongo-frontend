@@ -5,6 +5,7 @@ import Code from './../components/posts/elements/Code';
 
 export function getImageElement(context, node, image, isEdit, onImageAdded) {
     return React.createElement(Image, {
+        orderInTemplate: context.imageIndex,
         key: context.imageIndex++,
         image: image,
         className: node.className,

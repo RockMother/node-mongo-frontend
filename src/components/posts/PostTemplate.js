@@ -13,7 +13,7 @@ export default ({ onTitleChanged, onImageAdded, onCodeChanged, isEdit, images, t
         if (node.children.length === 0 || checkNodeForReactElement(node)) {
             let child = null;
             if (node.className.indexOf('template-image') >= 0) {
-                child = getImageElement(context, node, images.length > 0 ? images[0] : null, isEdit, onImageAdded);
+                child = getImageElement(context, node, images.length > context.imageIndex ? images[context.imageIndex] : null, isEdit, onImageAdded);
             } else if (node.className.indexOf('template-title') >= 0) {
                 child = getTitleComponent(context, node, title, onTitleChanged);
             }

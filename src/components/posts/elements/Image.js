@@ -2,9 +2,9 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import './Image.css';
 
-export default ({ onImageAdded, isEdit, image }) => {
+export default ({ onImageAdded, isEdit, image, orderInTemplate }) => {
     let imageContainer = <div className="uploaded-images">
-        {image && <div className="image-wrapper">
+        {image && image.url && <div className="image-wrapper">
                 <img src={image.url}
                     alt={image.imageName}
                     className="image" />
@@ -15,8 +15,8 @@ export default ({ onImageAdded, isEdit, image }) => {
     return (
         <div className="images">
             {isEdit ?
-                <Dropzone className="drop-zone" onDrop={(files) => { onImageAdded(files[0]); }}>
-                    {image? imageContainer : <div className="text">Image</div>}
+                <Dropzone className="drop-zone" onDrop={(files) => { onImageAdded(files[0], orderInTemplate); }}>
+                    {image && image.url? imageContainer : <div className="text">Image</div>}
                 </Dropzone> :
                 imageContainer
             }

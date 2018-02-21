@@ -8,6 +8,7 @@ import Buttons from "./elements/Buttons";
 import TemplateSelector from './elements/TemplateSelector/TemplateSelector';
 import { bindToThis } from '../../utils/utils';
 import { addOrUpdate } from '../../utils/array';
+import templateParserService from '../../services/templateParserService';
 
 
 class Post extends Component {
@@ -22,31 +23,73 @@ class Post extends Component {
             this.cancelClicked,
             this.onTemplateClicked,
             this.setEdit,
-            this.imageAdded,
-            this.onTemplateSelected);
+            this.imageAdded);
 
         this.titleChanged = this.fieldChanged.bind(this, 'title');
         this.codeChanged = this.fieldChanged.bind(this, 'code');
+        this.onTemplateSelected = this.fieldChanged.bind(this, 'template');
 
     }
 
-    getInitialState(props) {
-        const images = [];
-        const { categories, texts, template, title, _id } = props.post;
-        if (props.post.images && props.post.images.length > 0) {
-            props.post.images.forEach((image, index) => {
-                if (image)
-                    images.push({
-                        url: config.API_URL + '/image/' + image.imageId,
-                        imageName: image.imageName,
-                        orderInTemplate: image.orderInTemplate,
-                        origin: image
-                    });
-            });
+    getImageStatesCollection(post) {
+        if (post.template) {
+            const images = [];
+            const imageCount = templateParserService.getImageBlocksCount(post.template.template);
+            for (let i = 0; i < imageCount; i++) {
+                images.push({
+                    orderInTemplate: i
+                });
+            }
+            if (post.images && post.images.length > 0) {
+                post.images.forEach(image => {
+                    if (image.orderInTemplate <= imageCount) {
+                        images[image.orderInTemplate] = {
+                            url: config.API_URL + '/image/' + image.imageId,
+                            imageName: image.imageName,
+                            orderInTemplate: image.orderInTemplate,
+                            origin: image
+                        }
+                    }
+                });
+            }
+            if (post.newImages && post.newImages.length > 0) {
+                post.newImages.forEach(image => {
+                    if (image.orderInTemplate <= imageCount) {
+                        post.newImages.forEach(image => {
+                            images[image.orderInTemplate] = {
+                                url: image.preview,
+                                imageName: image.name,
+                                orderInTemplate: image.orderInTemplate
+                            };
+                        });
+                    }
+                })
+            }
+            return images;
         }
+        return [];
+    }
+
+    fillImagesForSave(post) {
+        const images = [];
+        this.state.images.forEach(image => {
+            if (!image.isNew) {
+                if (post.newImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
+                    images.push(image.origin);
+                } else {
+                    // Move to deleted collection
+                }
+            }
+        });
+        return images;
+    }
+
+    getInitialState(props) {
+        const { categories, texts, template, title, _id, images } = props.post;
+        const post = { categories, texts, template, newImages: [], title, _id, images };
         return {
-            post: { categories, texts, template, newImages: [], title, _id },
-            images,
+            post,
+            images: this.getImageStatesCollection(post),
             isEdit: false,
             showTemplateSelector: false
         }
@@ -68,20 +111,13 @@ class Post extends Component {
 
     savePost() {
         const post = this.state.post;
-        post.images = this.state.images.filter(i => !i.isNew && !post.newImages.find(ni => ni.orderInTemplate === i.orderInTemplate))
-            .map(i => i.origin);
+        post.images = this.fillImagesForSave(post);
         this.props.savePostClicked(post);
         this.setState({ isEdit: false });
     }
 
     deletePost() {
         this.props.deletePostClicked(this.props.post._id);
-    }
-
-    onTemplateSelected(template) {
-        const post = this.state.post;
-        post.template = template;
-        this.setState({ post });
     }
 
     onTemplateClicked() {
@@ -98,20 +134,7 @@ class Post extends Component {
         const post = this.state.post;
         image.orderInTemplate = orderInTemplate;
         addOrUpdate(post.newImages, image, i => i => i.orderInTemplate === orderInTemplate);
-        const addedImageForState = {
-            imageName: image.name,
-            url: image.preview,
-            orderInTemplate: orderInTemplate,
-            isNew: true
-        };
-        let images = this.state.images
-        while (orderInTemplate > images.length) {
-            images.push({
-                orderInTemplate: images.length
-            });
-        }
-        images = addOrUpdate(images, addedImageForState, i => i.orderInTemplate === orderInTemplate).sort((a, b) => a.orderInTemplate >= b.orderInTemplate);
-        this.setState({ post, images });
+        this.setState({ post, images: this.getImageStatesCollection(post) });
     }
 
     render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { getImageElement, getTitleComponent, getCodeComponent } from './../../services/postEementsFactory';
+import templateParserService from '../../services/templateParserService';
 
 export default ({ onTitleChanged, onImageAdded, onCodeChanged, isEdit, images, title, code, template }) => {
     function checkNodeForReactElement(node) {
@@ -29,8 +30,7 @@ export default ({ onTitleChanged, onImageAdded, onCodeChanged, isEdit, images, t
             return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, children);
         }
     }
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(template.template, "text/html");
+    const doc = templateParserService.parse(template.template);
     return (
         getReactElement(doc.body.children[0], { divIndex: 0, imageIndex: 0, titleIndex: 0, codeIndex: 0 })
     );

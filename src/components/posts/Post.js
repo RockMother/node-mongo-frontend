@@ -85,8 +85,8 @@ class Post extends Component {
     }
 
     getInitialState(props) {
-        const { categories, texts, template, title, _id, images } = props.post;
-        const post = { categories, texts, template, newImages: [], title, _id, images };
+        const { categories, texts, template, title, _id, images, code } = props.post;
+        const post = { categories, texts, template, newImages: [], title, _id, images, code };
         return {
             post,
             images: this.getImageStatesCollection(post),

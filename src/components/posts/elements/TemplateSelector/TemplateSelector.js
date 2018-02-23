@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as templateActions from './../../../../actions/templateActions';
 import TemplateButton from './TemplateButton';
-import './TemplateButton.css';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

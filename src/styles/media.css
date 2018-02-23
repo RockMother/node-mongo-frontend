@@ -2,14 +2,14 @@
 
     .block {
         /*width: 100% !important;*/
-        max-width: 100% !important;
-        min-width: 100% !important;
+        max-width: 100%;
+        min-width: 100%;
     }
     #menu {
         /*font-size: 30px !important;*/
         /*padding-bottom: 20px !important;*/
 
-        display: block !important;
+        display: block;
 
         /*TODO*/
         /*padding-left: 50px;*/
@@ -18,7 +18,7 @@
     #menu a {
         /*font-size: 36px !important;*/
         /*padding-top: 10px;*/
-        display: block !important;
+        display: block;
     }
     .delimiter {
         display: none;

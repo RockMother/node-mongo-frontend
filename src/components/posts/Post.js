@@ -152,8 +152,9 @@ class Post extends Component {
     }
 
     render() {
+        const blockClassName = `block ${this.state.isEdit? 'edit': this.props.post._id? '': 'new'}`;
         return (
-            <div className={this.state.isEdit ? "block edit" : "block" + (this.props.post._id ? "" : " new")} onClick={this.setEdit}>
+            <div className={blockClassName} onClick={this.setEdit}>
                 <div className="paper">
                     {/*We need some render here*/}
                     {
@@ -173,7 +174,7 @@ class Post extends Component {
                         this.state.isEdit &&
                         <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
                             onSaveClicked={this.savePost}
-                            onDeleteClicked={this.deletePost}
+                            onDeleteClicked={!this.props.hideDeleteButton && this.deletePost}
                             onCancelClicked={this.cancelClicked} />
                     }
                 </div>

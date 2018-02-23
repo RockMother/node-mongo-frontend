@@ -27,10 +27,6 @@
     color: white;
 }
 
-.image:hover {
-    /*transform: scale(1.05);*/
-}
-
 .drop-zone {
     cursor: pointer;
     background-color: #616161;

@@ -23,7 +23,8 @@ class Post extends Component {
             this.cancelClicked,
             this.onTemplateClicked,
             this.setEdit,
-            this.imageAdded);
+            this.imageAdded,
+            this.imageRemoved);
 
         this.titleChanged = this.fieldChanged.bind(this, 'title');
         this.codeChanged = this.fieldChanged.bind(this, 'code');
@@ -42,7 +43,7 @@ class Post extends Component {
             }
             if (post.images && post.images.length > 0) {
                 post.images.forEach(image => {
-                    if (image.orderInTemplate <= imageCount) {
+                    if (image.orderInTemplate <= imageCount && post.deletedImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
                         images[image.orderInTemplate] = {
                             url: config.API_URL + '/image/' + image.imageId,
                             imageName: image.imageName,
@@ -74,10 +75,9 @@ class Post extends Component {
         const images = [];
         this.state.images.forEach(image => {
             if (!image.isNew) {
-                if (post.newImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
+                if (post.newImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1
+                    && post.deletedImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
                     images.push(image.origin);
-                } else {
-                    // Move to deleted collection
                 }
             }
         });
@@ -86,7 +86,7 @@ class Post extends Component {
 
     getInitialState(props) {
         const { categories, texts, template, title, _id, images, code } = props.post;
-        const post = { categories, texts, template, newImages: [], title, _id, images, code };
+        const post = { categories, texts, template, newImages: [], deletedImages: [], title, _id, images, code };
         return {
             post,
             images: this.getImageStatesCollection(post),
@@ -110,7 +110,7 @@ class Post extends Component {
     }
 
     savePost() {
-        const post = this.state.post;
+        const { post } = this.state;
         post.images = this.fillImagesForSave(post);
         this.props.savePostClicked(post);
         this.setState({ isEdit: false });
@@ -125,15 +125,29 @@ class Post extends Component {
     }
 
     fieldChanged(name, value) {
-        const post = this.state.post;
+        const { post } = this.state;
         post[name] = value;
         this.setState({ post });
     }
 
     imageAdded(image, orderInTemplate) {
-        const post = this.state.post;
+        const { post } = this.state;
         image.orderInTemplate = orderInTemplate;
         addOrUpdate(post.newImages, image, i => i => i.orderInTemplate === orderInTemplate);
+        this.setState({ post, images: this.getImageStatesCollection(post) });
+    }
+
+    removeImageFromArray(images, orderInTemplate) {
+        images.splice(images.findIndex(i => i.orderInTemplate === orderInTemplate), 1);
+    }
+
+    imageRemoved(image) {
+        const { post } = this.state;
+        if (!image.origin) {
+            this.removeImageFromArray(post.newImages, image.orderInTemplate);
+        } else {
+            post.deletedImages.push(image);
+        }
         this.setState({ post, images: this.getImageStatesCollection(post) });
     }
 
@@ -150,6 +164,7 @@ class Post extends Component {
                             code={this.state.post.code}
                             images={this.state.images}
                             onImageAdded={this.imageAdded}
+                            onImageDeleted={this.imageRemoved}
                             onTitleChanged={this.titleChanged}
                             onCodeChanged={this.codeChanged} />
                     }

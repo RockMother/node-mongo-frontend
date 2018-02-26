@@ -23,12 +23,37 @@ class Post extends Component {
             this.onTemplateClicked,
             this.setEdit,
             this.imageAdded,
+            this.onTextChanged,
+            this.onTemplateSelected,
             this.imageRemoved);
 
         this.titleChanged = this.fieldChanged.bind(this, 'title');
         this.codeChanged = this.fieldChanged.bind(this, 'code');
-        this.onTemplateSelected = this.fieldChanged.bind(this, 'template');
+    }
 
+    getTextsStatesCollection(post) {
+        if (post.template) {
+            const texts = [];
+            const textsCount = templateParserService.getTextBlocksCount(post.template.template);
+            for (let i = 0; i < textsCount; i++) {
+                texts.push({
+                    orderInTemplate: i
+                });
+            }
+            if (post.texts && post.texts.length > 0) {
+                post.texts.forEach((text) => {
+                    if (text.orderInTemplate <= textsCount) {
+                        texts[text.orderInTemplate] = {
+                            text: text.text,
+                            orderInTemplate: text.orderInTemplate,
+                            origin: text
+                        }
+                    }
+                });
+            }
+            return texts;
+        }
+        return [];
     }
 
     getImageStatesCollection(post) {
@@ -83,11 +108,21 @@ class Post extends Component {
         return images;
     }
 
+    fillTextsForSave(post) {
+        return [...this.state.texts.filter(t => t.text).map(t => {
+            return {
+                text: t.text,
+                orderInTemplate: t.orderInTemplate
+            };
+        })];
+    }
+
     getInitialState(props) {
         const { categories, texts, template, title, _id, images, code } = props.post;
         const post = { categories, texts, template, newImages: [], deletedImages: [], title, _id, images, code };
         return {
             post,
+            texts: this.getTextsStatesCollection(post),
             images: this.getImageStatesCollection(post),
             isEdit: false,
             showTemplateSelector: false
@@ -111,6 +146,7 @@ class Post extends Component {
     savePost() {
         const { post } = this.state;
         post.images = this.fillImagesForSave(post);
+        post.texts = this.fillTextsForSave(post);
         this.props.savePostClicked(post);
         this.setState({ isEdit: false });
     }
@@ -127,6 +163,22 @@ class Post extends Component {
         const { post } = this.state;
         post[name] = value;
         this.setState({ post });
+    }
+
+    onTextChanged(text, orderInTemplate) {
+        const texts = this.state.texts;
+        texts[orderInTemplate].text = text;
+        this.setState({ texts });
+    }
+
+    onTemplateSelected(template) {
+        const post = this.state.post;
+        post.template = template;
+        this.setState({
+            images: this.getImageStatesCollection(post),
+            texts: this.getTextsStatesCollection(post),
+            post
+        });
     }
 
     imageAdded(image, orderInTemplate) {
@@ -151,7 +203,7 @@ class Post extends Component {
     }
 
     render() {
-        const blockClassName = `block ${this.state.isEdit? 'edit': this.props.post._id? '': 'new'}`;
+        const blockClassName = `block ${this.state.isEdit ? 'edit' : this.props.post._id ? '' : 'new'}`;
         return (
             <div className={blockClassName} onClick={this.setEdit}>
                 <div className="paper">
@@ -163,9 +215,11 @@ class Post extends Component {
                             title={this.state.post.title}
                             code={this.state.post.code}
                             images={this.state.images}
+                            texts={this.state.texts}
                             onImageAdded={this.imageAdded}
                             onImageDeleted={this.imageRemoved}
                             onTitleChanged={this.titleChanged}
+                            onTextChanged={this.onTextChanged}
                             onCodeChanged={this.codeChanged} />
                     }
                     {/*End of render*/}

@@ -20,6 +20,7 @@ export default ({ code, onCodeChanged }) => {
                 lineNumbers: true
             }}
             onChange={(editor, data, value) => {
+                //TODO fix position reset
                 onCodeChanged(value);
             }}
         />

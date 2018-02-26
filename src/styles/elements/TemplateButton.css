@@ -24,7 +24,7 @@
     overflow: hidden;
 }
 
-.template-button .template-title {
+.template-button .template-title, .template-button .template-text {
     padding: 5px;
     font-size: 3px;
     /*width: calc(100% - 10px);*/

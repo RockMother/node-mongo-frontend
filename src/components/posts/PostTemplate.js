@@ -1,8 +1,14 @@
 import React from 'react';
-import { getImageElement, getTitleComponent, getCodeComponent } from './../../services/postEementsFactory';
+import { getImageElement, getTitleComponent, getCodeComponent, getTextComponent } from './../../services/postEementsFactory';
 import templateParserService from '../../services/templateParserService';
 
-export default ({ onTitleChanged, onImageAdded, onImageDeleted, onCodeChanged, isEdit, images, title, code, template }) => {
+export default ({ onTitleChanged, onImageAdded, onImageDeleted, onCodeChanged, onTextChanged, 
+    isEdit, 
+    images,
+    texts, 
+    title, 
+    code, 
+    template }) => {
     function checkNodeForReactElement(node) {
         const className = node.className;
         return className.indexOf('template-image') >= 0 ||
@@ -20,6 +26,8 @@ export default ({ onTitleChanged, onImageAdded, onImageDeleted, onCodeChanged, i
             }
             else if (node.className.indexOf('template-code') >= 0) {
                 child = getCodeComponent(context, node, code, onCodeChanged);
+            } else if (node.className.indexOf('template-text') >= 0) {
+                child = getTextComponent(context, node, texts.length > context.textIndex ? texts[context.textIndex] : null, onTextChanged);
             }
             return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, child ? [child] : undefined);
         } else {
@@ -32,6 +40,6 @@ export default ({ onTitleChanged, onImageAdded, onImageDeleted, onCodeChanged, i
     }
     const doc = templateParserService.parse(template.template);
     return (
-        getReactElement(doc.body.children[0], { divIndex: 0, imageIndex: 0, titleIndex: 0, codeIndex: 0 })
+        getReactElement(doc.body.children[0], { divIndex: 0, imageIndex: 0, titleIndex: 0, codeIndex: 0, textIndex: 0 })
     );
 }

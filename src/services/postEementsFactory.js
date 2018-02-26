@@ -2,6 +2,7 @@ import React from 'react';
 import Image from './../components/posts/elements/Image';
 import Title from './../components/posts/elements/Title';
 import Code from './../components/posts/elements/Code';
+import Text from './../components/posts/elements/Text';
 
 export function getImageElement(context, node, image, isEdit, onImageAdded, onImageDeleted) {
     return React.createElement(Image, {
@@ -30,5 +31,14 @@ export function getCodeComponent(context, node, code, onCodeChanged) {
         code,
         className: node.className,
         onCodeChanged
+    });
+}
+
+export function getTextComponent(context, node, text, onTextChanged) {
+    return React.createElement(Text, {
+        key: context.textIndex++,
+        text,
+        className: node.className,
+        onTextChanged
     });
 }

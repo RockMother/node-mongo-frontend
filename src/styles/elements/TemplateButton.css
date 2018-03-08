@@ -4,13 +4,11 @@
     justify-content: center;
     flex-flow: row wrap;
 
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 .template-button {
-    /*display: table-cell;*/
     width: 100px;
-    /*height: 100px;*/
 
     cursor: pointer;
     background-color: white;
@@ -36,11 +34,6 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
 .template-button .template-image {
     background: green;
     /*min-width: 10px;*/
@@ -49,16 +42,9 @@
 }
 
 .template-button .template-image img {
+
     max-height: 100px;
     overflow: hidden;
 
     display: block;
-}
-
-.column .template-image img {
-    width: 100%;
-}
-
-.row .template-image img {
-    height: 100%;
 }

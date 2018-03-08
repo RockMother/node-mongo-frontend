@@ -1,3 +1,8 @@
+.block {
+    --main-width: 800px;
+    --main-margin: 50px;
+}
+
 .paper {
     background-color: white;
 }
@@ -5,19 +10,10 @@
 .block {
     position: relative;
 
-    margin-top: 50px;
+    margin-bottom: var(--main-margin);
 
-    /*width: auto;*/
-    /*min-width: 400px;*/
-
-    /*width: 800px;*/
-    max-width: 800px;
-    min-width: 800px;
-
-    /*height: 250px;*/
-
-
-
+    max-width: var(--main-width);
+    min-width: var(--main-width);
 
     z-index: 1;
 
@@ -27,78 +23,22 @@
     cursor: pointer;
 
     transition: min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
-    transition-timing-function: linear;
 
     /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
     /*transition: box-shadow 5s ease-in-out;*/
 }
 
 .block.edit {
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-    transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
-
-    min-width: 800px;
+    min-width: var(--main-width);
     min-height: 0;
 
     cursor: auto;
+
+    transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 .block.edit:hover {
     /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
-}
-
-.block.new {
-
-    width: auto;
-    min-width: 60px;
-    min-height: 60px;
-
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-
-    background-color: white;
-
-    margin-top: 0;
-
-    transition: border-radius 1s, min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
-    cursor: pointer;
-
-    border-radius: 3px;
-}
-
-.block.new:hover {
-    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
-
-
-}
-
-[contenteditable]:focus {
-    outline: 0 solid transparent;
-}
-
-.text {
-    /*padding-left: 20px;*/
-    /*padding-bottom: 20px;*/
-
-    padding: 20px;
-    width: calc(100% - 40px);
-    line-height: 20px;
-    /*background-color: rgba(91, 211, 177, 0.1);*/
-}
-
-.CodeMirror {
-    height: auto !important;
-    min-height: 100px;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.column img {
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: auto;
 }

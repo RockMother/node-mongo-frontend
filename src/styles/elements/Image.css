@@ -6,11 +6,11 @@
 }
 
 .image {
-    max-width: 500px;
-    max-height: 200px;
+    max-width: 1000px;
+    max-height: 600px;
     display: block;
     transition: transform 1s;
-    background-color: red;
+    background-color: white;
 }
 
 .button.delete-image {
@@ -20,17 +20,18 @@
     width: 50px;
     height: 20px;
     padding: 5px 10px;
-    background: #616161;
-    color: rgb(233, 233, 233);
+    background: white;
+    color: black;
+    /*color: rgb(233, 233, 233);*/
 }
 .button.delete-image:hover {
-    color: white;
+    color: red;
 }
 
 .drop-zone {
     cursor: pointer;
-    background-color: #616161;
-    color: white;
+    background-color: ghostwhite;
+    color: black;
 }
 
 

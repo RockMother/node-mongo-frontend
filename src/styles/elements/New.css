@@ -1,13 +1,13 @@
 .block.new {
 
-    width: auto;
+    /*width: auto;*/
     min-width: 60px !important;
     min-height: 60px !important;
 
     background-color: white;
 
-    margin-top: 0;
-    margin-bottom: 50px;
+    /*margin: 0;*/
+    /*margin-bottom: 50px;*/
 
     transition: border-radius 1s, min-height 1s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
     cursor: pointer;
@@ -15,8 +15,4 @@
     border-radius: 3px;
 
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-}
-
-.block.new.edit:hover {
-    padding-top: 100px;
 }

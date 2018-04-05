@@ -1,5 +1,5 @@
 .block {
-    --main-width: 800px;
+    --main-width: auto;
     --main-margin: 50px;
 }
 

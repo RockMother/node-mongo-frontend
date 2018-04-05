@@ -4,6 +4,6 @@ import './Menu.css';
 import './TemplateButton.css';
 import './Post.css';
 import './New.css';
-import './elements.css';
+import './Elements.css';
 
 import './media.css';

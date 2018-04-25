@@ -67,7 +67,7 @@ class Post extends Component {
             }
             if (post.images && post.images.length > 0) {
                 post.images.forEach(image => {
-                    if (image.orderInTemplate <= imageCount && post.deletedImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
+                    if (image && image.orderInTemplate <= imageCount && post.deletedImages.findIndex(i => i.orderInTemplate === image.orderInTemplate) === -1) {
                         images[image.orderInTemplate] = {
                             url: config.API_URL + '/image/' + image.imageId,
                             imageName: image.imageName,

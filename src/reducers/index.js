@@ -2,5 +2,6 @@ import { combineReducers } from 'redux';
 import posts from './posts';
 import templates from './templates';
 import categories from './categories';
+import token from './token';
 
-export default combineReducers({ posts, templates, categories });
+export default combineReducers({ posts, templates, categories, token });

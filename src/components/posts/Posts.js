@@ -34,11 +34,12 @@ export default class Posts extends Component {
     render() {
         return (
             <div className="list">
-                {/*<Post key="new"*/}
-                    {/*post={this.state.newPost}*/}
-                    {/*savePostClicked={this.savePostClicked}*/}
-                    {/*hideTemplatesButton={this.props.hideTemplatesButton}*/}
-                    {/*hideDeleteButton={true}>*/}
+                {this.props.showNewPost &&
+                    <Post key="new"
+                        post={this.state.newPost}
+                        savePostClicked={this.savePostClicked}
+                        hideTemplatesButton={this.props.hideTemplatesButton}
+                        hideDeleteButton={true} />}
                 {/*</Post>*/}
                 {this.props.posts.map(post => <Post key={post._id}
                     post={post}

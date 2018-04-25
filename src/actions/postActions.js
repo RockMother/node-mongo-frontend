@@ -31,15 +31,21 @@ export function savePost(post) {
             formData.append('i' + newImage.orderInTemplate, newImage);
         });
     }
+    const request = axios.create({
+        headers: {'tokenAPI': localStorage.getItem('tokenAPI')}
+      });
     return {
         type: actionType,
-        payload: axios[method](POSTS_API_URL, formData).then(res => res.data)
+        payload: request[method](POSTS_API_URL, formData).then(res => res.data)
     };
 }
 
 export function deletePost(id) {
+    const request = axios.create({
+        headers: {'tokenAPI': localStorage.getItem('tokenAPI')}
+      });    
     return {
         type: ActionTypes.DELETE_POST,
-        payload: axios.delete(`${POSTS_API_URL}/${id}`).then(() => id)
+        payload: request.delete(`${POSTS_API_URL}/${id}`).then(() => id)
     }
 }

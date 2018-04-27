@@ -1,6 +1,6 @@
 import ActionTypes from './../constants/actionTypes';
 import config from './../config';
-import axios from 'axios';
+import { makeRequest, makeSecurityRequest } from '../services/requestService';
 
 const API_URL = config.API_URL;
 const TEMPLATES_API_URL = API_URL + '/templates';
@@ -20,23 +20,17 @@ function convertTemplateToPost(template) {
     }
 }
 
-export function getTemplates() {
-    return {
-        type: ActionTypes.GET_TEMPLATES,
-        payload: axios.get(TEMPLATES_API_URL).then(res => res.data)
-    }
-}
-
 export function getTemplatesAsPosts() {
     return {
         type: ActionTypes.GET_POSTS,
-        payload: axios.get(TEMPLATES_API_URL)
+        payload: makeRequest().get(TEMPLATES_API_URL)
             .then(res => res.data)
             .then(templates => templates.map(convertTemplateToPost))
     }
 }
 
 export function saveTemplateAsPost(post) {
+    const request = makeSecurityRequest();
     let method = "post";
     let actionType = ActionTypes.CREATE_POST;
     const template = {
@@ -50,6 +44,14 @@ export function saveTemplateAsPost(post) {
     }
     return {
         type: actionType,
-        payload: axios[method](TEMPLATES_API_URL ,template).then(res => convertTemplateToPost(res.data))
+        payload: request[method](TEMPLATES_API_URL ,template).then(res => convertTemplateToPost(res.data))
+    }
+}
+
+export function deleteTemplateAsPost(id) {
+    const request = makeSecurityRequest();
+    return {
+        type: ActionTypes.DELETE_POST,
+        payload: request.delete(`${TEMPLATES_API_URL}/${id}`).then(() => id)
     }
 }

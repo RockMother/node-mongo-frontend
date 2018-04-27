@@ -13,6 +13,7 @@ export default ({ code, onCodeChanged }) => {
         <CodeMirror
             className="code"
             value={code}
+            autoCursor={false}
             options={{
                 lineWrapping: true,
                 mode: 'text/html',

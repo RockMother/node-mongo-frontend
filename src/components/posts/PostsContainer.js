@@ -31,7 +31,7 @@ class PostsContainer extends Component {
 
     render() {
         const saveAction = this.state.templates ? this.props.templatesActions.saveTemplateAsPost : this.props.postActions.savePost;
-        const deleteAction = this.state.templates ? this.props.templatesActions.deleteTemplate : this.props.postActions.deletePost;
+        const deleteAction = this.state.templates ? this.props.templatesActions.deleteTemplateAsPost : this.props.postActions.deletePost;
         const newPostTemplate = this.state.templates ? templatesActions.templateAsPostTemplate : null;
         return (
             <Posts posts={this.props.posts}

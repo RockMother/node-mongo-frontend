@@ -1,6 +1,6 @@
 import ActionTypes from './../constants/actionTypes';
-import axios from 'axios';
 import config from './../config';
+import { makeSecurityRequest, makeRequest } from '../services/requestService';
 
 const API_URL = config.API_URL;
 const POSTS_API_URL = API_URL + '/posts';
@@ -8,7 +8,7 @@ const POSTS_API_URL = API_URL + '/posts';
 export function getPosts(category) {
     return {
         type: ActionTypes.GET_POSTS,
-        payload: axios.get(`${POSTS_API_URL}?category=${category}`).then(res => res.data )
+        payload: makeRequest().get(`${POSTS_API_URL}?category=${category}`).then(res => res.data )
     }
 }
 
@@ -31,9 +31,7 @@ export function savePost(post) {
             formData.append('i' + newImage.orderInTemplate, newImage);
         });
     }
-    const request = axios.create({
-        headers: {'tokenAPI': localStorage.getItem('tokenAPI')}
-      });
+    const request = makeSecurityRequest();
     return {
         type: actionType,
         payload: request[method](POSTS_API_URL, formData).then(res => res.data)
@@ -41,9 +39,7 @@ export function savePost(post) {
 }
 
 export function deletePost(id) {
-    const request = axios.create({
-        headers: {'tokenAPI': localStorage.getItem('tokenAPI')}
-      });    
+    const request = makeSecurityRequest();  
     return {
         type: ActionTypes.DELETE_POST,
         payload: request.delete(`${POSTS_API_URL}/${id}`).then(() => id)

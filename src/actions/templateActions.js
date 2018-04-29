@@ -20,6 +20,13 @@ function convertTemplateToPost(template) {
     }
 }
 
+export function getTemplates() {
+    return {
+        type: ActionTypes.GET_TEMPLATES,
+        payload: makeRequest().get(TEMPLATES_API_URL).then(res => res.data)
+    }
+}
+
 export function getTemplatesAsPosts() {
     return {
         type: ActionTypes.GET_POSTS,

@@ -18,14 +18,18 @@
     z-index: 1;
 
     /*border-radius: 2px;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
 
     cursor: pointer;
 
-    transition: min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+    /*transition: min-width 1s, margin-top 1s, width 1s, box-shadow 1s;*/
 
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
     /*transition: box-shadow 5s ease-in-out;*/
+}
+
+.block .paper {
+    transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .block.edit {
@@ -33,12 +37,9 @@
     min-height: 0;
 
     cursor: auto;
-
-    transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
-
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
-.block.edit:hover {
-    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
+.block.edit:hover .paper {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }

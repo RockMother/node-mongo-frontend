@@ -40,8 +40,8 @@ export default class Posts extends Component {
                         savePostClicked={this.savePostClicked}
                         hideTemplatesButton={this.props.hideTemplatesButton}
                         hideDeleteButton={true} />}
-                {/*</Post>*/}
-                {this.props.posts.map(post => <Post key={post._id}
+                {/*{this.props.posts.length === 0 && '<div>Nothing here</div>'}*/}
+                {this.props.posts.length > 0 && this.props.posts.map(post => <Post key={post._id}
                     post={post}
                     hideTemplatesButton={this.props.hideTemplatesButton}
                     deletePostClicked={this.deletePostClicked}

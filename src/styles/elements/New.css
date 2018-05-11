@@ -1,7 +1,7 @@
 .block.new .paper {
 
-    min-width: 52px !important;
-    min-height: 74px !important;
+    /*min-width: 52px !important;*/
+    min-height: 40px !important;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 

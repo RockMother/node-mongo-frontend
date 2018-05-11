@@ -12,6 +12,7 @@ export default ({text, onTextChanged}) => {
             html={'' || text.text}
             disabled={false}
             onChange={onChangeHandler}
+            placeholder="Some text"
         />
     );
 };

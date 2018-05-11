@@ -1,6 +1,8 @@
 .block {
-    --main-width: auto;
+    --main-width: 700px;
     --main-margin: 50px;
+
+    /*line-height: 40px;*/
 }
 
 .paper {

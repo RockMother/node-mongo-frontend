@@ -11,8 +11,13 @@
     width: 100%;
     box-sizing: border-box;
 
-    line-height: 20px;
+    line-height: 24px;
     /*background-color: rgba(91, 211, 177, 0.1);*/
+}
+
+[contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    display: block; /* For Firefox */
 }
 
 .CodeMirror {

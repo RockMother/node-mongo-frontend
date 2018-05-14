@@ -25,7 +25,8 @@ class Post extends Component {
             this.imageAdded,
             this.onTextChanged,
             this.onTemplateSelected,
-            this.imageRemoved);
+            this.imageRemoved,
+            this.onBoldClicked);
 
         this.titleChanged = this.fieldChanged.bind(this, 'title');
         this.codeChanged = this.fieldChanged.bind(this, 'code');
@@ -202,6 +203,13 @@ class Post extends Component {
         this.setState({ post, images: this.getImageStatesCollection(post) });
     }
 
+    onBoldClicked() {
+
+        console.log('onBoldClicked 1')
+
+        console.log(getSelectionText())
+    }
+
     render() {
         const blockClassName = `block ${this.state.isEdit ? 'edit' : this.props.post._id ? '' : 'new'}`;
         return (
@@ -228,7 +236,8 @@ class Post extends Component {
                         <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
                             onSaveClicked={this.savePost}
                             onDeleteClicked={!this.props.hideDeleteButton && this.deletePost}
-                            onCancelClicked={this.cancelClicked} />
+                            onCancelClicked={this.cancelClicked}
+                            onBoldClicked={this.onBoldClicked} />
                     }
                 </div>
                 {
@@ -239,6 +248,16 @@ class Post extends Component {
             </div>
         );
     }
+}
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type !== "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
 }
 
 export default Post;

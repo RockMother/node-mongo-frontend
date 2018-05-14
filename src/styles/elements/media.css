@@ -5,8 +5,8 @@
         min-width: 100%;
     }
     .block.edit {
-        /*max-width: 100%;*/
-        /*min-width: 100%;*/
+        max-width: 100%;
+        min-width: 100%;
     }
     #menu {
         /*font-size: 30px !important;*/

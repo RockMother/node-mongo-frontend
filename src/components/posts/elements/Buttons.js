@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default ({onSaveClicked, onCancelClicked, onDeleteClicked, onTemplateClicked}) => {
+export default ({onSaveClicked, onCancelClicked, onDeleteClicked, onTemplateClicked, onBoldClicked}) => {
     const buttons = [];
+
+    if (onBoldClicked)
+        buttons.push(<div className="button" key="0" onClick={onBoldClicked}><b>B</b></div>);
     if (onTemplateClicked)
         buttons.push(<div className="button" key="1" onClick={onTemplateClicked}>T</div>);
     if (onSaveClicked)

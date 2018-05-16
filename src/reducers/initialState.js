@@ -7,6 +7,7 @@ let state = {
 
 if (state.token) {
     state.categories.push('Dev');
+    state.categories.push('CI');
     state.categories.push('Templates');
 }
 

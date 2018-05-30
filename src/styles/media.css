@@ -1,0 +1,22 @@
+@media only screen and (max-width : 700px) {
+
+    .delimiter {
+        display: none;
+    }
+    #menu {
+        display: block;
+    }
+    #menu a {
+        display: block;
+        padding: 10px;
+    }
+
+    .block {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .block.edit {
+        max-width: 100%;
+        min-width: 100%;
+    }
+}

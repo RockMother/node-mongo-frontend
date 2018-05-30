@@ -1,18 +1,14 @@
-/*@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400&subset=cyrillic,cyrillic-ext,latin-ext');*/
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=cyrillic,cyrillic-ext,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600&subset=cyrillic,cyrillic-ext,latin-ext');
 
 body {
     margin: 0;
     padding: 0;
+}
 
+body {
     font-family: 'Montserrat', sans-serif;
-    /*font-family: 'Open Sans', sans-serif;*/
-
-    /*letter-spacing: 1px;*/
-
     font-weight: 300;
-
     background-color: #d7d7dd;
 }
 
@@ -22,19 +18,17 @@ a {
 }
 
 a:hover {
-    /*color: #35a8d8;*/
-    color: rgba(20, 137, 181, 0.76);
+    color: rgba(20, 137, 181, 0.7);
 }
 
-html {
-    overflow: scroll;
-    overflow-x: hidden;
+main {
+    padding-bottom: 100px;
 }
-::-webkit-scrollbar {
-    width: 0;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
-}
-/* optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
+
+.list {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

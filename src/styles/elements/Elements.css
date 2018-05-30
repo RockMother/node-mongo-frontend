@@ -3,10 +3,6 @@
 }
 
 .text {
-    /*padding-left: 20px;*/
-    /*padding-bottom: 20px;*/
-    /*position: absolute;*/
-
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -23,30 +19,4 @@
 .CodeMirror {
     height: auto !important;
     min-height: 100px;
-}
-
-.row {
-
-    /*position: relative;*/
-    /**/
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: space-between;*/
-    /**/
-    /*width: 100%;*/
-    /**/
-    /*background-color: red;*/
-}
-
-.row img {
-    /*max-width: 70%;*/
-    /*max-height: none;*/
-    /*height: auto;*/
-}
-
-.column img {
-    /*max-width: none;*/
-    /*max-height: none;*/
-    /*width: 100%;*/
-    /*height: auto;*/
 }

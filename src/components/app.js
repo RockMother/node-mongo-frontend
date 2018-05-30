@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Nothing from './nothing/Nothing';
-
 import Menu from './menu/Menu';
 import PostsContainer from './posts/PostsContainer';
 
@@ -13,7 +11,6 @@ class App extends Component {
             <main>
                 <Menu />
                 <Switch>
-                    <Route exact path='/nothing' component={Nothing}/>
                     {
                         this.props.categories.map((category, index) => {
                             return <Route exact

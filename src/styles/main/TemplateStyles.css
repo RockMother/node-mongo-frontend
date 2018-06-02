@@ -1,0 +1,24 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    /*background-color: white;*/
+}
+
+.card {
+    background-color: white;
+}
+
+.grid {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+    background-color: transparent;
+}
+
+.grid img {
+    /*padding-bottom: 5px;*/
+    /*width: 30px;*/
+}

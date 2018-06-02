@@ -1,7 +1,3 @@
-[contenteditable]:focus {
-    outline: 0 solid transparent;
-}
-
 .text {
     padding: 20px;
     width: 100%;
@@ -11,12 +7,11 @@
     /*background-color: rgba(91, 211, 177, 0.1);*/
 }
 
+[contenteditable]:focus {
+    outline: 0 solid transparent;
+}
+
 [contenteditable=true]:empty:before{
     content: attr(placeholder);
     display: block; /* For Firefox */
-}
-
-.CodeMirror {
-    height: auto !important;
-    min-height: 100px;
 }

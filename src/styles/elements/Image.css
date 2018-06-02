@@ -1,4 +1,4 @@
-.image-container{
+.image-container {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -19,7 +19,8 @@
     top: 10px;
     right: 10px;
     width: 20px;
-    /*height: 20px;*/
+    line-height: 20px;
+    height: 20px;
     /*padding: 5px 10px;*/
     background: rgba(255, 255, 255, 0.5);
     color: black;

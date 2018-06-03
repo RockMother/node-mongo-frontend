@@ -18,7 +18,7 @@ export default ({ onImageAdded, onImageDeleted, isEdit, image, orderInTemplate }
             {isEdit && image && image.url && <div className="button delete-image" onClick={onImageDeletedHandler}>&#10005;</div>}
             {isEdit ?
                 <Dropzone className="drop-zone" onDrop={(files) => { onImageAdded(files[0], orderInTemplate); }}>
-                    {image && image.url ? imageContainer : <div className="text fill">Click to upload image</div>}
+                    {image && image.url ? imageContainer : <div className="text fill">Click to upload image or drop files here</div>}
                 </Dropzone> :
                 imageContainer
             }

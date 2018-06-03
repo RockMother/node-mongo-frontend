@@ -9,6 +9,7 @@
 
 .template-button {
     width: 100px;
+    /*max-height: 100px;*/
 
     cursor: pointer;
     /*background-color: white;*/
@@ -37,6 +38,10 @@
 
 .template-button:hover {
     /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
+}
+
+.template-button .grid2 {
+    max-height: 100px;
 }
 
 .template-button .template-image {

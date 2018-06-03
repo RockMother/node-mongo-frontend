@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     /*background-color: white;*/
+
+    overflow: hidden;
 }
 
 .card {
@@ -20,25 +22,63 @@
     background-color: transparent;
 }
 
-.square {
-    padding-top: 100%; /* 1:1 Aspect Ratio */
-    position: relative;
+.grid2 {
+    display: grid;
+    grid-template-areas:
+            'block1 block1 block2 block2 block2 block2'
+            'block3 block5 block5 block5 block5 block6'
+            'block3 block5 block5 block5 block5 block7'
+            'block4 block5 block5 block5 block5 block7'
+            'block8 block8 block8 block8 block8 block8';
+    /*grid-gap: 10px;*/
+
+    /*height: 250px;*/
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.horizontal {
-    padding-top: 30%;
-    position: relative;
+.grid2 > div {
+    /*background-color: rgba(255, 0, 0, 0.18);*/
+    /*text-align: center;*/
+    /*padding: 20px 0;*/
+    /*font-size: 30px;*/
+    /*max-height: 10px;*/
 }
 
-.square img,.horizontal img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    display: block;
-    margin: auto;
-
-    /*background-image: url('../../../public/cloud.png');*/
+.block1 {
+    grid-area: block1;
 }
+
+.block2 {
+    grid-area: block2;
+}
+
+.block3 {
+    grid-area: block3;
+}
+
+.block4 {
+    grid-area: block4;
+}
+
+.block5 {
+    grid-area: block5;
+}
+
+.block6 {
+    grid-area: block6;
+}
+
+.block7 {
+    grid-area: block7;
+}
+
+.block8 {
+    grid-area: block8;
+}
+
+.block9 {
+    grid-area: block8;
+}
+

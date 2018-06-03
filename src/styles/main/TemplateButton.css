@@ -24,7 +24,7 @@
 }
 
 .template-button .template-title, .template-button .template-text {
-    padding: 5px;
+    padding: 3px;
     font-size: 3px;
     /*width: calc(100% - 10px);*/
     align-self: stretch;
@@ -41,7 +41,8 @@
 }
 
 .template-button .grid2 {
-    max-height: 100px;
+    grid-template-columns: repeat(7, calc(100px/7));
+    grid-template-rows: repeat(8, 7px);
 }
 
 .template-button .template-image {

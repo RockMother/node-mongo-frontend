@@ -25,25 +25,17 @@
 .grid2 {
     display: grid;
     grid-template-areas:
-            'block1 block1 block2 block2 block2 block2'
-            'block3 block5 block5 block5 block5 block6'
-            'block3 block5 block5 block5 block5 block7'
-            'block4 block5 block5 block5 block5 block7'
-            'block8 block8 block8 block8 block8 block8';
-    /*grid-gap: 10px;*/
+            'block1 block1 block2 block2 block2 block2 block2'
+            'block1 block1 block2 block2 block2 block2 block2'
+            'block3 block5 block5 block5 block5 block5 block6'
+            'block3 block5 block5 block5 block5 block5 block7'
+            'block3 block5 block5 block5 block5 block5 block7'
+            'block4 block5 block5 block5 block5 block5 block7'
+            'block4 block5 block5 block5 block5 block5 block7'
+            'block8 block8 block8 block8 block8 block8 block8';
 
-    /*height: 250px;*/
-
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.grid2 > div {
-    /*background-color: rgba(255, 0, 0, 0.18);*/
-    /*text-align: center;*/
-    /*padding: 20px 0;*/
-    /*font-size: 30px;*/
-    /*max-height: 10px;*/
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: repeat(8, 50px);
 }
 
 .block1 {

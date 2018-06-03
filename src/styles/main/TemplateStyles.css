@@ -8,6 +8,8 @@
     background-color: white;
 }
 
+/*For images*/
+
 .grid {
     display: flex;
 
@@ -18,7 +20,25 @@
     background-color: transparent;
 }
 
-.grid img {
-    /*padding-bottom: 5px;*/
-    /*width: 30px;*/
+.square {
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+}
+
+.horizontal {
+    padding-top: 30%;
+    position: relative;
+}
+
+.square img,.horizontal img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: block;
+    margin: auto;
+
+    /*background-image: url('../../../public/cloud.png');*/
 }

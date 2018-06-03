@@ -15,3 +15,16 @@
     content: attr(placeholder);
     display: block; /* For Firefox */
 }
+
+/*For image upload message*/
+.fill {
+    /*margin: 10px;*/
+    box-sizing: border-box;
+
+    border: 1px dashed lightgray;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

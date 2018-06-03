@@ -40,16 +40,10 @@
 }
 
 .template-button .template-image {
-    /*background: green;*/
-    /*min-width: 10px;*/
-    /*min-height: 10px;*/
     overflow: hidden;
 }
 
 .template-button .template-image img {
-
-    max-height: 100px;
-    overflow: hidden;
-
+    /*overflow: hidden;*/
     display: block;
 }

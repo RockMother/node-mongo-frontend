@@ -1,24 +1,28 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 
-export default ({ onImageAdded, onImageDeleted, isEdit, image, orderInTemplate }) => {
+export default ({ onImageAdded, onImageDeleted, isEdit, image }) => {
     const onImageDeletedHandler = (event) => {
-        onImageDeleted(image);
-        event.preventDefault();
+        onImageDeleted();
     };
     let imageContainer =
-        image && image.url && <div className="image-wrapper">
-            <img src={image.url}
+        image && <div className="image-wrapper">
+            { image.url && <img src={image.url}
                 alt={image.imageName}
                 className="image" />
+            }
+            { !image.url && image.preview && <img src={image.preview}
+                alt={image.name}
+                className="image" />
+            }
         </div>;
 
     return (
         <div className="image-container">
-            {isEdit && image && image.url && <div className="button delete-image" onClick={onImageDeletedHandler}>&#10005;</div>}
+            {isEdit && image && <div className="button delete-image" onClick={onImageDeletedHandler}>&#10005;</div>}
             {isEdit ?
-                <Dropzone className="drop-zone" onDrop={(files) => { onImageAdded(files[0], orderInTemplate); }}>
-                    {image && image.url ? imageContainer : <div className="text fill">Click to upload image or drop files here</div>}
+                <Dropzone className="drop-zone" onDrop={(files) => { onImageAdded(files[0]); }}>
+                    {imageContainer || <div className="text fill">Click to upload image or drop files here</div>}
                 </Dropzone> :
                 imageContainer
             }

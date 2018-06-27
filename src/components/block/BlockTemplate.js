@@ -2,20 +2,29 @@ import React from 'react';
 import { getElementDescriptors } from './../../services/blockEementsFactory';
 import templateParserService from '../../services/templateParserService';
 
-export default ({ onValueChanged, isEdit, model, template }) => {
+export default ({ isEdit, model, template, modelChanged }) => {
     function checkNodeForReactElement(node) {
-        return getElementDescriptors().find(e => node.className.indexOf(e.selector) >= 0 );
+        return getElementDescriptors().find(e => node.className.indexOf(e.selector) >= 0);
     }
 
-    function getInitiallValue(descriptor, model, context) {
+    function getInitiallValue(descriptor, context) {
         if (model[descriptor.modelName]) {
-            const value = model[descriptor.modelName];
-            if (value instanceof Array) {
+            const field = model[descriptor.modelName];
+            if (field instanceof Array) {
                 const index = context.propertyIndexes[descriptor.name];
-                return value.length > index? value[index]: null;
+                return field.length > index ? field[index] : null;
             }
-            return value;
+            return field;
         }
+    }
+
+    function setModelValue(descriptor, value, key) {
+        if (model[descriptor.modelName] && model[descriptor.modelName] instanceof Array) {
+            model[descriptor.modelName][key] = value;
+        } else {
+            model[descriptor.modelName] = value;
+        }
+        modelChanged();
     }
 
     function getReactElement(node, context) {
@@ -23,35 +32,29 @@ export default ({ onValueChanged, isEdit, model, template }) => {
         if (node.children.length === 0 || childDescriptor) {
             let child = null;
             if (childDescriptor) {
-                child = childDescriptor.factory(context, node, getInitiallValue(childDescriptor, model, context), onValueChanged, isEdit)
+                child = childDescriptor.factory(context,
+                    node,
+                    getInitiallValue(childDescriptor, context),
+                    (value, key) => setModelValue(childDescriptor, value, key),
+                    isEdit);
             }
-            // if (node.className.indexOf('template-image') >= 0) {
-            //     child = getImageElement(context, node, images.length > context.imageIndex ? images[context.imageIndex] : null, isEdit, onImageAdded, onImageDeleted);
-            // } else if (node.className.indexOf('template-title') >= 0) {
-            //     child = getTitleComponent(context, node, title, onValueChanged);
-            // }
-            // else if (node.className.indexOf('template-code') >= 0) {
-            //     child = getCodeComponent(context, node, code, onValueChanged);
-            // } else if (node.className.indexOf('template-text') >= 0) {
-            //     child = getTextComponent(context, node, texts.length > context.textIndex ? texts[context.textIndex] : null, onTextChanged);
-            // }
-            return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, child ? [child] : undefined);
+            return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.propertyIndexes.divIndex++ }, child ? [child] : undefined);
         } else {
             const children = [];
             for (let i = 0; i < node.children.length; i++) {
                 children.push(getReactElement(node.children[i], context));
             }
-            return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.divIndex++ }, children);
+            return React.createElement(node.nodeName.toLowerCase(), { className: node.className, key: context.propertyIndexes.divIndex++ }, children);
         }
     }
 
-    const propertyIndexes = {}
+    const propertyIndexes = { divIndex: 0 }
     getElementDescriptors().forEach(e => {
         propertyIndexes[e.name] = 0;
     });
     const doc = templateParserService.parse(template.template);
     return (
-        
+
         getReactElement(doc.body.children[0], { propertyIndexes })
     );
 }

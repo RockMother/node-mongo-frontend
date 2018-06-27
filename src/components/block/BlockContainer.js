@@ -13,6 +13,7 @@ class BlockContainer extends Component {
         this.state = this.getInitialState(props);
 
         bindToThis(this, this.setEdit, 
+                        this.modelChanged,
                         this.onTemplateClicked,
                         this.onTemplateSelected,
                         this.cancelClicked,
@@ -24,9 +25,13 @@ class BlockContainer extends Component {
         return {
             isEdit: false,
             template: props.template,
-            model: props.model,
+            model: JSON.parse(JSON.stringify(props.model)),
             showTemplateSelector: false
         }
+    }
+
+    modelChanged() {
+        this.setState({model: JSON.parse(JSON.stringify(this.state.model)) });
     }
 
     cancelClicked() {
@@ -43,7 +48,8 @@ class BlockContainer extends Component {
     }
 
     setEdit() {
-        this.setState({isEdit: !this.state.isEdit});
+        if (!this.state.isEdit)
+            this.setState({isEdit: true});
     }
 
     onTemplateClicked() {
@@ -61,7 +67,8 @@ class BlockContainer extends Component {
             <div className={blockClassName}>
                 <Block onClick={this.setEdit}
                     model={model} 
-                    template={template} 
+                    template={template}
+                    modelChanged={this.modelChanged}
                     isEdit={isEdit}>
                 </Block>
                 {

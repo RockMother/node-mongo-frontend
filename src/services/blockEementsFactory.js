@@ -9,14 +9,14 @@ const image = {
     modelName: 'images',
     selector: 'template-image', 
     factory (context, node, initialValue, onValueChanged, isEdit) {
+        const key = context.propertyIndexes[image.name]++;
         return React.createElement(Image, {
-            orderInTemplate: context.imageIndex,
-            key: context.propertyIndexes[image.name]++,
+            key: key,
             image: initialValue,
             className: node.className,
             isEdit,
-            onImageAdded: onValueChanged,
-            onImageDeleted: onValueChanged
+            onImageAdded: (image) => onValueChanged(image, key),
+            onImageDeleted: () => onValueChanged(null, key)
         });
     } 
 };
@@ -25,11 +25,12 @@ const text = {
     modelName: 'texts',
     selector: 'template-text', 
     factory (context, node, initialValue, onValueChanged) {
+        const key = context.propertyIndexes[text.name]++;
         return React.createElement(Text, {
-            key: context.propertyIndexes[text.name]++,
+            key: key,
             text: initialValue,
             className: node.className,
-            onTextChanged: onValueChanged
+            onTextChanged: (text) => onValueChanged(text, key)
         });
     } 
 };
@@ -38,11 +39,12 @@ const code = {
     modelName: 'code',
     selector: 'template-code',
      factory(context, node, initialValue, onValueChanged) {
+        const key = context.propertyIndexes[code.name]++;
         return React.createElement(Code, {
-            key: context.propertyIndexes[code.Name]++,
+            key: key,
             code: initialValue,
             className: node.className,
-            onCodeChanged: onValueChanged
+            onCodeChanged: (value) => onValueChanged(value, key)
         });
     }
 }     
@@ -51,11 +53,12 @@ const title = {
     modelName: 'title',
     selector: 'template-title', 
     factory(context, node, initialValue, onValueChanged) {
+        const key = context.propertyIndexes[title.name]++;
         return React.createElement(Title, {
             key: context.propertyIndexes[title.name]++,
             title: initialValue,
             className: node.className,
-            onChange: onValueChanged
+            onChange: (value) => onValueChanged(value, key)
         });
     }
 };

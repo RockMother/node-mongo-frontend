@@ -1,3 +1,5 @@
+import { getElementDescriptors } from "./blockEementsFactory";
+
 class TemplateParserService {
     constructor() {
         this.cachedTemplates = [];
@@ -19,6 +21,17 @@ class TemplateParserService {
     getTextBlocksCount(template) {
         const doc = this.parse(template);
         return doc.getElementsByClassName('template-text').length;
+    }
+
+    getProperties(template) {
+        const doc = this.parse(template);
+        return getElementDescriptors()
+            .map(elementDescriptor => {
+                elementDescriptor.count = doc.getElementsByClassName(elementDescriptor.selector);
+                return elementDescriptor;
+            })
+            .filter(elementDescriptor => elementDescriptor.count > 0);
+            
     }
 }
 

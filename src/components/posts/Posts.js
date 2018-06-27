@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Post from './Post';
+import config from '../../config';
 
 import { bindToThis } from '../../utils/utils';
+import BlockContainer from '../block/BlockContainer';
 
 export default class Posts extends Component {
     constructor(props) {
@@ -41,13 +43,30 @@ export default class Posts extends Component {
                         hideTemplatesButton={this.props.hideTemplatesButton}
                         hideDeleteButton={true} />}
                 {/*{this.props.posts.length === 0 && '<div>Nothing here</div>'}*/}
-                {this.props.posts.length > 0 && this.props.posts.map(post => <Post key={post._id}
-                    post={post}
+                {this.props.posts.length > 0 && this.props.posts.map(post => <BlockContainer key={post._id}
+                    model={convertPostToBlockModel(post)}
+                    template={post.template}
                     hideTemplatesButton={this.props.hideTemplatesButton}
                     deletePostClicked={this.deletePostClicked}
                     savePostClicked={this.savePostClicked}
                 />)}
             </div>
         );
+    }
+}
+
+function convertImage(image) {
+        return {
+            url: config.API_URL + '/image/' + image.imageId,
+            imageName: image.imageName,
+            orderInTemplate: image.orderInTemplate
+        }
+}
+
+function convertPostToBlockModel(post) {
+    return {
+        title: post.title || "",
+        texts: post.texts || [],
+        images: post.images && post.images.length > 0? post.images.map(i => convertImage(i)): [],
     }
 }

@@ -21,8 +21,8 @@ export function savePost(post) {
         actionType = ActionTypes.UPDATE_POST;
         formData.append("_id", post._id);
     }
-    formData.append("title", post.title);
     formData.append("template", JSON.stringify(post.template));
+    formData.append("titles[]", JSON.stringify(post.titles));
     formData.append('images[]', JSON.stringify(post.images));
     formData.append("texts[]", JSON.stringify(post.texts));
     formData.append("categories[]", JSON.stringify(post.categories));

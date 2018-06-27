@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from './Post';
+
 import config from '../../config';
 
 import { bindToThis } from '../../utils/utils';
@@ -9,7 +9,12 @@ export default class Posts extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+        this.state = this.getInitialState(props);
+        bindToThis(this, this.deleteClicked, this.saveClicked);
+    }
+
+    getInitialState(props) {
+        return {
             root: true,
             newPost: {
                 title: "",
@@ -18,37 +23,37 @@ export default class Posts extends Component {
                     name: props.category
                 }],
                 images: [],
-                template: props.newPostTemplate
+                template: props.newTemplate
             }
         }
-
-        bindToThis(this, this.deletePostClicked, this.savePostClicked);
     }
 
-    deletePostClicked(id) {
-        this.props.deletePost(id);
+    deleteClicked(id) {
+        this.props.delete(id);
     }
 
-    savePostClicked(post) {
-        this.props.savePost(post);
+    saveClicked(originalPost, blockModel, template) {
+        this.props.save(convertToPost(blockModel, template, originalPost));
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState(this.getInitialState(newProps))
     }
 
     render() {
         return (
             <div className="list">
                 {this.props.showNewPost &&
-                    <Post key="new"
-                        post={this.state.newPost}
-                        savePostClicked={this.savePostClicked}
-                        hideTemplatesButton={this.props.hideTemplatesButton}
+                    <BlockContainer key="new"
+                        model={convertPostToBlockModel(this.state.newPost)}
+                        saveClicked={ this.saveClicked.bind(this, this.state.newPost) }
                         hideDeleteButton={true} />}
                 {/*{this.props.posts.length === 0 && '<div>Nothing here</div>'}*/}
                 {this.props.posts.length > 0 && this.props.posts.map(post => <BlockContainer key={post._id}
                     model={convertPostToBlockModel(post)}
                     template={post.template}
-                    hideTemplatesButton={this.props.hideTemplatesButton}
-                    deletePostClicked={this.deletePostClicked}
-                    savePostClicked={this.savePostClicked}
+                    deleteClicked={ this.deleteClicked.bind(this, post._id) }
+                    saveClicked={ this.saveClicked.bind(this, post) }
                 />)}
             </div>
         );
@@ -59,14 +64,56 @@ function convertImage(image) {
         return {
             url: config.API_URL + '/image/' + image.imageId,
             imageName: image.imageName,
-            orderInTemplate: image.orderInTemplate
+            orderInTemplate: image.orderInTemplate,
+            _id: image._id
         }
+}
+
+function getNewImages(blockModel) {
+    return blockModel.images.map((image, index)  => {
+        if (image !== null && image instanceof File) {
+            image.orderInTemplate = index;
+            return image;
+        }
+        return null;
+    }).filter(i => i !== null);
+}
+
+function getImages(blockModel, originalPost){
+    return originalPost.images.filter((image) => {
+        return blockModel.images.length > image.orderInTemplate 
+            && blockModel.images[image.orderInTemplate] !== null
+            && blockModel.images[image.orderInTemplate]._id;
+    });
+}
+
+function convertToPost(blockModel, template, originalPost) {
+    return {
+        _id: originalPost._id,
+        titles: blockModel.titles.map((t, index) => {
+            return {
+                title: t,
+                orderInTemplate: index
+            }            
+        }),
+        texts: blockModel.texts.map((t, index) => {
+            return {
+                text: t,
+                orderInTemplate: index
+            }
+        }),
+        template: template,
+        newImages: getNewImages(blockModel, originalPost),
+        images: getImages(blockModel, originalPost),
+        categories: originalPost.categories
+    }
 }
 
 function convertPostToBlockModel(post) {
     return {
-        title: post.title || "",
+        titles: post.titles || [],
         texts: post.texts || [],
         images: post.images && post.images.length > 0? post.images.map(i => convertImage(i)): [],
     }
 }
+

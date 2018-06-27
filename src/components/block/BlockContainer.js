@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import Buttons from './../posts/elements/Buttons';
+import Buttons from '../buttons/Buttons';
 
 import Block from './Block'
-import TemplateSelector from './../posts/elements/TemplateSelector/TemplateSelector';
+import TemplateSelector from './../templateSelector/TemplateSelector';
 
 import { bindToThis } from './../../utils/utils';
 
@@ -25,13 +25,17 @@ class BlockContainer extends Component {
         return {
             isEdit: false,
             template: props.template,
-            model: JSON.parse(JSON.stringify(props.model)),
+            model: Object.assign({}, this.props.model),
             showTemplateSelector: false
         }
     }
 
+    componentWillReceiveProps(newProps) {
+        this.setState(this.getInitialState(newProps));
+    }
+
     modelChanged() {
-        this.setState({model: JSON.parse(JSON.stringify(this.state.model)) });
+        this.setState({model:  Object.assign({}, this.state.model) });
     }
 
     cancelClicked() {
@@ -39,12 +43,13 @@ class BlockContainer extends Component {
         this.setState({ isEdit: false });
     }
 
-    deleteClicked(id) {
-        this.props.deletePost(id);
+    deleteClicked() {
+        this.props.deleteClicked();
     }
 
-    saveClicked(post) {
-        this.props.savePost(post);
+    saveClicked() {
+        const { model, template } = this.state;
+        this.props.saveClicked(model, template);
     }
 
     setEdit() {

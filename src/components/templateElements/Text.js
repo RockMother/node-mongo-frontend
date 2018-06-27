@@ -3,15 +3,12 @@ import React from 'react';
 import ContentEditable from 'react-contenteditable';
 
 export default ({text, onTextChanged}) => {
-    const onChangeHandler = (event) => {
-        onTextChanged(event.target.value, text.orderInTemplate);
-    }
     return (
         <ContentEditable
             className="text"
-            html={'' || text.text}
+            html={(text && text.text) || ''}
             disabled={false}
-            onChange={onChangeHandler}
+            onChange={(event) => { onTextChanged(event.target.value); }}
             placeholder="Some text"
         />
     );

@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from './../components/posts/elements/Image';
-import Title from './../components/posts/elements/Title';
-import Code from './../components/posts/elements/Code';
-import Text from './../components/posts/elements/Text';
+import Image from '../components/templateElements/Image';
+import Title from '../components/templateElements/Title';
+import Code from '../components/templateElements/Code';
+import Text from '../components/templateElements/Text';
 
 const image = { 
     name: 'Image', 
@@ -36,7 +36,7 @@ const text = {
 };
 const code = {
     name: 'Code', 
-    modelName: 'code',
+    modelName: 'codes',
     selector: 'template-code',
      factory(context, node, initialValue, onValueChanged) {
         const key = context.propertyIndexes[code.name]++;
@@ -50,7 +50,7 @@ const code = {
 }     
 const title = {
     name: 'Title', 
-    modelName: 'title',
+    modelName: 'titles',
     selector: 'template-title', 
     factory(context, node, initialValue, onValueChanged) {
         const key = context.propertyIndexes[title.name]++;

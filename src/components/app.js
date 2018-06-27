@@ -4,20 +4,22 @@ import { connect } from 'react-redux';
 
 import Menu from './menu/Menu';
 import PostsContainer from './posts/PostsContainer';
+import TemplatesContainer from './templates/TemplatesContainer';
 
 class App extends Component {
     render() {
+        const states = this.props.categories.map((category, index) => {
+            return <Route exact
+                key={index}
+                path={`/${category.toLowerCase()}`}
+                component={() => category === 'Templates'? <TemplatesContainer/> : <PostsContainer category={category} />} />
+        });
         return (
             <main>
                 <Menu />
                 <Switch>
                     {
-                        this.props.categories.map((category, index) => {
-                            return <Route exact
-                                key={index}
-                                path={`/${category.toLowerCase()}`}
-                                component={() => <PostsContainer category={category} />} />
-                        })
+                        states
                     }
                     <Redirect path='/' to={`/${this.props.categories[0].toLowerCase()}`} />
                 </Switch>

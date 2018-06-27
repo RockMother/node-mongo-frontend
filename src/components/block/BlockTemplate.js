@@ -54,7 +54,6 @@ export default ({ isEdit, model, template, modelChanged }) => {
     });
     const doc = templateParserService.parse(template.template);
     return (
-
         getReactElement(doc.body.children[0], { propertyIndexes })
     );
 }

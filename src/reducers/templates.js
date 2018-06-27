@@ -17,7 +17,7 @@ export default (state = initialState.templates, action) => {
             ];
         case ActionTypes.DELETE_TEMPLATE:
             return [
-                ...state.filter(t => t._id !== action.templateId)
+                ...state.filter(t => t._id !== action.payload)
             ];
         default:
             return state;

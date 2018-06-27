@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as templateActions from './../../../../actions/templateActions';
+import * as templateActions from './../../actions/templateActions';
 import TemplateButton from './TemplateButton';
 
 import { connect } from 'react-redux';

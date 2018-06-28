@@ -14,7 +14,7 @@ class TemplatesContainer extends Component {
 
     render() {
         const templates = this.props.templates.map(t => {
-            return Object.assign(t, {template: templatesActions.newTemplate});
+            return Object.assign({}, t, {template: templatesActions.newTemplate});
         });
         return (
             <Templates data={templates}

@@ -13,7 +13,7 @@ fs.exists(outputFile, (exists) => {
 */    
 `);
     
-    for (let i = 1; i < 13; i++) {
+    for (let i = 1; i < 14; i++) {
         stream.write(`
 .col-start-${i} {
     grid-column-start: ${i};
@@ -22,7 +22,7 @@ fs.exists(outputFile, (exists) => {
     grid-column-end: ${i};
 }`);
     }
-    for (let i = 1; i < 13; i++) {
+    for (let i = 1; i < 14; i++) {
         stream.write(`
 .row-start-${i} {
     grid-row-start: ${i};

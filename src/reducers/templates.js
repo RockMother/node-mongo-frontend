@@ -7,8 +7,8 @@ export default (state = initialState.templates, action) => {
             return action.payload;
         case ActionTypes.CREATE_TEMPLATE:
             return [
-                ...state,
-                Object.assign({}, action.payload)
+                Object.assign({}, action.payload),
+                ...state
             ];
         case ActionTypes.UPDATE_TEMPLATE:
             return [

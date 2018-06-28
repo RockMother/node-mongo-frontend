@@ -1,62 +1,49 @@
-import React, { Component } from 'react';
-
 import config from '../../config';
-
-import { bindToThis } from '../../utils/utils';
-import BlockContainer from '../block/BlockContainer';
-
-export default class Posts extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = this.getInitialState(props);
-        bindToThis(this, this.deleteClicked, this.saveClicked);
-    }
-
+import BlockBasedList from '../blockBasedPosts/blockBasedList';
+export default class Posts extends BlockBasedList {
     getInitialState(props) {
         return {
             root: true,
-            newPost: {
+            newEntity: {
                 title: "",
                 texts: [],
                 categories: [{
                     name: props.category
                 }],
-                images: [],
-                template: props.newTemplate
+                images: []
             }
         }
     }
 
-    deleteClicked(id) {
-        this.props.delete(id);
+    convertToBlockModel(post) {
+        return {
+            titles: (post.titles && post.titles.map(t => t.title)) || [],
+            texts: (post.texts && post.texts.map(t => t.text)) || [],
+            images: (post.images && post.images.length > 0 && post.images.map(i => convertImage(i))) || [],
+            _id: post._id
+        }
     }
 
-    saveClicked(originalPost, blockModel, template) {
-        this.props.save(convertToPost(blockModel, template, originalPost));
-    }
-
-    componentWillReceiveProps(newProps) {
-        this.setState(this.getInitialState(newProps))
-    }
-
-    render() {
-        return (
-            <div className="list">
-                {this.props.showNewPost &&
-                    <BlockContainer key="new"
-                        model={convertPostToBlockModel(this.state.newPost)}
-                        saveClicked={ this.saveClicked.bind(this, this.state.newPost) }
-                        hideDeleteButton={true} />}
-                {/*{this.props.posts.length === 0 && '<div>Nothing here</div>'}*/}
-                {this.props.posts.length > 0 && this.props.posts.map(post => <BlockContainer key={post._id}
-                    model={convertPostToBlockModel(post)}
-                    template={post.template}
-                    deleteClicked={ this.deleteClicked.bind(this, post._id) }
-                    saveClicked={ this.saveClicked.bind(this, post) }
-                />)}
-            </div>
-        );
+    convertToModel(blockModel, originalPost, template) {
+        return {
+            _id: originalPost._id,
+            titles: blockModel.titles.map((t, index) => {
+                return {
+                    title: t,
+                    orderInTemplate: index
+                }            
+            }),
+            texts: blockModel.texts.map((t, index) => {
+                return {
+                    text: t,
+                    orderInTemplate: index
+                }
+            }),
+            template: template,
+            newImages: getNewImages(blockModel, originalPost),
+            images: getImages(blockModel, originalPost),
+            categories: originalPost.categories
+        }
     }
 }
 
@@ -87,33 +74,7 @@ function getImages(blockModel, originalPost){
     });
 }
 
-function convertToPost(blockModel, template, originalPost) {
-    return {
-        _id: originalPost._id,
-        titles: blockModel.titles.map((t, index) => {
-            return {
-                title: t,
-                orderInTemplate: index
-            }            
-        }),
-        texts: blockModel.texts.map((t, index) => {
-            return {
-                text: t,
-                orderInTemplate: index
-            }
-        }),
-        template: template,
-        newImages: getNewImages(blockModel, originalPost),
-        images: getImages(blockModel, originalPost),
-        categories: originalPost.categories
-    }
-}
 
-function convertPostToBlockModel(post) {
-    return {
-        titles: post.titles || [],
-        texts: post.texts || [],
-        images: post.images && post.images.length > 0? post.images.map(i => convertImage(i)): [],
-    }
-}
+
+
 

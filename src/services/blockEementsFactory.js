@@ -7,7 +7,7 @@ import Text from '../components/templateElements/Text';
 const image = { 
     name: 'Image', 
     modelName: 'images',
-    selector: 'template-image', 
+    selector: 't-image', 
     factory (context, node, initialValue, onValueChanged, isEdit) {
         const key = context.propertyIndexes[image.name]++;
         return React.createElement(Image, {
@@ -23,7 +23,7 @@ const image = {
 const text = { 
     name: 'Text', 
     modelName: 'texts',
-    selector: 'template-text', 
+    selector: 't-text', 
     factory (context, node, initialValue, onValueChanged) {
         const key = context.propertyIndexes[text.name]++;
         return React.createElement(Text, {
@@ -37,7 +37,7 @@ const text = {
 const code = {
     name: 'Code', 
     modelName: 'codes',
-    selector: 'template-code',
+    selector: 't-code',
      factory(context, node, initialValue, onValueChanged) {
         const key = context.propertyIndexes[code.name]++;
         return React.createElement(Code, {
@@ -51,7 +51,7 @@ const code = {
 const title = {
     name: 'Title', 
     modelName: 'titles',
-    selector: 'template-title', 
+    selector: 't-title', 
     factory(context, node, initialValue, onValueChanged) {
         const key = context.propertyIndexes[title.name]++;
         return React.createElement(Title, {

@@ -9,47 +9,29 @@
 
 .template-button {
     width: 100px;
-    /*max-height: 100px;*/
-
+    min-height: 70px;
     cursor: pointer;
-    /*background-color: white;*/
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-
-    /*margin-left: 20px;*/
     margin: 10px;
-
     transition: box-shadow 1s;
-
     overflow: hidden;
+    background-color: var(--main-white-color);
 }
 
-.template-button .template-title, .template-button .template-text {
+.template-button .t-title, .template-button .t-text {
     padding: 3px;
     font-size: 3px;
-    /*width: calc(100% - 10px);*/
     align-self: stretch;
-
-    /*width: 100%;*/
-
-    /*box-sizing: border-box;*/
-
-    /*background-color: red;*/
 }
 
 .template-button:hover {
     /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
 }
 
-.template-button .grid2 {
-    grid-template-columns: repeat(7, calc(100px/7));
-    grid-template-rows: repeat(8, 7px);
+.template-button .t-image {
+    background: url(./../../assets/images/cloud.png) no-repeat;
+    background-size: cover;
 }
-
-.template-button .template-image {
-    overflow: hidden;
-}
-
-.template-button .template-image img {
-    /*overflow: hidden;*/
-    display: block;
+.template-button .grid {
+    min-height: 70px;
+    min-width: 100px;
 }

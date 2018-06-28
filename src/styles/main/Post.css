@@ -1,24 +1,17 @@
 .block {
     --main-width: 700px;
     --main-margin: 50px;
-
-    /*line-height: 40px;*/
 }
 
 .paper {
-    background-color: white;
+    background-color: var(--main-white-color);
     overflow: hidden;
 }
 
 .block {
     position: relative;
-
     margin-bottom: var(--main-margin);
-
     width: var(--main-width);
-
-    z-index: 1;
-
     cursor: pointer;
 }
 
@@ -28,10 +21,7 @@
 }
 
 .block.edit {
-    width: var(--main-width);
-
     cursor: auto;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 .block.edit:hover .paper {
@@ -39,11 +29,7 @@
 }
 
 .block.new .paper {
-
-    /*min-width: 52px !important;*/
-    min-height: 40px !important;
-
+    min-height: 40px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
     cursor: pointer;
 }

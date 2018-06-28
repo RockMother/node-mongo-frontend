@@ -4,7 +4,7 @@ import templateParserService from '../../services/templateParserService';
 
 export default ({ isEdit, model, template, modelChanged }) => {
     function checkNodeForReactElement(node) {
-        return getElementDescriptors().find(e => node.className.indexOf(e.selector) >= 0);
+        return getElementDescriptors().find(e => node.className && node.className.indexOf(e.selector) >= 0);
     }
 
     function getInitiallValue(descriptor, context) {
@@ -52,7 +52,7 @@ export default ({ isEdit, model, template, modelChanged }) => {
     getElementDescriptors().forEach(e => {
         propertyIndexes[e.name] = 0;
     });
-    const doc = templateParserService.parse(template.template);
+    const doc = templateParserService.parse(template.code);
     return (
         getReactElement(doc.body.children[0], { propertyIndexes })
     );

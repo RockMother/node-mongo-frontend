@@ -8,7 +8,10 @@ const TEMPLATES_API_URL = API_URL + '/templates';
 export const newTemplate = {
     _id: -1,
     title: "Template of template =)",
-    template: "<div class='column'><div class='template-title'></div><div class='template-code'></div></div>"
+    code: `<div class='grid'>
+            <div class='t-title full-width row-start-1 row-end-2'></div>
+            <div class='t-code full-width row-start-2 row-end-13'></div>
+        </div>`
 };
 
 export function getTemplates() {

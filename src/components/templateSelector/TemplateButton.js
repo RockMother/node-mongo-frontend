@@ -7,6 +7,6 @@ export default ({onTemplateClicked, selected, template}) => {
     return (
         <div className={`template-button ${selected ? 'selected' : ''}`}
             onClick={onClickHandler}
-             dangerouslySetInnerHTML={{__html: template.template}}/>
+             dangerouslySetInnerHTML={{__html: template.code}}/>
     );
 }

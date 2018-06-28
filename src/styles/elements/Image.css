@@ -20,7 +20,7 @@
 
     display: block;
     transition: transform 1s;
-    background-color: white;
+    background-color: var(--main=white-color);
 }
 
 .button.delete-image {

@@ -13,13 +13,15 @@ class TemplatesContainer extends Component {
     }
 
     render() {
+        const templates = this.props.templates.map(t => {
+            return Object.assign(t, {template: templatesActions.newTemplate});
+        });
         return (
-            <Templates templates={this.props.templates}
-                showNewTemplate = {this.props.showNewTemplate}
-                category={this.props.category}
-                newTemplate={templatesActions.newTemplate}
-                saveClicked={this.props.templatesActions.saveTemplateAsPost}
-                deleteClicked={this.props.templatesActions.deleteTemplateAsPost}>
+            <Templates data={templates}
+                showNew = {this.props.showNewTemplate}
+                newEntityTemplate={templatesActions.newTemplate}
+                save={this.props.templatesActions.saveTemplate}
+                delete={this.props.templatesActions.deleteTemplate}>
             </Templates>
         );
     }

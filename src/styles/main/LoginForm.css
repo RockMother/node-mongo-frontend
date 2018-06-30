@@ -64,6 +64,11 @@
     border: none;
     color: rgba(0, 0, 0, 0.3);
 }
+
+.login-form .additional-links input:focus {
+    outline: none;
+}
+
 .login-form .additional-links input:hover {
     color:black;
 }
@@ -71,3 +76,4 @@
 .login-form .additional-links .separator {
     color: rgba(0, 0, 0, 0.3);
 }
+

@@ -6,11 +6,7 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.login-form input {
-    font: inherit;
+    box-shadow: 0 2px 4px var(--inactive-black-color);
 }
 
 .login-form .title {
@@ -20,36 +16,16 @@
     font-size: 2em;    
 }
 
-.login-form .fields {
-    display: flex;
-    flex-direction: column;
-    margin: 0 10px;
-    padding: 0px 20px;
-}
-.login-form .fields input {
-    height: 40px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    box-sizing: border-box; 
-    border: none;
-    transition: box-shadow 0.2s;
-}
-
-.login-form form input:focus{
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
 .login-form form input.login-button {
     border: none;
     cursor: pointer;
-    background-color: #a04fa0;
+    background-color: var(--main-button-color);
     color: var(--main-white-color);
     margin-bottom: 20px;
 }
 
 .login-form form input.login-button:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px var(--inactive-black-color);
 }
 
 .login-form .additional-links {
@@ -62,7 +38,8 @@
     background-color: transparent;
     cursor: pointer;
     border: none;
-    color: rgba(0, 0, 0, 0.3);
+    color: var(--inactive-black-color);
+    font: inherit;
 }
 
 .login-form .additional-links input:focus {
@@ -70,10 +47,10 @@
 }
 
 .login-form .additional-links input:hover {
-    color:black;
+    color:var(--active-black-color);
 }
 
 .login-form .additional-links .separator {
-    color: rgba(0, 0, 0, 0.3);
+    color: var(--inactive-black-color);
 }
 

@@ -3,6 +3,9 @@
 
 :root {
     --main-white-color: white; 
+    --main-button-color: #a04fa0;
+    --inactive-black-color:  rgba(0, 0, 0, 0.3);
+    --active-black-color: black;
 }
 
 body {

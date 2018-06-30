@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Menu from './menu/Menu';
 import PostsContainer from './posts/PostsContainer';
 import TemplatesContainer from './templates/TemplatesContainer';
+import LoginForm from './login/loginForm/LoginForm';
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 path={`/${category.toLowerCase()}`}
                 component={() => category === 'Templates'? <TemplatesContainer/> : <PostsContainer category={category} />} />
         });
+        states.push(<Route key={states.length} path="/login" component={() => <LoginForm/>} />);
         return (
             <main>
                 <Menu />

@@ -1,7 +1,7 @@
 let state = {
     posts: [],
     templates: [],
-    categories: ['Blog', 'Settings'],
+    categories: ['Blog'],
     token: localStorage.getItem('tokenAPI')
 }
 

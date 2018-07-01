@@ -1,47 +1,18 @@
 import React, {Component} from 'react';
 
 import { bindToThis } from '../../utils/utils'
+import MainSettings from "./MainSettings";
+import PostSettings from "./PostSettings";
+import Login from "./Login";
 
-export default class Login extends Component {
-
-    constructor(props) {
-
-        super(props);
-        bindToThis(this, this.loginClicked);
-    }
-
-    loginClicked(){
-        alert('Login clicked');
-    }
+export default class Settings extends Component {
 
     render() {
         return (
             <div className="list">
-                <div className="block">
-                    <div className="paper">
-                        <div className="text">Main</div>
-                    </div>
-                </div>
-                <div className="block">
-                    <div className="paper">
-
-                        <div className="login-form">
-                            <div className="title">Connect email or login</div>
-                            <form className="form vertical">
-                                <input type="text" placeholder="Username or email"/>
-                                <input type="password" placeholder="Password"/>
-                                <input  className="login-button" type="submit" value="Log in" onClick={this.loginClicked}/>
-                            </form>
-                            <div className="additional-links">
-                                <input type="button" value="Register"/>
-                                <div className="separator">/</div>
-                                <input type="button" value="Forgot password"/>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+                <MainSettings />
+                <PostSettings />
+                <Login />
             </div>
         );
     }

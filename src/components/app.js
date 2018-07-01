@@ -10,14 +10,22 @@ import Settings from './settings/Settings';
 
 class App extends Component {
     render() {
-        const states = this.props.categories.map((category, index) => {
+
+        // let system = [];
+        // system.push(<Route key={states.length} path="/login" component={() => <Login/>} />);
+        // system.push(<Route key='settings' path="/settings" component={() => <Settings/>} />);
+
+        let states = this.props.categories.map((category, index) => {
             return <Route exact
                 key={index}
                 path={`/${category.toLowerCase()}`}
-                component={() => category === 'Templates'? <TemplatesContainer/> : <PostsContainer category={category} />} />
+                component={() => category === 'Templates' || category === 'Settings' ?
+                    (category === 'Templates' ? <TemplatesContainer/> : <Settings/>) : <PostsContainer category={category} />}
+            />
         });
-        states.push(<Route key={states.length} path="/login" component={() => <Login/>} />);
-        states.push(<Route key={states.length} path="/settings" component={() => <Settings/>} />);
+
+        // const states = [].push.apply(system, category);
+
         return (
             <main>
                 <Menu />

@@ -20,5 +20,42 @@ form input {
 
 .form input:focus{
     outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px var(--inactive-black-color);
+}
+
+.form .primary-button {
+    background-color: var(--main-button-color);
+    color: var(--main-white-color);    
+    border: none;
+    cursor: pointer;
+}
+
+.form .primary-button:hover {
+    box-shadow: 0 2px 4px var(--inactive-black-color);
+}
+
+.form-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form-links input {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    color: var(--inactive-black-color);
+    font: inherit;
+}
+
+.form-links input:focus {
+    outline: none;
+}
+
+.form-links input:hover {
+    color:var(--active-black-color);
+}
+
+.form-links .separator {
+    color: var(--inactive-black-color);
 }

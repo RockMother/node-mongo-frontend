@@ -1,0 +1,24 @@
+.auth-form {
+    background-color: #ebebee;
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px var(--inactive-black-color);
+}
+
+.auth-form .title {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.auth-form form input.primary-button {
+    margin-bottom: 20px;
+}
+
+
+

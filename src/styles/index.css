@@ -3,9 +3,9 @@
 
 :root {
     --main-white-color: white; 
-    --main-button-color: #00ff08;
-    --inactive-black-color: rgba(170, 45, 151, 0.3);
-    --active-black-color: rgba(255, 0, 0, 0.37);
+    --main-button-color: #a04fa0;
+    --inactive-black-color:  rgba(0, 0, 0, 0.3);
+    --active-black-color: black;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    background-color: #dd770c;
+    background-color: #d7d7dd;
 }
 
 a {
@@ -25,7 +25,7 @@ a {
 }
 
 a:hover {
-    color: rgba(143, 181, 48, 0.7);
+    color: rgba(20, 137, 181, 0.7);
 }
 
 main {

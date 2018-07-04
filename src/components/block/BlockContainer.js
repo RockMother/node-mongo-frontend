@@ -5,6 +5,8 @@ import Block from './Block'
 import TemplateSelector from './../templateSelector/TemplateSelector';
 
 import { bindToThis } from './../../utils/utils';
+import { getElementDescriptors } from '../../services/blockEementsFactory';
+import templateParserService from '../../services/templateParserService';
 
 class BlockContainer extends Component {
     constructor(props){
@@ -62,7 +64,22 @@ class BlockContainer extends Component {
     }
 
     onTemplateSelected(template){
-        this.setState({template: template});
+        const { model } = this.state;
+        getElementDescriptors().forEach(e => {
+            const array = model[e.modelName] || [];
+            const elementsCount = templateParserService.getElementsCount(template, e);
+            if (array.length < elementsCount) {
+                model[e.modelName] = new Array(templateParserService.getElementsCount(template, e));
+                for(let i = 0; i< elementsCount; i++) {
+                    if (array.length > i && array[i]) {
+                        model[e.modelName][i] = array[i];
+                    } else {
+                        model[e.modelName][i] = null;
+                    }
+                }
+            }
+        });
+        this.setState({template, model});
     }
 
     render() {

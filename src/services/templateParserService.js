@@ -13,14 +13,9 @@ class TemplateParserService {
         }
     }
 
-    getImageBlocksCount(template) {
+    getElementsCount(template, element) {
         const doc = this.parse(template);
-        return doc.getElementsByClassName('template-image').length;
-    }
-
-    getTextBlocksCount(template) {
-        const doc = this.parse(template);
-        return doc.getElementsByClassName('template-text').length;
+        return doc.getElementsByClassName(element.selector).length;
     }
 
     getProperties(template) {

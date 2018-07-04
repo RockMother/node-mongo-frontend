@@ -90,8 +90,7 @@ class BlockContainer extends Component {
                     model={model} 
                     isEdit={isEdit}
                     template={template}
-                    modelChanged={this.modelChanged}
-                    isEdit={isEdit}>
+                    modelChanged={this.modelChanged}>
                 </Block>
                 {
                     isEdit &&

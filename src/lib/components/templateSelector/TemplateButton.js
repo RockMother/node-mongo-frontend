@@ -1,4 +1,5 @@
 import React from 'react';
+import './TemplateButton.css';
 
 export default ({onTemplateClicked, selected, template}) => {
     const onClickHandler = (event) => {

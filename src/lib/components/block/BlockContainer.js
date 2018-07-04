@@ -52,6 +52,7 @@ class BlockContainer extends Component {
     saveClicked() {
         const { model, template } = this.state;
         this.props.saveClicked(model, template);
+        this.setState({ isEdit: false });
     }
 
     setEdit() {

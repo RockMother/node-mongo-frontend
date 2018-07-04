@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as postActions from '../../actions/postActions';
+import * as templatesActions from '../../actions/templateActions';
 
 import Posts from './Posts';
 
@@ -10,6 +11,7 @@ class PostsContainer extends Component {
     constructor(props) {
         super(props);
         this.props.postActions.getPosts(this.props.category);
+        this.props.templatesActions.getTemplates();
     }
 
     render() {
@@ -17,6 +19,7 @@ class PostsContainer extends Component {
         const deleteAction = this.props.postActions.deletePost;
         return (
             <Posts data={this.props.posts}
+                templates={this.props.templates}
                 showNew = {this.props.showNew}
                 category={this.props.category}
                 save={saveAction}
@@ -30,13 +33,15 @@ function mapStateToProps(state, ownProps) {
     return {
         posts: state.posts,
         category: ownProps.category,
-        showNew: state.token
+        showNew: state.token,
+        templates: state.templates
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        postActions: bindActionCreators(postActions, dispatch)
+        postActions: bindActionCreators(postActions, dispatch),
+        templatesActions: bindActionCreators(templatesActions, dispatch)
     };
 }
 

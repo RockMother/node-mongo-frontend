@@ -1,4 +1,4 @@
-import BlockBasedList from '../blockBasedPosts/blockBasedList';
+import { BlockBasedList } from 'html-post-constructor';
 
 export default class Templates extends BlockBasedList {
     getInitialState() {

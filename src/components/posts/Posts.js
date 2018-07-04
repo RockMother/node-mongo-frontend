@@ -1,5 +1,5 @@
 import config from '../../config';
-import BlockBasedList from '../blockBasedPosts/blockBasedList';
+import { BlockBasedList } from './../../lib/index';
 export default class Posts extends BlockBasedList {
     getInitialState(props) {
         return {

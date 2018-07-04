@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const outputFile = path.join(__dirname, '../src/styles/grid/grid-columns.css');
+const outputFile = path.join(__dirname, '../src/lib/styles/grid/grid-columns.css');
 
 fs.exists(outputFile, (exists) => {
     if (exists) {

@@ -13,10 +13,8 @@
 
 .button {
     cursor: pointer;
-
     line-height: 20px;
     padding: 10px;
-
     color: rgba(0, 0, 0, 0.3);
 }
 

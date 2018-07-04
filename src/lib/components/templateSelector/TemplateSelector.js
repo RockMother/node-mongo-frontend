@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import * as templateActions from './../../actions/templateActions';
 import TemplateButton from './TemplateButton';
-
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class TemplateSelector extends Component {
     constructor(props) {
         super(props);
-        this.props.actions.getTemplates()
         this.templateSelected = this.templateSelected.bind(this);
     }
 
@@ -33,16 +28,4 @@ class TemplateSelector extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return {
-        templates: state.templates,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(templateActions, dispatch)
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelector);
+export default TemplateSelector;

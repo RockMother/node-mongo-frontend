@@ -4,9 +4,10 @@ import Buttons from '../buttons/Buttons';
 import Block from './Block'
 import TemplateSelector from './../templateSelector/TemplateSelector';
 
+import templateParserService from './../../services/templateParserService';
+
 import { bindToThis } from './../../utils/utils';
 import { getElementDescriptors } from '../../services/blockEementsFactory';
-import templateParserService from '../../services/templateParserService';
 
 class BlockContainer extends Component {
     constructor(props){
@@ -14,18 +15,17 @@ class BlockContainer extends Component {
         
         this.state = this.getInitialState(props);
 
-        bindToThis(this, this.setEdit, 
-                        this.modelChanged,
+        bindToThis(this, this.modelChanged,
                         this.onTemplateClicked,
                         this.onTemplateSelected,
                         this.cancelClicked,
+                        this.setEdit,
                         this.deleteClicked,
                         this.saveClicked);
     }
 
     getInitialState(props) {
         return {
-            isEdit: false,
             template: props.template,
             model: Object.assign({}, this.props.model),
             showTemplateSelector: false
@@ -55,8 +55,7 @@ class BlockContainer extends Component {
     }
 
     setEdit() {
-        if (!this.state.isEdit)
-            this.setState({isEdit: true});
+        this.setState({ isEdit: true });
     }
 
     onTemplateClicked() {
@@ -89,6 +88,7 @@ class BlockContainer extends Component {
             <div className={blockClassName}>
                 <Block onClick={this.setEdit}
                     model={model} 
+                    isEdit={isEdit}
                     template={template}
                     modelChanged={this.modelChanged}
                     isEdit={isEdit}>
@@ -102,6 +102,7 @@ class BlockContainer extends Component {
                 }
                 {
                     isEdit && showTemplateSelector && <TemplateSelector
+                        templates={this.props.templates}
                         selectedTemplate={this.state.template}
                         onTemplateSelected={this.onTemplateSelected} />
                 }

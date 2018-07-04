@@ -5,12 +5,14 @@ import { bindActionCreators } from 'redux';
 import * as postActions from '../../actions/postActions';
 
 import Posts from './Posts';
+import { bindToThis } from '../../lib/utils/utils';
 
 class PostsContainer extends Component {
     constructor(props) {
         super(props);
         this.props.postActions.getPosts(this.props.category);
     }
+    
 
     render() {
         const saveAction = this.props.postActions.savePost;

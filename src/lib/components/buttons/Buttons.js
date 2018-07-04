@@ -1,4 +1,5 @@
 import React from 'react';
+import './Buttons.css'
 
 export default ({onSaveClicked, onCancelClicked, onDeleteClicked, onTemplateClicked, onBoldClicked}) => {
     const buttons = [];

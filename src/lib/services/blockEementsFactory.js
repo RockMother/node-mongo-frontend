@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from '../components/templateElements/Image';
-import Title from '../components/templateElements/Title';
-import Code from '../components/templateElements/Code';
-import Text from '../components/templateElements/Text';
+import Image from '../components/templateElements/image/Image';
+import Title from '../components/templateElements/title/Title';
+import Code from '../components/templateElements/code/Code';
+import Text from '../components/templateElements/text/Text';
 
 const image = { 
     name: 'Image', 

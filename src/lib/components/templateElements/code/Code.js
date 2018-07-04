@@ -1,12 +1,13 @@
 import React from 'react';
+import './Code.css'
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 
-require('./../../../node_modules/codemirror/lib/codemirror.css');
-require('./../../../node_modules/codemirror/theme/material.css');
-require('./../../../node_modules/codemirror/theme/neat.css');
-require('./../../../node_modules/codemirror/mode/htmlmixed/htmlmixed.js');
-require('./../../../node_modules/codemirror/mode/javascript/javascript.js');
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/material.css'
+import 'codemirror/theme/neat.css'
+import 'codemirror/mode/htmlmixed/htmlmixed'
+import 'codemirror/mode/javascript/javascript'
 
 export default ({ code, onCodeChanged }) => {
     return (

@@ -25,6 +25,7 @@ export function savePost(post) {
     formData.append("titles[]", JSON.stringify(post.titles));
     formData.append('images[]', JSON.stringify(post.images));
     formData.append("texts[]", JSON.stringify(post.texts));
+    formData.append("htmls[]", JSON.stringify(post.htmls));
     formData.append("categories[]", JSON.stringify(post.categories));
     if (post.newImages) {
         post.newImages.forEach((newImage, index) => {

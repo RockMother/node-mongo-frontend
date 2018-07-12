@@ -19,6 +19,7 @@ export default class Posts extends BlockBasedList {
         return {
             titles: (post.titles && post.titles.length > 0 && post.titles.map(t => t && t.title)) || [],
             texts: (post.texts && post.texts.length > 0 && post.texts.map(t => t && t.text)) || [],
+            htmls: (post.htmls && post.htmls.length > 0 && post.htmls.map(t => t && t.html)) || [],
             images: (post.images && post.images.length > 0 && sortArrayForBlockModel(post.images.map(i => convertImage(i)))) || [],
             _id: post._id
         }
@@ -39,6 +40,12 @@ export default class Posts extends BlockBasedList {
                     orderInTemplate: index
                 }
             }) || [],
+            htmls: blockModel.htmls.map((html, index) => {
+                return {
+                    html,
+                    orderInTemplate: index
+                }
+            }) || [],            
             template: template,
             newImages: getNewImages(blockModel, originalPost),
             images: getImages(blockModel, originalPost),

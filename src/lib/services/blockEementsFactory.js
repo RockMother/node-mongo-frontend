@@ -3,6 +3,7 @@ import Image from '../components/templateElements/image/Image';
 import Title from '../components/templateElements/title/Title';
 import Code from '../components/templateElements/code/Code';
 import Text from '../components/templateElements/text/Text';
+import Html from '../components/templateElements/html/Html';
 
 const image = { 
     name: 'Image', 
@@ -63,6 +64,22 @@ const title = {
     }
 };
 
+const html = {
+    name: 'Html', 
+    modelName: 'htmls',
+    selector: 't-html', 
+    factory(context, node, initialValue, onValueChanged, isEdit) {
+        const key = context.propertyIndexes[html.name]++;
+        return React.createElement(Html, {
+            key: context.propertyIndexes[html.name]++,
+            code: initialValue,
+            isEdit: isEdit,
+            className: node.className,
+            onCodeChanged: (html) => onValueChanged(html, key)
+        });
+    }
+};
+
 export function getElementDescriptors() {
-    return [image, text, code, title];
+    return [image, text, code, title, html];
 }

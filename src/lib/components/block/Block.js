@@ -7,7 +7,7 @@ export default ({ isEdit, template, model, onClick, modelChanged }) => {
         blockTemplate = React.createElement(BlockTemplate, { template, isEdit, model, modelChanged });
     }
     return (
-        <div className="paper" onClick={onClick}>
+        <div className="block-template" onClick={onClick}>
             {blockTemplate}
         </div>
     );

@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Buttons from '../buttons/Buttons';
 
-import Block from './Block'
+import Block from './Block';
+import BlockSettings from './BlockSettings';
 import TemplateSelector from './../templateSelector/TemplateSelector';
 
 import templateParserService from './../../services/templateParserService';
@@ -10,18 +11,18 @@ import { bindToThis } from './../../utils/utils';
 import { getElementDescriptors } from '../../services/blockEementsFactory';
 
 class BlockContainer extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        
+
         this.state = this.getInitialState(props);
 
         bindToThis(this, this.modelChanged,
-                        this.onTemplateClicked,
-                        this.onTemplateSelected,
-                        this.cancelClicked,
-                        this.setEdit,
-                        this.deleteClicked,
-                        this.saveClicked);
+            this.onTemplateClicked,
+            this.onTemplateSelected,
+            this.cancelClicked,
+            this.setEdit,
+            this.deleteClicked,
+            this.saveClicked);
     }
 
     getInitialState(props) {
@@ -37,7 +38,7 @@ class BlockContainer extends Component {
     }
 
     modelChanged() {
-        this.setState({model:  Object.assign({}, this.state.model) });
+        this.setState({ model: Object.assign({}, this.state.model) });
     }
 
     cancelClicked() {
@@ -63,14 +64,14 @@ class BlockContainer extends Component {
         this.setState({ showTemplateSelector: !this.state.showTemplateSelector });
     }
 
-    onTemplateSelected(template){
+    onTemplateSelected(template) {
         const { model } = this.state;
         getElementDescriptors().forEach(e => {
             const array = model[e.modelName] || [];
             const elementsCount = templateParserService.getElementsCount(template, e);
             if (array.length < elementsCount) {
                 model[e.modelName] = new Array(templateParserService.getElementsCount(template, e));
-                for(let i = 0; i< elementsCount; i++) {
+                for (let i = 0; i < elementsCount; i++) {
                     if (array.length > i && array[i]) {
                         model[e.modelName][i] = array[i];
                     } else {
@@ -79,26 +80,32 @@ class BlockContainer extends Component {
                 }
             }
         });
-        this.setState({template, model});
+        this.setState({ template, model });
     }
 
     render() {
         const { isEdit, model, template, showTemplateSelector } = this.state;
-        const blockClassName = `block ${isEdit ? 'edit' : model._id ? '' : 'new'}`;
+        const blockClassName = `block-container ${isEdit ? 'edit' : model._id ? '' : 'new'}`;
         return (
             <div className={blockClassName}>
-                <Block onClick={this.setEdit}
-                    model={model} 
-                    isEdit={isEdit}
-                    template={template}
-                    modelChanged={this.modelChanged}>
-                </Block>
+                <div className="block">
+                    <Block onClick={this.setEdit}
+                        model={model}
+                        isEdit={isEdit}
+                        template={template}
+                        modelChanged={this.modelChanged}>
+                    </Block>
+                    {
+                        isEdit && <BlockSettings>
+                        </BlockSettings>
+                    }
+                </div>
                 {
                     isEdit &&
                     <Buttons onTemplateClicked={!this.props.hideTemplatesButton && this.onTemplateClicked}
                         onSaveClicked={this.saveClicked}
                         onDeleteClicked={!this.props.hideDeleteButton && this.deleteClicked}
-                        onCancelClicked={this.cancelClicked}/>
+                        onCancelClicked={this.cancelClicked} />
                 }
                 {
                     isEdit && showTemplateSelector && <TemplateSelector

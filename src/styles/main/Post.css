@@ -1,35 +1,31 @@
-.block {
-    --main-width: 700px;
-    --main-margin: 50px;
-}
-
 .paper {
     background-color: var(--main-white-color);
-    overflow: hidden;
 }
 
-.block {
+.block-container {
+    --main-width: 700px;
+    --main-margin: 50px;
+    background-color: var(--main-white-color);
     position: relative;
     margin-bottom: var(--main-margin);
     width: var(--main-width);
     cursor: pointer;
-}
-
-.block .paper {
     transition: min-height 3s, min-width 1s, margin-top 1s, width 1s, box-shadow 1s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px var(--inactive-black-color);
 }
 
-.block.edit {
-    cursor: auto;
+.block-container.edit:hover {
+    box-shadow: 0 8px 16pxvar(--inactive-black-color);
 }
 
-.block.edit:hover .paper {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.block.new .paper {
+.block-container.new {
     min-height: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    height: 40px;
+    box-shadow: 0 2px 4px var(--inactive-black-color);
+}
+
+.block, .block-template {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
 }

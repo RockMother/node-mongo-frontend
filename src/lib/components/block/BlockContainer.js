@@ -96,7 +96,8 @@ class BlockContainer extends Component {
                         modelChanged={this.modelChanged}>
                     </Block>
                     {
-                        isEdit && <BlockSettings>
+                        isEdit && 
+                        <BlockSettings>
                         </BlockSettings>
                     }
                 </div>

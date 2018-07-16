@@ -15,7 +15,7 @@
 }
 
 .block-container.edit:hover {
-    box-shadow: 0 8px 16pxvar(--inactive-black-color);
+    box-shadow: 0 8px 16px var(--inactive-black-color);
 }
 
 .block-container.new {
@@ -28,4 +28,9 @@
     height: 100%;
     width: 100%;
     min-height: 100%;
+}
+
+.block-settings {
+    padding: 20px 20px;
+    background: linear-gradient(to right, white, ghostwhite);
 }

@@ -2,9 +2,9 @@ import React from 'react';
 
 export default ({ }) => {
     return <div className="block-settings">
-        <label>
+        {/* <label>
             Form:
             <input type="checkbox" name="isForm" />
-        </label>
+        </label> */}
     </div>
 }
